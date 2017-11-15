@@ -19,58 +19,6 @@
       </div>
     </div>
     <br>
-  <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-    <div class="row div_registrar" hidden>
-      <div class="col-md-10 col-lg-offset-1">
-        <div class="mensaje-div">
-            <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
-        </div>
-    <div class="col-md-10 col-lg-offset-1">
-      <h1>Registro de Participante</h1>
-    </div>
-    <div class="col-md-10 col-lg-offset-1">
-    <form class="form-horizontal" id="form_registro_participante">
-      <div class="form-group">
-        <div class="col-sm-10">
-        <input type="text" class="form-control" id="email_participante" tabindex=1 placeholder="Correo" name="email_participante">
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-10">          
-        <input type="text" class="form-control" id="nombre_participante" tabindex=2 placeholder="Nombre" name="nombre_participante">
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-10">
-        <input type="text" class="form-control" id="apellido_participante" tabindex=3 placeholder="Apellido" name="apellido_participante">
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-10">
-        <input type="text" class="form-control" id="direccion_participante" tabindex=4 placeholder="Direccion" name="direccion_participante">
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-10">
-        <input type="text" class="form-control" id="telefono_participante" tabindex=5 placeholder="Tel&eacute;fono" name="telefono_participante">
-        </div>
-      </div>
-      <div class="form-group">        
-        <div class="col-sm-offset-0 col-sm-10">
-        <button type="submit" class="btn btn-info">Registrar</button>
-        <button type="button" class="btn btn-info boton_listar">Listar</button>
-        </div>
-      </div>
-      </form>
-    </div>
-      </div>
-    </div>
-  <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-
-
-    <div class="row">
-      <div class="col-md-2 col-md-offset-8"><button type="button" class="btn btn-info nuevo_participante">Nuevo Participante</button></div>
-    </div>
 
   <!-- /////////////////////////DATATABLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
     <br>
@@ -94,6 +42,53 @@
     </div>
   </div>
   <!-- /////////////////////////DATATABLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+    <div class="row">
+      <div class="col-md-2 col-md-offset-8"><button type="button" class="btn btn-info nuevo_participante">Nuevo Participante</button></div>
+    </div>
+
+  <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+    <div class="row div_registrar" hidden>
+      <div class="col-md-10 col-lg-offset-1">
+        <div class="mensaje-div">
+            <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
+        </div>
+    <div class="col-md-10 col-lg-offset-1">
+      <h1>Nueva pregunta</h1>
+    </div>
+    <div class="col-md-10 col-lg-offset-1">
+    <form class="form-horizontal" id="form_registro_participante">
+      <div class="form-group">
+        <div class="col-sm-10">
+        <input type="text" class="form-control" id="crear_pregunta" tabindex=1 placeholder="Pregunta" name="crear_pregunta">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-6">
+          <select class="form-control" id="tipo_pregunta">
+            <option value="0">Selecciona un tipo de pregunta</option>
+            <option value="simple">Selecci&oacute;n simple</option>
+            <option value="multi">Selecci&oacute;n m&uacute;ltiple</option>
+            <option value="libre">Respuesta libre</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-10 col-md-offset-1">
+          <button type="button" class="btn btn-link" id="agregar_respuesta">Agregar opci&oacute;n</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-0 col-sm-10">
+          <button type="submit" class="btn btn-info">Registrar</button>
+          <button type="button" class="btn btn-info boton_listar">Listar</button>
+        </div>
+      </div>
+      </form>
+    </div>
+      </div>
+    </div>
+  <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
   <!-- /////////////////////////MODAL MODIFICAR EVENTO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
   <!-- Modal -->
