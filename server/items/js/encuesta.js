@@ -43,7 +43,7 @@ $(document).ready(function() {
 	// ------------------------------------------
 
 	$("#agregar_respuesta").click(function(){
-
+		
 	});
 
 	// ACCION REGISTRAR PARTICIPANTE-------------
