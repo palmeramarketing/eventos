@@ -5,13 +5,13 @@
 	<?php
 		include "items/static/header.php";
 	?>
-	<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/evento/server/items/css/index.css">
+	<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/items/css/index.css">
 </head>
 <body>
     <div class="container form_sesion">
     	<div class="row">
     		<div class="col-xs-4 col-xs-offset-4">
-    			<img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/evento/server/items/images/logo.jpg" class="logo center-block">
+    			<img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/items/images/logo.jpg" class="logo center-block">
     		</div>
     	</div>
     	<div class="espacio"></div>

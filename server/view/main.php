@@ -5,7 +5,7 @@
 	<?php
 		include "../items/static/header.php";
 	?>
-	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/evento/server/items/css/main.css">
+	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/items/css/main.css">
 </head>
 <body>
 	<?php

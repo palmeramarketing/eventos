@@ -5,7 +5,7 @@
 	<?php
 		include "../items/static/header.php";
 	?>
-	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/evento/server/items/css/menu.css">
+	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/items/css/menu.css">
 </head>
 <body>
 	<header class="header_menu"><span class="glyphicon glyphicon-menu-hamburger mostrar"></span></header>
@@ -20,6 +20,6 @@
 			<li><span class="glyphicon glyphicon-file"></span><h4 class="text-menu-8">Contactos</h4></li>
 			<li><span class="glyphicon glyphicon-road"></span><h4 class="text-menu-9">Nosotros</h4></li>
 		</div>	
-	<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/evento/server/items/js/menu.js" type="text/javascript"></script>
+	<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/items/js/menu.js" type="text/javascript"></script>
 </body>
 </html>
