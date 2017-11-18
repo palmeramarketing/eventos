@@ -40,11 +40,10 @@
       </table>
       </div>
     </div>
-  </div>
   <!-- /////////////////////////DATATABLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
     <div class="row">
-      <div class="col-md-2 col-md-offset-8"><button type="button" class="btn btn-info nuevo_participante">Nuevo Participante</button></div>
+      <div class="col-md-2 col-md-offset-8"><button type="button" class="btn btn-info nuevo_participante">Crear pregunta</button></div>
     </div>
 
   <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
@@ -57,7 +56,7 @@
       <h1>Nueva pregunta</h1>
     </div>
     <div class="col-md-10 col-lg-offset-1">
-    <form class="form-horizontal" id="form_registro_participante">
+    <form class="form-horizontal" id="form_registro_pregunta">
       <div class="form-group">
         <div class="col-sm-10">
         <input type="text" class="form-control" id="crear_pregunta" tabindex=1 placeholder="Pregunta" name="crear_pregunta">
@@ -73,7 +72,7 @@
           </select>
         </div>
       </div>
-      <div class="form-group">
+      <div class="form-group div_agregar_respuesta">
         <div class="col-md-10 col-md-offset-1">
           <button type="button" class="btn btn-link" id="agregar_respuesta">Agregar opci&oacute;n</button>
         </div>
@@ -89,6 +88,7 @@
       </div>
     </div>
   <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+  </div>
 
   <!-- /////////////////////////MODAL MODIFICAR EVENTO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
   <!-- Modal -->
@@ -143,6 +143,6 @@
   </div>
   <!-- /////////////////////////MODAL MODIFICAR EVENTO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
-<script type="text/javascript" src="../items/js/participantes.js"></script>
+<script type="text/javascript" src="../items/js/encuesta.js"></script>
 </body>
 </html>
