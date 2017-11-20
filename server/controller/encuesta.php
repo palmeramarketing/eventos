@@ -2,7 +2,7 @@
 
 error_reporting(0);
 
-include "../model/Participante.php";
+include "../model/Encuesta.php";
 include "../model/Evento.php";
 
 

@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	var id_event;
 	var table;
+	var cont_respuesta = 0;
 
 	$(".nuevo_participante").attr("disabled",true);
 
@@ -42,8 +43,14 @@ $(document).ready(function() {
 	});
 	// ------------------------------------------
 
+
 	$("#agregar_respuesta").click(function(){
-		
+		cont_respuesta++;
+		$( ".div_agregar_respuesta" ).prepend( "<div class='form-group'>\
+        <div class='col-md-7 col-md-offset-1'>\
+          <input type='text' id='respuesta_"+cont_respuesta+"' name='respuesta_"+cont_respuesta+"' tabindex="+cont_respuesta+" placeholder='Opcion "+cont_respuesta+"' class='form-control input_style'>\
+        </div>\
+      </div>" );
 	});
 
 	// ACCION REGISTRAR PARTICIPANTE-------------
@@ -116,7 +123,8 @@ function listar_participantes(id_evento){
 				{"data":"apellido"},
 				{"data":"direccion"},
 				{"data":"telefono"},
-				{"defaultContent":"<span class='accion_eliminar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''></span><span class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
+				{"defaultContent":"<span class='accion_eliminar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''>\
+				</span><span class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
 			]
 		});
 	}else{

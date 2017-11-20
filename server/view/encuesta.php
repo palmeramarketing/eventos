@@ -73,7 +73,7 @@
           </select>
         </div>
       </div>
-      <div class="form-group">
+      <div class="form-group div_agregar_respuesta">
         <div class="col-md-10 col-md-offset-1">
           <button type="button" class="btn btn-link" id="agregar_respuesta">Agregar opci&oacute;n</button>
         </div>
@@ -143,6 +143,6 @@
   </div>
   <!-- /////////////////////////MODAL MODIFICAR EVENTO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
-<script type="text/javascript" src="../items/js/participantes.js"></script>
+<script type="text/javascript" src="../items/js/encuesta.js"></script>
 </body>
 </html>
