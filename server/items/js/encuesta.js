@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	var id_event;
 	var table;
-	var cont_respuesta = 0;
+	var cont_opcion = 0;
 
 	$(".nuevo_participante").attr("disabled",true);
 
@@ -45,12 +45,15 @@ $(document).ready(function() {
 
 
 	$("#agregar_respuesta").click(function(){
-		cont_respuesta++;
-		$( ".div_agregar_respuesta" ).prepend( "<div class='form-group'>\
-        <div class='col-md-7 col-md-offset-1'>\
-          <input type='text' id='respuesta_"+cont_respuesta+"' name='respuesta_"+cont_respuesta+"' tabindex="+cont_respuesta+" placeholder='Opcion "+cont_respuesta+"' class='form-control input_style'>\
-        </div>\
-      </div>" );
+		cont_opcion++;
+		$("<div class='form-group'>\
+	          <div class='col-xs-8 col-xs-offset-1'>\
+	          	<div class='input-group'>\
+	            	<input type='text' id='opcion-"+cont_opcion+"' name='opcion-"+cont_opcion+"' tabindex="+cont_opcion+" placeholder='Opci&oacute;n "+cont_opcion+"' class='form-control input_style'>\
+	            	<span class='input-group-addon cerrar_opcion'>X</span>\
+	            </div>\
+	          </div>\
+	        </div>").insertBefore(".div_agregar_respuesta");
 	});
 
 	// ACCION REGISTRAR PARTICIPANTE-------------
