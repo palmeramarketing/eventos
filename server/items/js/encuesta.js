@@ -1,9 +1,9 @@
 $(document).ready(function() {
 	var id_event;
 	var table;
-	var cont_opcion = 0;
+	var cont_opcion = 2;
 
-	$(".nuevo_participante").attr("disabled",true);
+	$(".nueva_pregunta").attr("disabled",true);
 
 	$.ajax({
 	    url : '../controller/participante.php',
@@ -38,63 +38,81 @@ $(document).ready(function() {
 	// ------------------------------------------
 
 	// MOSTRAR FORMULARIO DE REGISTRO------------
-	$(".nuevo_participante").click(function(){
+	$(".nueva_pregunta").click(function(){
 		$(".div_registrar").css("display","block");
 	});
 	// ------------------------------------------
 
+	$("#tipo_pregunta").change(function(){
+		var seleccion = $("#tipo_pregunta option:selected").val();
+		if (seleccion == "simple-multi") {
+			$(".textarea_opcion").css("display", "none");
+			$(".sistema_opciones").css("display", "block");
+		}else if (seleccion == "libre"){
+			$(".sistema_opciones").css("display", "none");
+			$(".textarea_opcion").css("display", "block");
+		}else{
+			$(".textarea_opcion").css("display", "none");
+			$(".sistema_opciones").css("display", "none");
+		}
+	});
 
 	$("#agregar_respuesta").click(function(){
 		cont_opcion++;
-		$("<div class='form-group'>\
+		$("<div class='form-group sistema_opciones' id='div-opcion-"+cont_opcion+"'>\
 	          <div class='col-xs-8 col-xs-offset-1'>\
 	          	<div class='input-group'>\
-	            	<input type='text' id='opcion-"+cont_opcion+"' name='opcion-"+cont_opcion+"' tabindex="+cont_opcion+" placeholder='Opci&oacute;n "+cont_opcion+"' class='form-control input_style'>\
-	            	<span class='input-group-addon cerrar_opcion'>X</span>\
+	            	<input type='text' id='opcion-"+cont_opcion+"' name='opcion-"+cont_opcion+"' tabindex="+cont_opcion+" placeholder='Opci&oacute;n' class='form-control input_style'>\
+	            	<span class='input-group-addon cerrar_opcion' style='cursor: pointer;' onclick='cerrar_opcion("+cont_opcion+")'>X</span>\
 	            </div>\
 	          </div>\
 	        </div>").insertBefore(".div_agregar_respuesta");
 	});
 
-	// ACCION REGISTRAR PARTICIPANTE-------------
+	// ACCION REGISTRAR ENCUESTA-------------
     $("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
 	$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
-	$("#form_registro_participante").validate({
+	$("#form_registro_pregunta").validate({
     	rules:{
-            email_participante:{required:!0,email:!0},
-            nombre_participante:{required:!0,minlength:2},
-            apellido_participante:{required:!0,minlength:2},
-            direccion_participante:{required:!0,minlength:5},
-            telefono_participante:{required:!0,minlength:5}
+            crear_pregunta:{required:!0,minlength:5}
     	},
     	submitHandler: function(form) {
-			var datos = {
-				tipo:"registrar",
-				id_evento:$("#eventos_carga option:selected").val(),
-				email:$("#email_participante").val(), 
-				nombre:$("#nombre_participante").val(), 
-				apellido:$("#apellido_participante").val(),
-				direccion:$("#direccion_participante").val(),
-				telefono:$("#telefono_participante").val()
-			};
+    		var tipo_pregunta = $("#tipo_pregunta option:selected").val();
+    		var datos = {
+				tipo: "registrar",
+				id_evento: $("#eventos_carga option:selected").val(),
+				pregunta: $("#crear_pregunta").val(),
+				tipo_pregunta: tipo_pregunta
+			}
+    		if (tipo_pregunta == "simple-multi") {
+    			var opciones = $('#form_registro_pregunta').serializeArray(); //Campos del form convertidos en Array
+    			if (validacion_opciones(opciones) == true){
+    				$("input[type=text]").removeClass("input_opcion_vacio");
+    				opciones.shift(); //Eliminar primera posicion
+					datos.respuestas = opciones;
+    			}else{
+    				return false;
+    			}
+    		}else if (tipo_pregunta == "libre") {
+    			datos.respuestas = "textarea";
+    		}else{
+    			return false;
+    		}
 			$.ajax({
-			    url : '../controller/participante.php',
+			    url : '../controller/encuesta.php',
 			    data : datos,
 			    type : 'POST',
 			    dataType : 'json',
 			    success : function(respuesta) {
 			    	if (respuesta.status == 200) {
-			    		alert_message("Exito! ","Nuevo participante registrado.", "alert-success");
+			    		alert_message("Exito! ","Nueva pregunta registrada.", "alert-success");
 			    		$("#form_registro_participante")[0].reset();
-			    	}else if (respuesta.status == 1062) {
-			    		alert_message("Aviso! ","El participante ya existe.", "alert-warning");
 			    	}else if (respuesta.status == 500) {
 			    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
-			    	}else if (respuesta.status == 409) {
-			    		alert_message("Info! ","El participante ya está registrado en éste evento.", "alert-info");
 			    	};
 			    },
 			    error : function(respuesta) {
+			    	console.log(respuesta);
 			    	alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
 			    },
 			    // código a ejecutar sin importar si la petición falló o no
@@ -111,64 +129,73 @@ $(document).ready(function() {
 function listar_participantes(id_evento){
 	id_evento = parseInt(id_evento);
 	if(Number.isInteger(id_evento)){
-		$(".nuevo_participante").attr("disabled",false);
-		var table = $('#tabla_lista_participantes').DataTable({
+		$(".nueva_pregunta").attr("disabled",false);
+		var table = $('#tabla_lista_preguntas').DataTable({
 			"destroy":true,
 			"ajax":{
 				"method":"POST",
 				"data":{id:id_evento},
-				"url":"../controller/participante.php",
+				"url":"../controller/encuesta.php",
 				"dataType":"json"
 			},
 			"columns":[
-				{"data":"email"},
-				{"data":"nombre"},
-				{"data":"apellido"},
-				{"data":"direccion"},
-				{"data":"telefono"},
-				{"defaultContent":"<span class='accion_eliminar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''>\
-				</span><span class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
+				{"data":"pregunta"},
+				{"data":"tipo"},
+				{"defaultContent":"<span id='boton-accion' class='glyphicon glyphicon-cog accion_modificar' data-toggle='modal' data-target='#myModal''>\
+				</span><span id='boton-accion' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
 			]
 		});
 	}else{
-		$(".nuevo_participante").attr("disabled",true);
+		$(".nueva_pregunta").attr("disabled",true);
 		$(".div_registrar").css("display","none");
-		var table = $('#tabla_lista_participantes').DataTable();
+		var table = $('#tabla_lista_preguntas').DataTable();
 		table.clear().draw();
 	}
 
 	// CARGAR DATOS MODAL MODIFICAR--------------
-	$('#tabla_lista_participantes tbody').on("click", ".accion_eliminar", function(){
+	$('#tabla_lista_preguntas tbody').on("click", ".accion_modificar", function(){
 		var data = table.row($(this).parents("tr")).data();
-		id_participante = data.id;
-		$("#mod_email_participante").val(data.email);
-		$("#mod_nombre_participante").val(data.nombre);
-		$("#mod_apellido_participante").val(data.apellido);
-		$("#mod_direccion_participante").val(data.direccion);
-		$("#mod_telefono_participante").val(data.telefono);
+		id_pregunta = data.id;
+		$("#mod_pregunta").text(data.pregunta);
+		$("#mod_tipo_pregunta").text(data.tipo);
+		$.ajax({
+		    url : '../controller/participante.php',
+		    data : {id: id_pregunta, tipo: "buscar-respuestas"},
+		    type : 'POST',
+		    dataType : 'json',
+		    success : function(respuesta) {
+	    		console.log(respuesta);
+	    		return false;
+				$("<div class='form-group sistema_opciones' id='div-opcion-"+cont_opcion+"'>\
+		          <div class='col-xs-8 col-xs-offset-1'>\
+		          	<div class='input-group'>\
+		            	<input type='text' id='opcion-"+cont_opcion+"' name='opcion-"+cont_opcion+"' tabindex="+cont_opcion+" placeholder='Opci&oacute;n' class='form-control input_style'>\
+		            	<span class='input-group-addon cerrar_opcion' style='cursor: pointer;' onclick='cerrar_opcion("+cont_opcion+")'>X</span>\
+		            </div>\
+		          </div>\
+		        </div>").insertAfter(".tipo_pregunta");
+		    },
+		    error : function(respuesta) {
+		    	alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
+		    }
+		});  
 	});
 	// ------------------------------------------
 
-	// ACCION MODIFICAR PARTICIPANTE-------------
+	// ACCION MODIFICAR PREGUNTAS-------------
 	$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
 	$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
-	$("#form_modifi_participante").validate({
+	$("#form_modifi_preguntas").validate({
     	rules:{
-            email_participante:{required:!0,email:!0},
-            nombre_participante:{required:!0,minlength:2},
-            apellido_participante:{required:!0,minlength:2},
-            direccion_participante:{required:!0,minlength:5},
-            telefono_participante:{required:!0,minlength:5}
+            mod_pregunta:{required:!0,minlength:5},
+            mod_tipo_pregunta:{required:!0,minlength:5}
     	},
     	submitHandler: function(form) {
 			var datos = {
 				tipo:"modificar", 
-				id: id_participante,
-				email:$("#mod_email_participante").val(),
-				nombre:$("#mod_nombre_participante").val(),
-				apellido:$("#mod_apellido_participante").val(), 
-				direccion:$("#mod_direccion_participante").val(),		
-				telefono:$("#mod_telefono_participante").val()
+				id: id_pregunta,
+				pregunta:$("#mod_pregunta").val(),
+				tipo:$("#mod_tipo_pregunta").val()
 			};
 			$.ajax({
 			    url : '../controller/participante.php',
@@ -177,7 +204,7 @@ function listar_participantes(id_evento){
 			    dataType : 'json',
 			    success : function(respuesta) {
 			    	if (respuesta.status == 200) {
-			    		alert_message("Exito! ","Participante actualizado.", "alert-success");
+			    		alert_message("Exito! ","Pregunta actualizada.", "alert-success");
 			    		setTimeout(function(){ 
 			    			$(".cerrar_modal").click();
 			    			$(".boton_listar").click();
@@ -199,7 +226,7 @@ function listar_participantes(id_evento){
 	// ------------------------------------------
 
 	// ACCION ELIMINAR PARTICIPANTES-------------
-	$('#tabla_lista_participantes tbody').on("click", ".accion_eliminar", function(){
+	$('#tabla_lista_preguntas tbody').on("click", ".accion_eliminar", function(){
 		$(this).confirmation({
 			onConfirm: function() {
 				var data = table.row($(this).parents("tr")).data();
@@ -241,4 +268,19 @@ function alert_message(strong, span, tipo){
 	$("#mensaje-span").text(span);
 	$(".mensaje-div").addClass("alert "+tipo);
 	$(".mensaje-div").css("display","block");
-}
+};
+
+function cerrar_opcion(contador){
+	$("#div-opcion-"+contador).remove();
+};
+
+function validacion_opciones(opciones){
+	var valid = true;
+	for (x=1; x<opciones.length; x++){
+		if (opciones[x].value == "") {
+			$("#"+opciones[x].name).addClass("input_opcion_vacio");
+			valid = false;
+		}
+	}
+	return valid;
+};

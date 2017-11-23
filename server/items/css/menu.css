@@ -81,3 +81,8 @@
 	transform: translateX(0px);
 	transition: all 900ms;
 }
+
+#boton-accion{
+	width: 15%;
+	text-align: center;
+}

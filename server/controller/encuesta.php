@@ -7,7 +7,7 @@ include "../model/Evento.php";
 
 
 if (isset($_POST)){
-	$participante = new Participante();
+	$encuesta = new Encuesta();
 	switch ($_POST["tipo"]) {
 		case 'select':
 			$evento = new Evento();
@@ -15,19 +15,23 @@ if (isset($_POST)){
 			break;
 
 		case 'registrar':
-			echo json_encode($participante->registrar_participante($_POST));
+			echo json_encode($encuesta->registrar_encuesta($_POST));
 			break;
 
 		case 'modificar':
-			echo json_encode($participante->modificar_participante($_POST));
+			echo json_encode($encuesta->modificar_encuesta($_POST));
 			break;
 
 		case 'eliminar':
-			echo json_encode($participante->estatus_participante($_POST));
+			echo json_encode($encuesta->estatus_encuesta($_POST));
+			break;
+
+		case 'buscar-respuestas':
+			echo json_encode($encuesta->listar($_POST, "respuesta"));
 			break;
 		
 		default:
-			echo json_encode($participante->listar_participantes($_POST));
+			echo json_encode($encuesta->listar($_POST, "cuestionario"));
 			break;
 	}
 }

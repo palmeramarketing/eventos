@@ -2,28 +2,25 @@
 
 include_once "Conexion.php";
 
-class Participante
+class Encuesta
 {
-	function registrar_participante($datos)
+	function registrar_encuesta($datos)
 	{
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
 		if($mysqli["status"] == 200){
-			$existe = self::consul_partic_existe($mysqli, $datos['email'], $datos['id_evento']);
-			if ($existe === true) {
-				return ["data"=>"El participante ya existe", "error"=>"", "status"=>409];
-			}elseif($existe > 0){
-				return self::insertar_relacion($mysqli, $existe, $datos['id_evento']);
-			}
 			$sql = "INSERT INTO 
-					participante (id_evento,email,nombre,apellido,direccion,telefono) 
+					cuestionario (id_evento,pregunta,tipo) 
 					VALUES 
-					('".$datos['id_evento']."','".$datos['email']."','".$datos['nombre']."','".$datos['apellido']."',
-					'".$datos['direccion']."','".$datos['telefono']."')";
-
+					('".$datos['id_evento']."','".$datos['pregunta']."','".$datos['tipo_pregunta']."')";
 			$result = $mysqli["data"]->query($sql);
 			if ($result === true) {
-				return self::insertar_relacion($mysqli, $mysqli["data"]->insert_id, $datos['id_evento']);
+				$id_pregunta = $mysqli["data"]->insert_id;
+				if ($datos['tipo_pregunta'] == "simple-multi") {
+					return self::registrar_multi_resp($id_pregunta, $datos["respuestas"], $mysqli);
+				}elseif ($datos['tipo_pregunta'] == "libre") {
+					return self::registrar_resp_libre($id_pregunta, $datos["respuestas"], $mysqli);
+				}
 			}else{
 				$cod_error = ($mysqli["data"]->errno);
 				$error = mysqli_error($mysqli["data"]);
@@ -35,34 +32,26 @@ class Participante
 		$conexion->cerrar_mysqli();
 	}
 
-	function consul_partic_existe($mysqli, $email, $id_evento){
-		$consulta = "SELECT id FROM participante WHERE email = '$email'";
-		$result = $mysqli["data"]->query($consulta);
-		if ($result->num_rows > 0) {
-			$id = $result->fetch_array(MYSQLI_ASSOC)["id"];
-			$consulta = "SELECT id FROM 
-						evento_participante 
-						WHERE 
-						id_evento = '$id_evento' AND id_participante = $id";
-			$result = $mysqli["data"]->query($consulta);
-			if ($result->num_rows > 0){
-				return true;
-			}else{
-				return $id;
-			}
+	function registrar_multi_resp($id_pregunta, $datos, $mysqli){
+		$sql = "INSERT INTO respuesta (id_pregunta,descripcion) VALUES (?,?)";
+		$query = $mysqli["data"]->prepare($sql);
+		$query->bind_param("ss", $id_pregunta, $descripcion);
+		foreach ($datos as $row) {
+		    $descripcion = $row['value'];
+		    $confirm = $query->execute();
+		}
+		if ($confirm) {
+			return ["data"=>"Registros Exitosos", "error"=>"", "status"=>200];
 		}else{
-			return 0;
+			return ["data"=>"", "error"=>$confirm["error"], "status"=>500];
 		}
 	}
 
-	function insertar_relacion($mysqli, $id_participante, $id_evento){
-		$relacionar = "INSERT INTO
-					   evento_participante (id_evento,id_participante)
-					   VALUES
-					   ('$id_evento','$id_participante')";
-		$result = $mysqli["data"]->query($relacionar);
+	function registrar_resp_libre($id_pregunta, $respuesta, $mysqli){
+		$sql = "INSERT INTO respuesta (id_pregunta,descripcion) VALUES ('$id_pregunta','$respuesta')";
+		$result = $mysqli["data"]->query($sql);
 		if ($result === true) {
-			return ["data"=>"Participante registrado", "error"=>"", "status"=>200];
+			return ["data"=>"Respuesta registrada", "error"=>"", "status"=>200];
 		}else{
 			$cod_error = ($mysqli["data"]->errno);
 			$error = mysqli_error($mysqli["data"]);
@@ -70,16 +59,13 @@ class Participante
 		}
 	}
 
-	function listar_participantes($id_evento){
+	function listar($id_evento, $tabla){
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
 		if ($mysqli["status"] == 200) {
-			$sql = "SELECT rel.id, par.*
-					FROM evento_participante rel
-					INNER JOIN participante par
-					  ON  rel.id_participante = par.id 
-					WHERE rel.id_evento='".$id_evento["id"]."' 
-					AND par.estatus = 1";
+			$sql = "SELECT *
+					FROM $tabla 
+					WHERE id_evento='".$id_evento["id"]."'";
 			$result = $mysqli["data"]->query($sql);
 			if ($result->num_rows > 0) {
 				while($row = $result->fetch_array(MYSQLI_ASSOC)){
@@ -97,7 +83,7 @@ class Participante
 		$conexion->cerrar_mysqli();
 	}
 
-	function modificar_participante($datos){
+	function modificar_encuesta($datos){
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
 		if ($mysqli["status"] == 200) {
@@ -117,7 +103,7 @@ class Participante
 		$conexion->cerrar_mysqli();
 	}
 
-	function estatus_participante($datos){
+	function estatus_encuesta($datos){
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
 		if ($mysqli["status"] == 200) {
