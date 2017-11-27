@@ -20,29 +20,6 @@
     </div>
     <br>
 
-  <!-- /////////////////////////DATATABLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-    <br>
-    <div class="row">
-      <div class="col-md-10 col-lg-offset-1">
-        <table class="table table-striped" id="tabla_lista_preguntas" cellspacing="0" width="100%">
-        <thead>
-          <tr>
-            <th>Pregunta</th>
-            <th>Tipo</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-      </div>
-    </div>
-  <!-- /////////////////////////DATATABLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-
-    <div class="row">
-      <div class="col-md-2 col-md-offset-8"><button type="button" class="btn btn-info nueva_pregunta">Crear pregunta</button></div>
-    </div>
-
   <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
     <div class="row div_registrar" hidden>
       <div class="col-md-10 col-lg-offset-1">
@@ -63,7 +40,8 @@
         <div class="col-sm-6">
           <select class="form-control" id="tipo_pregunta">
             <option value="0">Selecciona un tipo de pregunta</option>
-            <option value="simple-multi">Selecci&oacute;n simple/m&uacute;ltiple</option>
+            <option value="simple">Selecci&oacute;n simple</option>
+            <option value="multi">Selecci&oacute;n m&uacute;ltiple</option>
             <option value="libre">Respuesta libre</option>
           </select>
         </div>
@@ -99,16 +77,40 @@
       </div>
     </div>
   <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+    <div class="row">
+      <div class="col-md-2 col-md-offset-8"><button type="button" class="btn btn-info nueva_pregunta">Crear pregunta</button></div>
+    </div>
+
+  <!-- /////////////////////////DATATABLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+    <br>
+    <div class="row">
+      <div class="col-md-10 col-lg-offset-1">
+        <table class="table table-striped" id="tabla_lista_preguntas" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>Pregunta</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  <!-- /////////////////////////DATATABLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
   </div>
 
   <!-- /////////////////////////MODAL MODIFICAR EVENTO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade cerrar_modal" id="myModal" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="close cerrar_modal" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Detalles</h4>
         </div>
         <div class="mensaje-div">

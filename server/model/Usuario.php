@@ -4,6 +4,14 @@ require "Conexion.php";
 
 class Usuario
 {
+
+	function login($datos){
+		$conexion = new Conexion();
+		$mysqli = $conexion->conectar_mysqli();
+		if($mysqli["status"] == 200){
+			return $datos;
+		}
+	}
 	function registrar_usuario($datos)
 	{
 		$conexion = new Conexion();

@@ -6,6 +6,9 @@ header('Content-type: application/json; charset=utf-8');
 if (isset($_POST)){
 	$usuario = new Usuario();
 	switch ($_POST["tipo"]) {
+		case 'login':
+			echo json_encode($usuario->login($_POST));
+			break;
 		case 'registrar':
 			echo json_encode($usuario->registrar_usuario($_POST));
 			break;

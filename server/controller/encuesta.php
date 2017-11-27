@@ -23,15 +23,15 @@ if (isset($_POST)){
 			break;
 
 		case 'eliminar':
-			echo json_encode($encuesta->estatus_encuesta($_POST));
+			echo json_encode($encuesta->eliminar_pregunta($_POST));
 			break;
 
 		case 'buscar-respuestas':
-			echo json_encode($encuesta->listar($_POST, "respuesta"));
+			echo json_encode($encuesta->listar($_POST, "respuesta", "id_pregunta"));
 			break;
 		
 		default:
-			echo json_encode($encuesta->listar($_POST, "cuestionario"));
+			echo json_encode($encuesta->listar($_POST, "cuestionario", "id_evento"));
 			break;
 	}
 }

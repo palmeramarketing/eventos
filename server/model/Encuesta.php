@@ -16,7 +16,7 @@ class Encuesta
 			$result = $mysqli["data"]->query($sql);
 			if ($result === true) {
 				$id_pregunta = $mysqli["data"]->insert_id;
-				if ($datos['tipo_pregunta'] == "simple-multi") {
+				if (($datos['tipo_pregunta'] == "simple") || ($datos['tipo_pregunta'] == "multi")) {
 					return self::registrar_multi_resp($id_pregunta, $datos["respuestas"], $mysqli);
 				}elseif ($datos['tipo_pregunta'] == "libre") {
 					return self::registrar_resp_libre($id_pregunta, $datos["respuestas"], $mysqli);
@@ -59,13 +59,13 @@ class Encuesta
 		}
 	}
 
-	function listar($id_evento, $tabla){
+	function listar($id_evento, $tabla, $where){
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
 		if ($mysqli["status"] == 200) {
 			$sql = "SELECT *
 					FROM $tabla 
-					WHERE id_evento='".$id_evento["id"]."'";
+					WHERE $where='".$id_evento["id"]."'";
 			$result = $mysqli["data"]->query($sql);
 			if ($result->num_rows > 0) {
 				while($row = $result->fetch_array(MYSQLI_ASSOC)){
@@ -103,14 +103,22 @@ class Encuesta
 		$conexion->cerrar_mysqli();
 	}
 
-	function estatus_encuesta($datos){
+	function eliminar_pregunta($datos){
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
 		if ($mysqli["status"] == 200) {
-			$sql = "UPDATE participante SET estatus=0 WHERE id='".$datos["id"]."'";
+			$sql = "DELETE FROM cuestionario WHERE id='".$datos["id"]."'";
 			$result = $mysqli["data"]->query($sql);
 			if ($result == true) {
-				return ["data"=>"Evento modificado", "error"=>"", "status"=>200];
+				$sql = "DELETE FROM respuesta WHERE id_pregunta='".$datos["id"]."'";
+				$result = $mysqli["data"]->query($sql);
+				if ($result == true) {
+					return ["data"=>"Pregunta eliminada", "error"=>"", "status"=>200];
+				}else{
+					$cod_error = ($mysqli["data"]->errno);
+					$error = mysqli_error($mysqli["data"]);
+					return ["data"=>"", "error"=>$error, "status"=>$cod_error];
+				}
 			}else{
 				$cod_error = ($mysqli["data"]->errno);
 				$error = mysqli_error($mysqli["data"]);
