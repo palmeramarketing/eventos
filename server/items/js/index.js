@@ -19,11 +19,12 @@ $(document).ready(function() {
 			    dataType : 'json',
 			    success : function(respuesta) {
 			    	if (respuesta.status == 200) {
-			    		$("#mensaje-strong").text("Exito! ");
-			    		$("#mensaje-span").text("Nuevo usuario registrado.");
-			    		$(".mensaje-div").addClass("alert alert-success");
-			    		$(".mensaje-div").css("display","block");
-			    		setTimeout(function(){ window.location = "../index.php"; }, 3500);
+			    		// Convertir objeto en Array devoviendo solo el Valor
+				    	var array = $.map(respuesta.data, function(value, index) {
+						    return [value];
+						});
+						console.log(array.toString());
+			    		window.location.href = "view/inicio.php?login="+array.toString();
 			    	}else if (respuesta.status == 1062) {
 			    		$("#mensaje-strong").text("Aviso! ");
 			    		$("#mensaje-span").text("El usuario ya existe.");

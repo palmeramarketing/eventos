@@ -1,3 +1,12 @@
+<?php
+session_start();
+  if (isset($_GET["login"])){
+    $_SESSION["login"] = explode(',', $_GET["login"]);
+  }elseif (!isset($_SESSION["login"])) {
+    header("Location: ../index.php");
+    exit;
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
