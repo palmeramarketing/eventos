@@ -39,7 +39,12 @@ $(document).ready(function() {
 
 	// MOSTRAR FORMULARIO DE REGISTRO------------
 	$(".nuevo_participante").click(function(){
-		$(".div_registrar").css("display","block");
+		if ($(this).hasClass("active")) {
+			$(".div_registrar").slideUp();
+		}else{
+			$(".div_registrar").slideDown();
+		}
+		$(this).toggleClass("active");
 	});
 	// ------------------------------------------
 
@@ -73,6 +78,7 @@ $(document).ready(function() {
 			    	if (respuesta.status == 200) {
 			    		alert_message("Exito! ","Nuevo participante registrado.", "alert-success");
 			    		$("#form_registro_participante")[0].reset();
+			    		listar_participantes($("#eventos_carga option:selected").val());
 			    	}else if (respuesta.status == 1062) {
 			    		alert_message("Aviso! ","El participante ya existe.", "alert-warning");
 			    	}else if (respuesta.status == 500) {
@@ -113,7 +119,7 @@ function listar_participantes(id_evento){
 				{"data":"apellido"},
 				{"data":"direccion"},
 				{"data":"telefono"},
-				{"defaultContent":"<span class='accion_eliminar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''></span><span class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
+				{"defaultContent":"<span class='accion_modificar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''></span><span class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
 			]
 		});
 	}else{
@@ -124,7 +130,7 @@ function listar_participantes(id_evento){
 	}
 
 	// CARGAR DATOS MODAL MODIFICAR--------------
-	$('#tabla_lista_participantes tbody').on("click", ".accion_eliminar", function(){
+	$('#tabla_lista_participantes tbody').on("click", ".accion_modificar", function(){
 		var data = table.row($(this).parents("tr")).data();
 		id_participante = data.id;
 		$("#mod_email_participante").val(data.email);
@@ -226,5 +232,6 @@ function alert_message(strong, span, tipo){
 	$("#mensaje-strong").text(strong+" ");
 	$("#mensaje-span").text(span);
 	$(".mensaje-div").addClass("alert "+tipo);
-	$(".mensaje-div").css("display","block");
+	$(".mensaje-div").slideDown();
+	setTimeout(function(){ $(".mensaje-div").slideUp(); }, 2500);
 }

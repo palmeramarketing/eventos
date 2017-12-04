@@ -15,7 +15,12 @@ $(document).ready(function() {
 
 	// MOSTRAR FORMULARIO DE REGISTRO------------
 	$(".nuevo_evento").click(function(){
-		$(".div_registrar").css("display","block");
+		if ($(this).hasClass("active")) {
+			$(".div_registrar").slideUp();
+		}else{
+			$(".div_registrar").slideDown();
+		}
+		$(this).toggleClass("active");
 	});
 	// ------------------------------------------
 
@@ -43,12 +48,14 @@ $(document).ready(function() {
 			    success : function(respuesta) {
 			    	if (respuesta.status == 200) {
 			    		alert_message("Exito! ","Nuevo evento registrado.", "alert-success");
+			    		$("#form_registro_evento")[0].reset();
+			    		listar_participante();
 			    	}else if (respuesta.status == 1062) {
 			    		alert_message("Aviso! ","El evento ya existe.", "alert-warning");
 			    	}else if (respuesta.status == 500) {
 			    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
 			    	};
-			    	$(".boton_listar").click();
+			    	listar_participante();
 			    },
 			    error : function(respuesta) {
 			        alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
@@ -77,13 +84,13 @@ function listar_participante(){
 			{"data":"nombre"},
 			{"data":"fecha"},
 			{"data":"direccion"},
-			{"defaultContent":"<span class='accion_eliminar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''></span><span class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
+			{"defaultContent":"<span class='accion_modificar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''></span><span class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
 		]
 	});
 	// ------------------------------------------
 	
 	// CARGAR DATOS MODAL MODIFICAR--------------
-	$('#tabla_lista_eventos tbody').on("click", ".accion_eliminar", function(){
+	$('#tabla_lista_eventos tbody').on("click", ".accion_modificar", function(){
 		var data = table.row($(this).parents("tr")).data();
 		id_event = data.id;
 		$("#mod_nombre_evento").val(data.nombre);
@@ -117,7 +124,9 @@ function listar_participante(){
 			    success : function(respuesta) {
 			    	if (respuesta.status == 200) {
 			    		alert_message("Exito! ","Evento actualizado.", "alert-success");
-			    		setTimeout(function(){ window.location = "inicio.php"; }, 3500);
+			    		setTimeout(function(){ 
+			    			listar_participante();
+			    			$(".cerrar_modal").click(); }, 2000);
 			    	}else if (respuesta.status == 500) {
 			    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
 			    	};
@@ -150,7 +159,7 @@ function listar_participante(){
 				    dataType : 'json',
 				    success : function(respuesta) {
 				    	if (respuesta.status == 200) {
-				    		$(".boton_listar").click();
+				    		listar_participante();
 				    	}else if (respuesta.status == 500) {
 				    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
 				    	};
@@ -174,5 +183,6 @@ function alert_message(strong, span, tipo){
 	$("#mensaje-strong").text(strong+" ");
 	$("#mensaje-span").text(span);
 	$(".mensaje-div").addClass("alert "+tipo);
-	$(".mensaje-div").css("display","block");
+	$(".mensaje-div").slideDown();
+	setTimeout(function(){ $(".mensaje-div").slideUp(); }, 2500);
 }

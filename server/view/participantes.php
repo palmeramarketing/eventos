@@ -17,6 +17,13 @@ session_start();
   <?php
     include "../items/static/navbar.php";
   ?>
+  <div class="container-fluid div_titulo">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-1">
+        <h1 class="display-1">Lista de Participantes</h1>
+      </div>
+    </div>
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-lg-offset-1">
@@ -32,44 +39,47 @@ session_start();
         <div class="mensaje-div">
             <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
         </div>
-    <div class="col-md-10 col-lg-offset-1">
-      <h1>Registro de Participante</h1>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+      <center><h3 class="display-3">Nuevo Participante</h3></center>
     </div>
-    <div class="col-md-10 col-lg-offset-1">
-    <form class="form-horizontal" id="form_registro_participante">
-      <div class="form-group">
-        <div class="col-sm-10">
-        <input type="text" class="form-control" id="email_participante" tabindex=1 placeholder="Correo" name="email_participante">
+    <div class="panel-body">
+      <div class="col-md-10 col-lg-offset-2">
+      <form class="form-horizontal" id="form_registro_participante">
+        <div class="form-group">
+          <div class="col-sm-10">
+          <input type="text" class="form-control" id="email_participante" tabindex=1 placeholder="Correo" name="email_participante">
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-10">          
-        <input type="text" class="form-control" id="nombre_participante" tabindex=2 placeholder="Nombre" name="nombre_participante">
+        <div class="form-group">
+          <div class="col-sm-10">          
+          <input type="text" class="form-control" id="nombre_participante" tabindex=2 placeholder="Nombre" name="nombre_participante">
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-10">
-        <input type="text" class="form-control" id="apellido_participante" tabindex=3 placeholder="Apellido" name="apellido_participante">
+        <div class="form-group">
+          <div class="col-sm-10">
+          <input type="text" class="form-control" id="apellido_participante" tabindex=3 placeholder="Apellido" name="apellido_participante">
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-10">
-        <input type="text" class="form-control" id="direccion_participante" tabindex=4 placeholder="Direccion" name="direccion_participante">
+        <div class="form-group">
+          <div class="col-sm-10">
+          <input type="text" class="form-control" id="direccion_participante" tabindex=4 placeholder="Direccion" name="direccion_participante">
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-10">
-        <input type="text" class="form-control" id="telefono_participante" tabindex=5 placeholder="Tel&eacute;fono" name="telefono_participante">
+        <div class="form-group">
+          <div class="col-sm-10">
+          <input type="text" class="form-control" id="telefono_participante" tabindex=5 placeholder="Tel&eacute;fono" name="telefono_participante">
+          </div>
         </div>
-      </div>
-      <div class="form-group">        
-        <div class="col-sm-offset-0 col-sm-10">
-        <button type="submit" class="btn btn-info">Registrar</button>
-        <button type="button" class="btn btn-info boton_listar">Listar</button>
+        <div class="form-group">        
+          <div class="col-sm-offset-0 col-sm-10">
+          <button type="submit" class="btn btn-info btn-block">Registrar</button>
+          </div>
         </div>
+        </form>
       </div>
-      </form>
     </div>
+  </div>
       </div>
     </div>
   <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
