@@ -39,7 +39,12 @@ $(document).ready(function() {
 
 	// MOSTRAR FORMULARIO DE REGISTRO------------
 	$(".nueva_pregunta").click(function(){
-		$(".div_registrar").css("display","block");
+		if ($(this).hasClass("active")) {
+			$(".div_registrar").slideUp();
+		}else{
+			$(".div_registrar").slideDown();
+		}
+		$(this).toggleClass("active");
 	});
 	// ------------------------------------------
 
@@ -94,7 +99,7 @@ $(document).ready(function() {
     				return false;
     			}
     		}else if (tipo_pregunta == "libre") {
-    			datos.respuestas = "textarea";
+    			datos.respuestas = "Respuesta Libre";
     		}else{
     			return false;
     		}
@@ -107,7 +112,7 @@ $(document).ready(function() {
 			    	if (respuesta.status == 200) {
 			    		alert_message("Exito! ","Nueva pregunta registrada.", "alert-success");
 			    		$("#form_registro_pregunta")[0].reset();
-			    		$(".boton_listar").click();
+			    		listar_participantes($("#eventos_carga option:selected").val());
 			    	}else if (respuesta.status == 500) {
 			    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
 			    	};
@@ -158,7 +163,7 @@ function listar_participantes(id_evento){
 		var data = table.row($(this).parents("tr")).data();
 		id_pregunta = data.id;
 		$("#mod_pregunta").text(data.pregunta);
-		$("#mod_tipo_pregunta").text(data.tipo);
+		$("#mod_tipo_pregunta").text("Respuesta "+data.tipo);
 		$.ajax({
 		    url : '../controller/encuesta.php',
 		    data : {id: id_pregunta, tipo: "buscar-respuestas"},
@@ -167,7 +172,7 @@ function listar_participantes(id_evento){
 		    success : function(respuesta) {
 	    		for (var i = 0; i < respuesta.data.length; i++) {
 					$("<div class='form-group sistema_opciones limpiar_campos_modal' id='div-opcion-"+i+"'>\
-			          <div class='col-xs-8 col-xs-offset-1'>\
+			          <div class='col-xs-8 col-xs-offset-2'>\
 			          	<div class='input-group'>\
 			          		<span>"+respuesta.data[i].descripcion+"</span>\
 			            </div>\
@@ -278,7 +283,8 @@ function alert_message(strong, span, tipo){
 	$("#mensaje-strong").text(strong+" ");
 	$("#mensaje-span").text(span);
 	$(".mensaje-div").addClass("alert "+tipo);
-	$(".mensaje-div").css("display","block");
+	$(".mensaje-div").slideDown();
+	setTimeout(function(){ $(".mensaje-div").slideUp(); }, 2500);
 };
 
 function cerrar_opcion(contador){

@@ -84,7 +84,9 @@ function listar_participante(){
 			{"data":"nombre"},
 			{"data":"fecha"},
 			{"data":"direccion"},
-			{"defaultContent":"<span class='accion_modificar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''></span><span class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
+			{"defaultContent":"<span id='boton-accion' class='accion_modificar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''>\
+							   </span><span id='boton-accion' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>\
+							   <span id='boton-accion' class='accion_graficar glyphicon glyphicon-stats'>"}
 		]
 	});
 	// ------------------------------------------
@@ -96,6 +98,14 @@ function listar_participante(){
 		$("#mod_nombre_evento").val(data.nombre);
 		$("#mod_fecha_evento").val(data.fecha);
 		$("#mod_direccion_evento").val(data.direccion);
+	});
+	// ------------------------------------------
+
+
+	// ACCION GRAFICAR EVENTO--------------------
+	$("#tabla_lista_eventos tbody").on("click", ".accion_graficar", function(){
+		var data = table.row($(this).parents("tr")).data();
+		window.location.href = "graficar.php?id_event="+data.id+"&evento="+data.nombre+"&tipo=evento";
 	});
 	// ------------------------------------------
 	

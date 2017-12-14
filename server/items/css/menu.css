@@ -85,4 +85,5 @@
 #boton-accion{
 	width: 15%;
 	text-align: center;
+	cursor: pointer;
 }

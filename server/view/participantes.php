@@ -43,6 +43,7 @@ session_start();
       <div class="panel-heading">
       <center><h3 class="display-3">Nuevo Participante</h3></center>
     </div>
+    <br>
     <div class="panel-body">
       <div class="col-md-10 col-lg-offset-2">
       <form class="form-horizontal" id="form_registro_participante">
