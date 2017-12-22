@@ -15,8 +15,8 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav botones_menu">
           <li><a href="inicio.php">Eventos</a></li>
-          <li><a href="participantes.php">Participantes</a></li>
           <li><a href="encuesta.php">Encuestas</a></li>
+          <li><a href="participantes.php">Participantes</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">

@@ -159,6 +159,7 @@ function listar_participantes(id_evento){
 	}
 
 	// CARGAR DATOS MODAL MODIFICAR--------------
+	$('#tabla_lista_preguntas tbody').unbind("click"); //IMPORTANTE NO MODIFICAR
 	$('#tabla_lista_preguntas tbody').on("click", ".accion_modificar", function(){
 		var data = table.row($(this).parents("tr")).data();
 		id_pregunta = data.id;
@@ -170,6 +171,7 @@ function listar_participantes(id_evento){
 		    type : 'POST',
 		    dataType : 'json',
 		    success : function(respuesta) {
+		    	console.log(respuesta);
 	    		for (var i = 0; i < respuesta.data.length; i++) {
 					$("<div class='form-group sistema_opciones limpiar_campos_modal' id='div-opcion-"+i+"'>\
 			          <div class='col-xs-8 col-xs-offset-2'>\
@@ -183,7 +185,7 @@ function listar_participantes(id_evento){
 		    error : function(respuesta) {
 		    	alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
 		    }
-		});  
+		});
 	});
 	// ------------------------------------------
 
@@ -242,6 +244,7 @@ function listar_participantes(id_evento){
 	// ------------------------------------------
 
 	// ACCION ELIMINAR PREGUNTA------------------
+	$('#tabla_lista_preguntas tbody').unbind("click"); //IMPORTANTE NO MODIFICAR
 	$('#tabla_lista_preguntas tbody').on("click", ".accion_eliminar", function(){
 		$(this).confirmation({
 			onConfirm: function() {
