@@ -9,6 +9,11 @@ if (isset($_POST)){
 		case 'login':
 			echo json_encode($usuario->login($_POST));
 			break;
+
+		case 'perfil':
+			echo json_encode($usuario->mostrar_perfil($_POST));
+			break;
+
 		case 'registrar':
 			echo json_encode($usuario->registrar_usuario($_POST));
 			break;

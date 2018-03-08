@@ -20,14 +20,20 @@ $(document).ready(function() {
 			    success : function(respuesta) {
 			    	if (respuesta.status == 200) {
 			    		// Convertir objeto en Array devoviendo solo el Valor
+			    		// form.submit();
 				    	var array = $.map(respuesta.data, function(value, index) {
 						    return [value];
 						});
-						console.log(array.toString());
-			    		window.location.href = "view/inicio.php?login="+array.toString();
+						// console.log(array.toString());
+			    		window.location.href = "view/inicio.php?login="+array[2].toString();
 			    	}else if (respuesta.status == 1062) {
 			    		$("#mensaje-strong").text("Aviso! ");
 			    		$("#mensaje-span").text("El usuario ya existe.");
+			    		$(".mensaje-div").addClass("alert alert-warning");
+			    		$(".mensaje-div").css("display","block");
+			    	}else if (respuesta.status == 404) {
+			    		$("#mensaje-strong").text("Aviso! ");
+			    		$("#mensaje-span").text("Usuario o contraseña incorrectas.");
 			    		$(".mensaje-div").addClass("alert alert-warning");
 			    		$(".mensaje-div").css("display","block");
 			    	}else if (respuesta.status == 500) {
@@ -39,7 +45,7 @@ $(document).ready(function() {
 			    },
 			    error : function(respuesta) {
 			        $("#mensaje-strong").text("Error! ");
-		    		$("#mensaje-span").text("Hubo un error con el servidor, intente de nuevo m&aacute;s tarde.");
+		    		$("#mensaje-span").text("Hubo un error con el servidor, intente de nuevo más tarde.");
 		    		$(".mensaje-div").addClass("alert alert-danger");
 		    		$(".mensaje-div").css("display","block");
 			    },

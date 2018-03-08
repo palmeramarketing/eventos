@@ -21,7 +21,7 @@
     			<legend class="hidden-xs">
     				<h3>Inicio de sesi&oacute;n</h3>
     			</legend>
-    			<form role="form" class="form-horizontal" id="form-inicio-sesion">
+    			<form role="form" class="form-horizontal" id="form-inicio-sesion" method="POST" action="view/inicio.php">
     				<div class="form-group">
     					<div class="col-xs-10 col-xs-offset-1">
     						<input type="text" id="usuario" tabindex=1 placeholder="Usuario" class="form-control input_style">
@@ -35,6 +35,9 @@
     				<div class="form-group">
     					<button type="submit" class="btn btn-danger center-block" id="login">LogIn</button>
     				</div>
+                    <div class="mensaje-div">
+                        <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
+                    </div>
     			</form>
     		</fieldset>
     	</div>

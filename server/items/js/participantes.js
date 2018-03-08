@@ -193,7 +193,6 @@ function listar_participantes(id_evento){
 	// ------------------------------------------
 
 	// ACCION ELIMINAR PARTICIPANTES-------------
-	$('#tabla_lista_participantes tbody').unbind("click"); //IMPORTANTE NO MODIFICAR
 	$('#tabla_lista_participantes tbody').on("click", ".accion_eliminar", function(){
 		$(this).confirmation({
 			onConfirm: function() {

@@ -1,7 +1,7 @@
 <?php
 session_start();
-  if (isset($_GET["login"])){
-    $_SESSION["login"] = explode(',', $_GET["login"]);
+  if (isset($_REQUEST["login"])){
+    $_SESSION["login"] = $_REQUEST["login"];
   }elseif (!isset($_SESSION["login"])) {
     header("Location: ../index.php");
     exit;

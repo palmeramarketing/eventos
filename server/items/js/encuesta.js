@@ -244,7 +244,6 @@ function listar_participantes(id_evento){
 	// ------------------------------------------
 
 	// ACCION ELIMINAR PREGUNTA------------------
-	$('#tabla_lista_preguntas tbody').unbind("click"); //IMPORTANTE NO MODIFICAR
 	$('#tabla_lista_preguntas tbody').on("click", ".accion_eliminar", function(){
 		$(this).confirmation({
 			onConfirm: function() {

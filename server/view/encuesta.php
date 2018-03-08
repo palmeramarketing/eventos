@@ -43,7 +43,7 @@ session_start();
         </div>
     <div class="panel panel-info">
       <div class="panel-heading">
-      <center><h3 class="display-3">Nuevo Participante</h3></center>
+      <center><h3 class="display-3">Nueva Encuesta</h3></center>
     </div>
     <br>
   <div class="panel-body">
