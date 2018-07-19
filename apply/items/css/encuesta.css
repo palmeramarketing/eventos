@@ -1,0 +1,21 @@
+#div_contenedor_encuesta{
+	margin: 20px 25px 20px 25px;
+}
+.div_pregunta{
+	margin: 0px 0px 20px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.div_respuesta{
+	margin: 0px 20px 20px 20px;
+}
+.div_resp{
+	margin: 10px auto;
+}
+.label_resp{
+	margin-left: 15px;
+	font-weight: bold;
+}
+.div_botones{
+	display: inline-block;
+}
