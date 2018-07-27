@@ -1,0 +1,39 @@
+#div_parrado{
+	margin: 15px auto 20px auto;
+	text-align: justify;
+}
+
+.div_cargar_evento{
+	margin: 15px auto 20px auto;
+	width: 90%;
+}
+
+#div_mensajes{
+	margin: 15px auto 20px auto;
+	width: 90%;
+}
+
+#row_mensajes_alertas{
+	display: none;
+}
+
+.alert{
+	display: none;
+}
+
+.div_redirecion{
+	text-align: center;
+	margin-top: 12px;
+}
+
+#a_redireccion_success{
+	float: right; 
+	text-decoration: none; 
+	color: #3c763d !important;
+}
+
+#a_redireccion_info{
+	float: right; 
+	text-decoration: none; 
+	color: #31708f !important;
+}
