@@ -2,16 +2,20 @@
 
 class Recursos
 {
-	
-	function sql_select($sql){
+
+	function sql_select($sql, $remota = false){
 		$conexion = new Conexion();
-		$mysqli = $conexion->conectar_mysqli();
+		if ($remota) {
+			$mysqli = $conexion->conectar_mysqli("checkin_system");			
+		}else{
+			$mysqli = $conexion->conectar_mysqli();
+		}
 		if ($mysqli["status"] == 200) {
 			$result = $mysqli["data"]->query($sql);
 			if ($result->num_rows > 0) {
 				while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				   $arreglo[] = $row;
-				}				
+				}
 				$conexion->cerrar_mysqli();
 				if (count($arreglo) == 1){
 					$arreglo = $arreglo[0];
@@ -34,9 +38,13 @@ class Recursos
 		}
 	}
 
-	function sql_insert($sql){
+	function sql_insert_update($sql, $remota = false){
 		$conexion = new Conexion();
-		$mysqli = $conexion->conectar_mysqli();
+		if ($remota) {
+			$mysqli = $conexion->conectar_mysqli("checkin_system");			
+		}else{
+			$mysqli = $conexion->conectar_mysqli();
+		}
 		if($mysqli["status"] == 200){
 			$result = $mysqli["data"]->query($sql);
 			if ($result === true) {
@@ -52,5 +60,6 @@ class Recursos
 		}
 		$conexion->cerrar_mysqli();
 	}
+
 }
 ?>

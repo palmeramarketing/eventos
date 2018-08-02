@@ -29,11 +29,16 @@
 	margin: 0 auto 0 auto;
 }
 
-#div_contenedor{
+.div_contenedor_centrado{
 	width: 100%;
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
+}
+
+.quitar_padding{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 
 .div_transparente{
