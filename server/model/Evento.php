@@ -1,6 +1,6 @@
 <?php
 
-include_once "Conexion.php";
+require_once("Conexion.php");
 
 class Evento
 {
@@ -9,7 +9,7 @@ class Evento
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
 		if($mysqli["status"] == 200){
-			$sql = "INSERT INTO lista_evento (nombre,fecha,direccion,estatus) 
+			$sql = "INSERT INTO lista_evento (nombre,fecha,direccion,estatus)
 					values ('".$datos['nombre']."','".$datos['fecha']."','".$datos['direccion']."',1)";
 			$result = $mysqli["data"]->query($sql);
 			if ($result === true) {
@@ -25,16 +25,22 @@ class Evento
 		$conexion->cerrar_mysqli();
 	}
 
-	function listar_eventos(){
+	function listar_eventos($datos){
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
 		if ($mysqli["status"] == 200) {
-			$sql = "SELECT * FROM lista_evento WHERE estatus=1";
+
+			if($datos["perfil"]==  'admin'){
+				$sql = "SELECT eve.* FROM lista_evento eve JOIN evento_usuario ue on eve.id = ue.fk_evento JOIN usuario us on ue.fk_usuario = us.id WHERE us.id=".$datos["id"]." and eve.estatus=1";
+			}else {
+				$sql = "SELECT * FROM lista_evento WHERE estatus=1";
+			}
+
 			$result = $mysqli["data"]->query($sql);
 			if ($result->num_rows > 0) {
 				while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				   $arreglo["data"][] = $row;
-				}				
+				}
 				return $arreglo;
 			}else{
 				$cod_error = ($mysqli["data"]->errno);

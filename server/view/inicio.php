@@ -33,6 +33,8 @@ session_start();
     <div class="row">
       <div class="col-md-6 col-md-offset-1">
         <h1 class="display-1">Lista de Eventos</h1>
+        <input type="hidden" name="id_user_logeado" id="id_user_logeado" value="<?php echo $_SESSION['user']['id']; ?>">
+        <input type="hidden" name="perfil_user_logeado" id="perfil_user_logeado" value="<?php echo $_SESSION['user']['tipo']; ?>">
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <?php
 
-require "Conexion.php";
+require_once("Conexion.php");
 require_once("recursos.php");
 
 class Usuario

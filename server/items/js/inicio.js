@@ -82,6 +82,7 @@ function listar_participante(){
 		"ajax":{
 			"method":"POST",
 			"url":"../controller/evento.php",
+			"data":{id: $('#id_user_logeado').val(), perfil: $('#perfil_user_logeado').val()},
 			"dataType":"json"
 		},
 		"columns":[
