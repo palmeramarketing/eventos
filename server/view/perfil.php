@@ -1,8 +1,6 @@
 <?php
 session_start();
-  if (isset($_REQUEST["login"])){
-    $_SESSION["login"] = $_REQUEST["login"];
-  }elseif (!isset($_SESSION["login"])) {
+  if (!isset($_SESSION["login"])) {
     header("Location: ../index.php");
     exit;
   }
@@ -76,6 +74,49 @@ session_start();
       </div>
     </div>
   </div>
+
+  <!-- /////////////////////////MODAL MODIFICAR EVENTO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modifica tu Evento</h4>
+        </div>
+        <div class="modal-body">
+        <div class="mensaje-div">
+            <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
+        </div>
+          <form role="form" class="form-horizontal" id="form_modifi_evento">
+            <div class="form-group">
+              <div class="col-xs-10 col-xs-offset-1">
+                <input type="text" id="mod_nombre_evento" name="mod_nombre_evento" tabindex=1 placeholder="Nombre del Evento" class="form-control input_style">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-10 col-xs-offset-1 input-group date div_datepicker">
+                <input type="text" id="mod_fecha_evento" name="mod_fecha_evento" tabindex=2 placeholder="Fecha del Evento" class="form-control col-xs-12 input_style"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-10 col-xs-offset-1">
+                <input type="text" id="mod_direccion_evento" name="mod_direccion_evento" tabindex=3 placeholder="Direcci&oacute;n del Evento" class="form-control input_style">
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary center-block">Guardar Cambios</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default cerrar_modal" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /////////////////////////MODAL MODIFICAR EVENTO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 <link rel="stylesheet" type="text/css" href="../items/css/inicio.css">
 <script type="text/javascript" src="../items/js/perfil.js"></script>
 </body>

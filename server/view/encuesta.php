@@ -150,7 +150,7 @@ session_start();
                 <!-- <input type="text" id="mod_tipo_pregunta" name="mod_tipo_pregunta" tabindex=2 placeholder="Tipo de pregunta" class="form-control col-xs-12 input_style"> -->
               </div>
             </div>
-            
+
             <!-- <div class="form-group">
               <button type="submit" class="btn btn-primary center-block">Guardar Cambios</button>
             </div> -->

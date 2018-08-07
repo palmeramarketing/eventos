@@ -1,11 +1,21 @@
 <?php
+include "../model/usuario.php";
 session_start();
   if (isset($_REQUEST["login"])){
-    $_SESSION["login"] = $_REQUEST["login"];
-  }elseif (!isset($_SESSION["login"])) {
+    $modelo = new Usuario();
+    $user= $modelo->buscarUsuarioId($_REQUEST["login"]);
+    $_SESSION["user"] = $user['data'];
+    $_SESSION["login"] = $user['data']["nombre"];
+    $logeo= $user['data']["logeado"];
+    if($logeo == 0){
+      header("Location: ../index.php");
+      exit;
+    }
+  }else if (!isset($_SESSION["login"]) && ($logeo == '0')) {
     header("Location: ../index.php");
     exit;
   }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,7 +54,7 @@ session_start();
             </div>
           </div>
           <div class="form-group">
-            <div class="col-sm-10 input-group date div_datepicker">          
+            <div class="col-sm-10 input-group date div_datepicker">
             <input type="text" class="form-control" id="fecha_evento" placeholder="Fecha del evento" name="fecha_evento"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
             </div>
           </div>
@@ -53,7 +63,7 @@ session_start();
             <input type="text" class="form-control" id="direccion_evento" placeholder="Direcci&oacute;n del evento" name="direccion_evento">
             </div>
           </div>
-          <div class="form-group">        
+          <div class="form-group">
             <div class="col-sm-offset-0 col-sm-10">
             <button type="submit" class="btn btn-info btn-block">Registrar</button>
             </div>

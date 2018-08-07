@@ -7,6 +7,10 @@ $(document).ready(function() {
 		listar_participante();
 	});
 
+// 	window.onunload = function(e) {
+//    location.href="https://developer.mozilla.org/es/docs/Web/API/WindowEventHandlers/onbeforeunload"
+// };
+
 	// CARGAR DATEPICKER-------------------------
 	$('.input-group.date').datepicker({
 		format: "yyyy-mm-dd"
@@ -35,9 +39,9 @@ $(document).ready(function() {
     	},
     	submitHandler: function(form) {
 			var datos = {
-				tipo:"registrar", 
-				nombre:$("#nombre_evento").val(), 
-				fecha:$("#fecha_evento").val(), 
+				tipo:"registrar",
+				nombre:$("#nombre_evento").val(),
+				fecha:$("#fecha_evento").val(),
 				direccion:$("#direccion_evento").val()
 			};
 			$.ajax({
@@ -64,11 +68,11 @@ $(document).ready(function() {
 			    // complete : function(xhr, status) {
 			    //     alert('LOADING!!!!!!!!!!');
 			    // }
-			});            		
+			});
     	}
     });
 	// ------------------------------------------
-    
+
 });
 
 function listar_participante(){
@@ -90,7 +94,7 @@ function listar_participante(){
 		]
 	});
 	// ------------------------------------------
-	
+
 	// CARGAR DATOS MODAL MODIFICAR--------------
 	$('#tabla_lista_eventos tbody').on("click", ".accion_modificar", function(){
 		var data = table.row($(this).parents("tr")).data();
@@ -108,7 +112,7 @@ function listar_participante(){
 		window.location.href = "graficar.php?id_event="+data.id+"&evento="+data.nombre+"&tipo=evento";
 	});
 	// ------------------------------------------
-	
+
 	// ACCION MODIFICAR EVENTO-------------------
 	$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
 	$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
@@ -120,10 +124,10 @@ function listar_participante(){
     	},
     	submitHandler: function(form) {
 			var datos = {
-				tipo:"modificar", 
+				tipo:"modificar",
 				id: id_event,
-				nombre:$("#mod_nombre_evento").val(), 
-				fecha:$("#mod_fecha_evento").val(), 
+				nombre:$("#mod_nombre_evento").val(),
+				fecha:$("#mod_fecha_evento").val(),
 				direccion:$("#mod_direccion_evento").val()
 			};
 			$.ajax({
@@ -134,7 +138,7 @@ function listar_participante(){
 			    success : function(respuesta) {
 			    	if (respuesta.status == 200) {
 			    		alert_message("Exito! ","Evento actualizado.", "alert-success");
-			    		setTimeout(function(){ 
+			    		setTimeout(function(){
 			    			listar_participante();
 			    			$(".cerrar_modal").click(); }, 2000);
 			    	}else if (respuesta.status == 500) {
@@ -148,13 +152,13 @@ function listar_participante(){
 			    // complete : function(xhr, status) {
 			    //     alert('LOADING!!!!!!!!!!');
 			    // }
-			});            		
+			});
     	}
     });
 	// ------------------------------------------
-	
+
 	// ACCION ELIMINAR EVENTO--------------------
-	$('#tabla_lista_eventos tbody').on("click", ".accion_eliminar", function(){
+	$('#tabla_lista_usuario tbody').on("click", ".accion_eliminar", function(){
 		$(this).confirmation({
 			onConfirm: function() {
 				var data = table.row($(this).parents("tr")).data();
@@ -181,7 +185,7 @@ function listar_participante(){
 				    // complete : function(xhr, status) {
 				    //     alert('LOADING!!!!!!!!!!');
 				    // }
-				}); 
+				});
 			}
 		});
 		$(this).confirmation( 'show' );
