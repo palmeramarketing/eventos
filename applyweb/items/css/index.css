@@ -19,3 +19,29 @@
 .div_botones{
 	display: inline-block;
 }
+#div_contenedor_botones{
+	width: 100%;
+	margin: 40px auto;
+}
+#boton_finalizar{
+	display: none;
+}
+#boton_anterior{
+	display: none;
+}
+#div_container_encuesta{
+	display: none;
+}
+#div_boton_comenzar{
+	margin: 35px auto;
+	text-align: center;
+}
+#comenzar{
+	padding:30px 70px;
+}
+#div_container_gracias{
+	display: none;
+}
+#div_container_error_usuario{
+	display: none;
+}

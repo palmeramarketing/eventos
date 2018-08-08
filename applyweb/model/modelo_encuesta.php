@@ -3,15 +3,10 @@ include_once "recursos.php";
 
 class Encuesta
 {
-	// function buscar_participante($datos){
-	// 	$ejecutar = new Recursos();
-	// 	$sql = "";
-	// }
 	
 	function comprobar_cargar($datos){
+		$result = self::buscar_participante($datos["email"]);
 		$ejecutar = new Recursos();
-		$sql = "SELECT * FROM participante WHERE email = '".$datos["email"]."'";
-		$result = $ejecutar->sql_select($sql);
 		if ($result["status"] != 200) {
 			return $result;
 		}
@@ -21,7 +16,8 @@ class Encuesta
 				ON cue.id = res.id_pregunta
 				WHERE cue.id_evento = '".$datos["id_evento"]."'";
 		$arreglo = $ejecutar->sql_select($sql);
-		$resp = self::agrupar_array($arreglo['data']);
+		$resp["encuesta"] = self::agrupar_array($arreglo['data']);
+		$resp["id_participante"] = $result["data"]["id"];
 		return ["data"=>$resp, "error"=>"", "status"=>200];
 	}
 
@@ -58,6 +54,98 @@ class Encuesta
 			$i++;
 		}
 		return $resultado;
+	}
+
+	function buscar_participante($email){
+		$ejecutar = new Recursos();
+		$sql = "SELECT * FROM participante WHERE email = '".$email."'";
+		return $ejecutar->sql_select($sql);
+	}
+
+	function insertar_respuestas_eventos($datos){
+		$consulta = new Recursos();
+		if (isset($datos['id_participante']) && count($datos["respuestas"])) {
+			$datos = self::armar_arreglo($datos);
+			$existe = self::validar_respuesta_usuario($datos['id_evento'], $datos["participantes"]['id']);
+			if ($existe) {
+				return ["data"=>"El usuario ya ha participado", "error"=>"", "status"=>200];
+			}
+			$values = self::preparar_valores($datos);
+			$sql = "INSERT INTO 
+					respuesta_evento (id_participante,id_respuesta,respuesta_libre) 
+					VALUES 
+					".$values."";
+			$result = $consulta->sql_insert_update($sql);
+			if ($result["status"] == 200) {
+				return ["data"=>"Registro Exitoso", "error"=>"", "status"=>200];
+			}
+		}else{
+			return ["data"=>"", "error"=>"No se encontraron datos", "status"=>404];
+		}
+	}
+
+	function validar_respuesta_usuario($id_evento, $id_participante){
+		$consulta = new Recursos();
+		$sql = "SELECT id_evento 
+				FROM vista_respuesta_evento 
+				WHERE id_participante = '".$id_participante."'
+				AND id_evento = '".$id_evento."'";
+		$consult = $consulta->sql_select($sql);
+		if ($consult['status'] == 200) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function preparar_valores($participantes){
+		$cont = 0;
+		$values = "";
+		foreach($participantes as $k => $v ) {
+		    foreach ($v["respuestas"] as $key => $value) {
+		    	$prep[$cont]['id_participante'] = $v['id'];
+		    	$prep[$cont]['id_respuesta'] = $value['id'];
+		    	$prep[$cont]['respuesta_libre'] = $value['respuesta_libre'];
+		    	$cont++;
+		    }
+		}
+		foreach ($prep as $key => $value) {
+			$values .= "('".implode("', '",array_values($prep[$key]))."'),";
+		}
+		return substr($values, 0, -1);
+	}
+
+	function armar_arreglo($datos){
+		$arreglo = array('participantes' => array("id" => $datos["id_participante"]));
+		$arreglo["id_evento"] = $datos["id_evento"];
+		for ($i=0; $i < count($datos["respuestas"]) ; $i++) { 
+			$name_campo = $datos["respuestas"][$i]["name"];
+			$id_valor_campo = $datos["respuestas"][$i]["value"];
+			$pos = strpos($name_campo, "/");
+			if ($pos) {
+				$id_textarea = substr($name_campo, $pos+1);
+				$arreglo["participantes"]["respuestas"][$i]["id"] = $id_textarea;
+				$arreglo["participantes"]["respuestas"][$i]["respuesta_libre"] = $id_valor_campo;
+			}else{
+				$arreglo["participantes"]["respuestas"][$i]["id"] = $id_valor_campo;
+				$arreglo["participantes"]["respuestas"][$i]["respuesta_libre"] = NULL;
+			}
+		}
+		return $arreglo;
+	}
+
+	function validar_participacion_usuario($id_evento, $email){
+		$usuario = self::buscar_participante($email);
+		if ($usuario["status"] == 200) {
+			$participacion = self::validar_respuesta_usuario($id_evento, $usuario["data"]["id"]);
+			if ($participacion) {
+				return ["data"=>"", "error"=>"El usuario ya ha participado", "status"=>402];
+			}else{
+				return ["data"=>"OK", "error"=>"", "status"=>200];
+			}
+		}elseif ($usuario["status"] == 404) {
+			return ["data"=>"", "error"=>"El usuario no existe.", "status"=>401];
+		}
 	}
 }
 ?>

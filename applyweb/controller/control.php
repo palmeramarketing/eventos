@@ -15,9 +15,13 @@ switch ($_POST["accion"]) {
 	case 'comprobar_cargar':
 		echo json_encode($modelo_encuesta->comprobar_cargar($_POST["datos"]));
 		break;
+
+	case 'insertar_respuestas_eventos':
+		echo json_encode($modelo_encuesta->insertar_respuestas_eventos($_POST["datos"]));
+		break;
 	
 	default:
-		# code...
+		echo json_encode($modelo_encuesta->validar_participacion_usuario($_POST["id_evento"], $_POST["email"]));
 		break;
 }
 ?>

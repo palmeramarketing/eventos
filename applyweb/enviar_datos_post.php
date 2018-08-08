@@ -36,6 +36,5 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="items/static/funciones_constantes.js"></script>
-	<script type="text/javascript" src="items/js/index.js"></script>
 </body>
 </html>
