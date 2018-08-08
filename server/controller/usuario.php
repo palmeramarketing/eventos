@@ -26,6 +26,10 @@ if (isset($_POST)){
 			echo json_encode($usuario->modificar_usuario($_POST));
 			break;
 
+		case 'asignar_evento':
+			echo json_encode($usuario->asignar_evento($_POST));
+			break;
+
 		case 'recuperar_password':
 			echo json_encode($usuario->recuperar_password($_POST['correo']));
 			break;
