@@ -1,6 +1,6 @@
 <?php
 
-include_once "Conexion.php";
+require_once("Conexion.php");
 
 class Encuesta
 {
@@ -9,9 +9,9 @@ class Encuesta
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
 		if($mysqli["status"] == 200){
-			$sql = "INSERT INTO 
-					cuestionario (id_evento,pregunta,tipo) 
-					VALUES 
+			$sql = "INSERT INTO
+					cuestionario (id_evento,pregunta,tipo)
+					VALUES
 					('".$datos['id_evento']."','".$datos['pregunta']."','".$datos['tipo_pregunta']."')";
 			$result = $mysqli["data"]->query($sql);
 			if ($result === true) {
@@ -64,13 +64,13 @@ class Encuesta
 		$mysqli = $conexion->conectar_mysqli();
 		if ($mysqli["status"] == 200) {
 			$sql = "SELECT *
-					FROM $tabla 
+					FROM $tabla
 					WHERE $where='".$id_evento["id"]."'";
 			$result = $mysqli["data"]->query($sql);
 			if ($result->num_rows > 0) {
 				while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				   $arreglo["data"][] = $row;
-				}				
+				}
 				return $arreglo;
 			}else{
 				$cod_error = ($mysqli["data"]->errno);

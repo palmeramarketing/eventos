@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 	$.ajax({
 	    url : '../controller/participante.php',
-	    data : {tipo:"select"},
+	    data : {tipo:"select", id: $('#id_user_logeado').val(), perfil: $('#perfil_user_logeado').val()},
 	    type : 'POST',
 	    dataType : 'json',
 	    success : function(respuesta) {
@@ -63,8 +63,8 @@ $(document).ready(function() {
 			var datos = {
 				tipo:"registrar",
 				id_evento:$("#eventos_carga option:selected").val(),
-				email:$("#email_participante").val(), 
-				nombre:$("#nombre_participante").val(), 
+				email:$("#email_participante").val(),
+				nombre:$("#nombre_participante").val(),
 				apellido:$("#apellido_participante").val(),
 				direccion:$("#direccion_participante").val(),
 				telefono:$("#telefono_participante").val()
@@ -94,7 +94,7 @@ $(document).ready(function() {
 			    // complete : function(xhr, status) {
 			    //     alert('LOADING!!!!!!!!!!');
 			    // }
-			});            		
+			});
     	}
     });
 	// ------------------------------------------
@@ -156,12 +156,12 @@ function listar_participantes(id_evento){
     	},
     	submitHandler: function(form) {
 			var datos = {
-				tipo:"modificar", 
+				tipo:"modificar",
 				id: id_participante,
 				email:$("#mod_email_participante").val(),
 				nombre:$("#mod_nombre_participante").val(),
-				apellido:$("#mod_apellido_participante").val(), 
-				direccion:$("#mod_direccion_participante").val(),		
+				apellido:$("#mod_apellido_participante").val(),
+				direccion:$("#mod_direccion_participante").val(),
 				telefono:$("#mod_telefono_participante").val()
 			};
 			$.ajax({
@@ -172,7 +172,7 @@ function listar_participantes(id_evento){
 			    success : function(respuesta) {
 			    	if (respuesta.status == 200) {
 			    		alert_message("Exito! ","Participante actualizado.", "alert-success");
-			    		setTimeout(function(){ 
+			    		setTimeout(function(){
 			    			$(".cerrar_modal").click();
 			    			$(".boton_listar").click();
 			    		}, 3500);
@@ -187,7 +187,7 @@ function listar_participantes(id_evento){
 			    // complete : function(xhr, status) {
 			    //     alert('LOADING!!!!!!!!!!');
 			    // }
-			});            		
+			});
     	}
     });
 	// ------------------------------------------
@@ -220,16 +220,16 @@ function listar_participantes(id_evento){
 				    // complete : function(xhr, status) {
 				    //     alert('LOADING!!!!!!!!!!');
 				    // }
-				}); 
+				});
 			}
 		});
 		$(this).confirmation( 'show' );
-		
+
 	});
 	// ------------------------------------------
 }
 	// ------------------------------------------
-	
+
 function alert_message(strong, span, tipo){
 	$("#mensaje-strong").text(strong+" ");
 	$("#mensaje-span").text(span);

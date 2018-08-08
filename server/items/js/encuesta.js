@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 	$.ajax({
 	    url : '../controller/participante.php',
-	    data : {tipo:"select"},
+	    data : {tipo:"select", id: $('#id_user_logeado').val(), perfil: $('#perfil_user_logeado').val()},
 	    type : 'POST',
 	    dataType : 'json',
 	    success : function(respuesta) {
@@ -125,7 +125,7 @@ $(document).ready(function() {
 			    // complete : function(xhr, status) {
 			    //     alert('LOADING!!!!!!!!!!');
 			    // }
-			});            		
+			});
     	}
     });
 	// ------------------------------------------
@@ -210,7 +210,7 @@ function listar_participantes(id_evento){
     	},
     	submitHandler: function(form) {
 			var datos = {
-				tipo:"modificar", 
+				tipo:"modificar",
 				id: id_pregunta,
 				pregunta:$("#mod_pregunta").val(),
 				tipo:$("#mod_tipo_pregunta").val()
@@ -223,7 +223,7 @@ function listar_participantes(id_evento){
 			    success : function(respuesta) {
 			    	if (respuesta.status == 200) {
 			    		alert_message("Exito! ","Pregunta actualizada.", "alert-success");
-			    		setTimeout(function(){ 
+			    		setTimeout(function(){
 			    			$(".cerrar_modal").click();
 			    			$(".boton_listar").click();
 			    		}, 3500);
@@ -238,7 +238,7 @@ function listar_participantes(id_evento){
 			    // complete : function(xhr, status) {
 			    //     alert('LOADING!!!!!!!!!!');
 			    // }
-			});            		
+			});
     	}
     });
 	// ------------------------------------------
@@ -271,16 +271,16 @@ function listar_participantes(id_evento){
 				    // complete : function(xhr, status) {
 				    //     alert('LOADING!!!!!!!!!!');
 				    // }
-				}); 
+				});
 			}
 		});
 		$(this).confirmation( 'show' );
-		
+
 	});
 	// ------------------------------------------
 }
 	// ------------------------------------------
-	
+
 function alert_message(strong, span, tipo){
 	$("#mensaje-strong").text(strong+" ");
 	$("#mensaje-span").text(span);
