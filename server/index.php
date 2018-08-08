@@ -16,7 +16,7 @@
     		</div>
     	</div>
     	<div class="espacio"></div>
-    	<div class="row">
+    	<div class="row" id="inicio">
     		<fieldset class="col-xs-10 col-xs-offset-1 fieldset_index">
     			<legend class="hidden-xs">
     				<h3>Inicio de sesi&oacute;n</h3>
@@ -32,11 +32,60 @@
     						<input type="password" id="password" tabindex=2 placeholder="Password" class="form-control col-xs-12 input_style">
     					</div>
     				</div>
+    				<div class="form-group text-center">
+              <a href="#" id="olvido_passw" style="color: #fff ">Olvido su password?</a>
+    				</div>
     				<div class="form-group">
     					<button type="submit" class="btn btn-danger center-block" id="login">LogIn</button>
     				</div>
                     <div class="mensaje-div">
-                        <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
+                        <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
+                    </div>
+    			</form>
+    		</fieldset>
+    	</div>
+    	<div class="row" id="recuperar" style="display : none">
+    		<fieldset class="col-xs-10 col-xs-offset-1 fieldset_index">
+    			<legend class="hidden-xs">
+    				<h3>Recuperar password</h3>
+    			</legend>
+    			<form role="form" class="form-horizontal" id="form-recueperar" method="POST" action="view/inicio.php">
+    				<div class="form-group">
+    					<div class="col-xs-10 col-xs-offset-1">
+    						<input type="email" id="email" tabindex=2 placeholder="Email" class="form-control col-xs-12 input_style">
+    					</div>
+    				</div>
+    				<div class="form-group">
+    					<button type="submit" class="btn btn-danger center-block" id="recuperarPass">Recuperar</button>
+    				</div>
+                    <div class="mensaje-div">
+                        <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
+                    </div>
+    			</form>
+    		</fieldset>
+    	</div>
+    	<div class="row" id="cambiar" style="display : none">
+    		<fieldset class="col-xs-10 col-xs-offset-1 fieldset_index">
+    			<legend class="hidden-xs">
+    				<h3>Cambiar password</h3>
+    			</legend>
+    			<form role="form" class="form-horizontal" id="form-cambiar" method="POST" action="view/inicio.php">
+    				<div class="form-group">
+    					<div class="col-xs-10 col-xs-offset-1">
+    						<input type="password" id="password1" tabindex=2 placeholder="Ingrese su nueva password" class="form-control col-xs-12 input_style">
+    					</div>
+    				</div>
+    				<div class="form-group">
+    					<div class="col-xs-10 col-xs-offset-1">
+    						<input type="password" id="password2" tabindex=2 placeholder="Repita la password" class="form-control col-xs-12 input_style">
+    					</div>
+    				</div>
+            <input type="hidden" name=correo id=correo>
+    				<div class="form-group">
+    					<button type="submit" class="btn btn-danger center-block" id="cambiarPass">Cambiar</button>
+    				</div>
+                    <div class="mensaje-div">
+                        <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
                     </div>
     			</form>
     		</fieldset>

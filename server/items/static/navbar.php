@@ -24,6 +24,10 @@
             <ul class="dropdown-menu">
               <li><a href="../view/perfil.php">Ver perfil</a></li>
               <li role="separator" class="divider"></li>
+              <?php if($_SESSION['user']['tipo'] == 'superadmin'){ ?>
+              <li><a href="../view/registro.php">Registrar usuario</a></li>
+              <li role="separator" class="divider"></li>
+              <?php } ?>
               <li><a href="../items/static/close_session.php" id="cerrar_session">Cerrar sesi&oacute;n</a></li>
             </ul>
           </li>

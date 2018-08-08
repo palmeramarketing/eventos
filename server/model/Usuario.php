@@ -1,57 +1,57 @@
 <?php
 
-require "Conexion.php";
+require_once("Conexion.php");
+require_once("recursos.php");
 
 class Usuario
 {
 
 	function login($datos){
-		$conexion = new Conexion();
-		$mysqli = $conexion->conectar_mysqli();
-		if($mysqli["status"] == 200){
+
+		$conexion = new Recursos();
+
 			$pass = md5($datos['password']);
-			$sql = "SELECT * FROM usuario 
-					WHERE nombre='".$datos['usuario']."' 
-					AND password='$pass'
-					AND estatus=1";
-			$result = $mysqli["data"]->query($sql);
-			$result = $result->fetch_array(MYSQLI_ASSOC);
-			if ($result != Null) {
-				return ["data"=>$result,
-						"error"=>'',
-						"status"=>200];
+			$sql = "SELECT * FROM usuario
+					WHERE nombre='".$datos['usuario']."'
+					AND password='$pass'";
+			$result = $conexion->sql_select($sql);
+
+			if ($result["status"] == 200) {
+				if($result["data"]["estatus"] == 1){
+					$id= $result['data']['id'];
+					$sqlup= "UPDATE usuario SET  logeado=1 WHERE id='$id'";
+					$ejecutarup= $conexion->sql_insert_update($sqlup);
+				}
+
+				return $result;
 			}else{
-				$cod_error = ($mysqli["data"]->errno);
-				$error = mysqli_error($mysqli["data"]);
-				return ["data"=>"", "error"=>$error, "status"=>404];
+				return $result;
 			}
-		}else{
-			return ["data"=>"", "error"=>$mysqli["error"], "status"=>500];
-		}
+
 	}
 
 	function mostrar_perfil($datos){
-		$conexion = new Conexion();
-		$mysqli = $conexion->conectar_mysqli();
-		if($mysqli["status"] == 200){
-			$sql = "SELECT * FROM usuario 
-					WHERE nombre='".$datos['usuario']."' 
+			$conexion = new Recursos();
+
+			$sql = "SELECT * FROM usuario
+					WHERE nombre='".$datos['usuario']."'
 					AND estatus=1";
-			$result = $mysqli["data"]->query($sql);
-			$result = $result->fetch_array(MYSQLI_ASSOC);
-			if ($result != Null) {
-				return ["data"=>$result,
-						"error"=>'',
-						"status"=>200];
-			}else{
-				$cod_error = ($mysqli["data"]->errno);
-				$error = mysqli_error($mysqli["data"]);
-				return ["data"=>"", "error"=>$error, "status"=>404];
-			}
-		}else{
-			return ["data"=>"", "error"=>$mysqli["error"], "status"=>500];
-		}
-		$conexion->cerrar_mysqli();
+			$result = $conexion->sql_select($sql);
+
+				return $result;
+
+	}
+
+	function buscarUsuarioId($id){
+			$conexion = new Recursos();
+
+			$sql = "SELECT * FROM usuario
+					WHERE id='".$id."'
+					AND estatus=1";
+			$result = $conexion->sql_select($sql);
+
+				return $result;
+
 	}
 
 	function registrar_usuario($datos)
@@ -60,7 +60,7 @@ class Usuario
 		$mysqli = $conexion->conectar_mysqli();
 		if($mysqli["status"] == 200){
 			$pass = md5($datos['password']);
-			$sql = "INSERT INTO usuario (email,nombre,password,tipo,estatus) 
+			$sql = "INSERT INTO usuario (email,nombre,password,tipo,estatus)
 					values ('".$datos['email']."','".$datos['usuario']."','".$pass."','admin',1)";
 			$result = $mysqli["data"]->query($sql);
 			if ($result === true) {
@@ -77,8 +77,75 @@ class Usuario
 	}
 
 	function deshabilitar_usuario($datos){
-		
+		$conexion = new Recursos();
+		$sql= "UPDATE usuario SET estatus=0 WHERE id=".$datos['id'];
+		$ejecutar= $conexion->sql_insert_update($sql);
+
+		return $ejecutar;
+
 	}
+
+	function modificar_usuario($datos){
+		$conexion = new Recursos();
+		$sql= "UPDATE usuario SET estatus='".$datos['estatus']."', email='".$datos['email']."', tipo='".$datos['perfil']."', nombre='".$datos['nombre']."' WHERE id= ".$datos['id'];
+		$ejecutar= $conexion->sql_insert_update($sql);
+
+		return $ejecutar;
+
+	}
+
+	function listar_usuario(){
+		$conexion = new Recursos();
+		$sql= "SELECT id, email, nombre, password, CASE WHEN tipo = 'admin' THEN 'Administrador' ELSE 'Super Administrador' END AS tipo, CASE WHEN estatus = 0 THEN 'Inactivo' ELSE 'Activo' END AS estatus FROM usuario";
+		$ejecutar= $conexion->sql_select($sql);
+
+		if ($ejecutar["status"] == 200) {
+			return $ejecutar;
+		}else{
+			return $ejecutar["status"];
+		}
+	}
+
+	function cerrar_sesion($id){
+		$conexion = new Recursos();
+
+		$sql= "UPDATE usuario SET logeado=0 WHERE id=".$id;
+		$ejecutar= $conexion->sql_insert_update($sql);
+
+		return $ejecutar;
+
+	}
+
+	function recuperar_password($correo){
+		$conexion = new Recursos();
+		$logitud = 6;
+		$psswd = substr( md5(microtime()), 1, $logitud);
+		$sql= "SELECT * FROM usuario WHERE email='$correo'";
+		$ejecutar= $conexion->sql_select($sql);
+
+		if($ejecutar['status']== 200){
+			$nuevaclave= md5($psswd);
+			$sqlUp= "UPDATE usuario SET password='$nuevaclave', estatus=2 WHERE email='$correo'";
+			$ejecutarUpdate= $conexion->sql_insert_update($sqlUp);
+
+			if($ejecutarUpdate["status"]== 200){
+				// $envioEmail= self::envioCorreoPasswd($correo, $psswd);
+				return $psswd;
+			}
+		}else if ($ejecutar['status']== 404) {
+			return $ejecutar["status"];
+		}
+	}
+
+	function cambiar_password($correo, $pass){
+		$conexion = new Recursos();
+		$nuevaclave= md5($pass);
+		$sql= "UPDATE usuario SET password='$nuevaclave', estatus=1 WHERE email='$correo'";
+		$ejecutar= $conexion->sql_insert_update($sql);
+		return $ejecutar['status'];
+
+	}
+
 }
 
 ?>

@@ -11,7 +11,7 @@ if (isset($_POST)){
 	switch ($_POST["tipo"]) {
 		case 'select':
 			$evento = new Evento();
-			echo json_encode($evento->listar_eventos());
+			echo json_encode($evento->listar_eventos($_POST));
 			break;
 
 		case 'registrar':
@@ -29,7 +29,7 @@ if (isset($_POST)){
 		case 'buscar-respuestas':
 			echo json_encode($encuesta->listar($_POST, "respuesta", "id_pregunta"));
 			break;
-		
+
 		default:
 			echo json_encode($encuesta->listar($_POST, "cuestionario", "id_evento"));
 			break;
