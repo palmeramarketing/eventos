@@ -2,6 +2,21 @@ $(document).ready(function() {
 	var id_event = undefined;
 
 	listar_usuarios();
+	$.ajax({
+	    url : '../controller/participante.php',
+	    data : {tipo:"select", id: $('#id_user_logeado').val(), perfil: $('#perfil_user_logeado').val()},
+	    type : 'POST',
+	    dataType : 'json',
+	    success : function(respuesta) {
+	    	$(respuesta.data).each(function(indice, valor){
+                $("#mod_evento").append('<option value="' + valor.id + '">' + valor.nombre + '</option>');
+            })
+	    },
+	    error : function(respuesta) {
+	    },
+	    complete : function(xhr, status) {
+	    }
+	});
 
 	$("#nuevo_user").click(function(){
 		if ($(this).hasClass("active")) {
@@ -78,6 +93,7 @@ $(document).ready(function() {
 					{"data":"tipo"},
 					{"data":"estatus"},
 					{"defaultContent":"<span id='boton-accion' class='accion_modificar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''>\
+										 </span><span id='boton-accion' class='accion_evento glyphicon glyphicon-plus' data-toggle='modal' data-target='#modalEventos''>\
 									   </span><span id='boton-accion' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
 				]
 			});
@@ -94,7 +110,32 @@ $(document).ready(function() {
 			});
 			// ------------------------------------------
 
-			// ACCION MODIFICAR EVENTO-------------------
+			// CARGAR DATOS MODAL EVENTOS--------------
+			$('#tabla_lista_usuario tbody').on("click", ".accion_evento", function(){
+				var data = table.row($(this).parents("tr")).data();
+				$("#mod_id_user").val(data.id);
+				var perfil= (data.tipo == "Administrador")? "admin" : "superadmin";
+
+				$.ajax({
+				    url : '../controller/participante.php',
+				    data : {tipo:"select", id: data.id, perfil: perfil},
+				    type : 'POST',
+				    dataType : 'json',
+				    success : function(respuesta) {
+							$("#eventos_usuario").empty();
+				    	$(respuesta.data).each(function(indice, valor){
+			                $("#eventos_usuario").append(valor.nombre + ' ');
+			        })
+				    },
+				    error : function(respuesta) {
+				    },
+				    complete : function(xhr, status) {
+				    }
+				});
+			});
+			// ------------------------------------------
+
+			// ACCION MODIFICAR USUARIO-------------------
 			$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
 			$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
 			$("#form_modifi_usuario").validate({
@@ -124,6 +165,46 @@ $(document).ready(function() {
 					    		setTimeout(function(){
 					    			listar_usuarios();
 					    			$(".cerrar_modal").click(); }, 2000);
+					    	}else if (respuesta.status == 500) {
+					    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
+					    	};
+					    },
+					    error : function(respuesta) {
+					        alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
+					    },
+					    // código a ejecutar sin importar si la petición falló o no
+					    // complete : function(xhr, status) {
+					    //     alert('LOADING!!!!!!!!!!');
+					    // }
+					});
+		    	}
+		    });
+			// ------------------------------------------
+
+			// ACCION AGREGAR EVENTO-------------------
+			$("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
+			$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
+			$("#form_evento_usuario").validate({
+
+		    	submitHandler: function(form) {
+					var datos = {
+						tipo:"asignar_evento",
+						id_evento:$("#mod_evento").val(),
+						id_user:$("#mod_id_user").val()
+					};
+					$.ajax({
+					    url : '../controller/usuario.php',
+					    data : datos,
+					    type : 'POST',
+					    dataType : 'json',
+					    success : function(respuesta) {
+					    	if (respuesta.status == 200) {
+					    		alert_message("Exito! "," Evento asignado.", "alert-success");
+					    		setTimeout(function(){
+					    			listar_usuarios();
+					    			$(".cerrar_modal").click(); }, 2000);
+					    	}else if (respuesta == 'existe') {
+					    		alert_message("Aviso! ","El evento ya esta asignado al este usuario.", "alert-warning");
 					    	}else if (respuesta.status == 500) {
 					    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
 					    	};
