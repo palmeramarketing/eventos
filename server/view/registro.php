@@ -23,6 +23,8 @@ session_start();
     <div class="row">
       <div class="col-md-6 col-md-offset-1">
         <h1 class="display-1">Registro</h1>
+        <input type="hidden" name="id_user_logeado" id="id_user_logeado" value="<?php echo $_SESSION['user']['id']; ?>">
+        <input type="hidden" name="perfil_user_logeado" id="perfil_user_logeado" value="<?php echo $_SESSION['user']['tipo']; ?>">
       </div>
     </div>
   </div>
@@ -122,7 +124,7 @@ session_start();
             </div>
             <div class="form-group">
               <div class="col-xs-10 col-xs-offset-1">
-                <select id="mod_tipo" name="mod_tipo" class="form_control input_style" required>
+                <select class="form-control"  id="mod_tipo" name="mod_tipo" required>
                   <option value="">Seleccionar</option>
                   <option value="admin">Administrador</option>
                   <option value="superadmin">Super Administrador</option>
@@ -131,7 +133,7 @@ session_start();
             </div>
             <div class="form-group">
               <div class="col-xs-10 col-xs-offset-1">
-                <select id="mod_estatus" name="mod_estatus" class="form_control input_style" required>
+                <select class="form-control" id="mod_estatus" name="mod_estatus" required>
                   <option value="">Seleccionar</option>
                   <option value="1">Activo</option>
                   <option value="0">Inactivo</option>
@@ -142,6 +144,43 @@ session_start();
               <button type="submit" class="btn btn-primary center-block">Guardar Cambios</button>
             </div>
           </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default cerrar_modal" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalEventos" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Asociar evento a usuario</h4>
+        </div>
+        <div class="modal-body">
+        <div class="mensaje-div">
+            <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
+        </div>
+        <input type="hidden" id="mod_id_user" name="mod_id_user">
+        <div  class="col-xs-10 col-xs-offset-1 text-center">
+          <h3>Eventos asignados</h3>
+          <p id="eventos_usuario"></p>
+        </div>
+        <form role="form" class="form-horizontal" id="form_evento_usuario">
+          <div class="form-group">
+            <div class="col-xs-10 col-xs-offset-1">
+              <select class="form-control" id="mod_evento" name="mod_tipo" >
+                <option value="">Seleccionar</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary center-block">Asignar evento</button>
+          </div>
+        </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default cerrar_modal" data-dismiss="modal">Cerrar</button>

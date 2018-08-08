@@ -146,6 +146,23 @@ class Usuario
 
 	}
 
+	function asignar_evento($datos){
+		$conexion = new Recursos();
+		$sql= "SELECT * FROM evento_usuario WHERE fk_usuario=".$datos['id_user']." and fk_evento=".$datos['id_evento'];
+		$ejecutar= $conexion->sql_select($sql);
+
+		if($ejecutar['status'] == 404){
+
+			$sqlInsert= "INSERT INTO evento_usuario(fk_usuario, fk_evento) VALUES (".$datos['id_user'].",".$datos['id_evento'].")";
+			$ejecutarInsert= $conexion->sql_insert_update($sqlInsert);
+			return $ejecutarInsert;
+
+		}else if($ejecutar['status'] == 200) {
+			return 'existe';
+		}
+
+	}
+
 }
 
 ?>
