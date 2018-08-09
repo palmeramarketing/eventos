@@ -24,7 +24,7 @@
             <ul class="dropdown-menu">
               <li><a href="../view/perfil.php">Ver perfil</a></li>
               <li role="separator" class="divider"></li>
-              <?php if($_SESSION['user']['tipo'] == 'superadmin'){ ?>
+              <?php if($_SESSION['tipo'] == 'superadmin'){ ?>
               <li><a href="../view/registro.php">Registrar usuario</a></li>
               <li role="separator" class="divider"></li>
               <?php } ?>
