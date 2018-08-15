@@ -5,7 +5,6 @@
 	<?php
 		include "items/static/header.php";
 	?>
-    <script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/items/js/index.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/items/css/index.css">
 </head>
 <body>
@@ -22,14 +21,16 @@
     				<h3>Inicio de sesi&oacute;n</h3>
     			</legend>
     			<form role="form" class="form-horizontal" id="form-inicio-sesion" method="POST" action="view/inicio.php">
+                    <input type="hidden" name="id_user" id="id_user">
+                    <input type="hidden" name="tipo_user" id="tipo_user">
     				<div class="form-group">
     					<div class="col-xs-10 col-xs-offset-1">
-    						<input type="text" id="usuario" tabindex=1 placeholder="Usuario" class="form-control input_style">
+    						<input type="text" id="usuario" name="usuario" tabindex=1 placeholder="Usuario" class="form-control input_style">
     					</div>
     				</div>
     				<div class="form-group">
     					<div class="col-xs-10 col-xs-offset-1">
-    						<input type="password" id="password" tabindex=2 placeholder="Password" class="form-control col-xs-12 input_style">
+    						<input type="password" id="password" name="password" tabindex=2 placeholder="Password" class="form-control col-xs-12 input_style">
     					</div>
     				</div>
     				<div class="form-group text-center">
@@ -91,5 +92,6 @@
     		</fieldset>
     	</div>
     </div>
+    <script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/items/js/index.js"></script>
 </body>
 </html>
