@@ -2,8 +2,8 @@
 
 error_reporting(0);
 
-include "../model/Participante.php";
-include "../model/Evento.php";
+include_once "../model/Participante.php";
+include_once "../model/Evento.php";
 
 
 if (isset($_POST)){
@@ -11,7 +11,7 @@ if (isset($_POST)){
 	switch ($_POST["tipo"]) {
 		case 'select':
 			$evento = new Evento();
-			echo json_encode($evento->listar_eventos());
+			echo json_encode($evento->listar_eventos($_POST));
 			break;
 
 		case 'registrar':
@@ -25,7 +25,7 @@ if (isset($_POST)){
 		case 'eliminar':
 			echo json_encode($participante->estatus_participante($_POST));
 			break;
-		
+
 		default:
 			echo json_encode($participante->listar_participantes($_POST));
 			break;

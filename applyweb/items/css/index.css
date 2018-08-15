@@ -1,0 +1,47 @@
+#div_contenedor_encuesta{
+	margin: 20px 25px 20px 25px;
+}
+.div_pregunta{
+	margin: 0px 0px 20px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.div_respuesta{
+	margin: 0px 20px 20px 20px;
+}
+.div_resp{
+	margin: 10px auto;
+}
+.label_resp{
+	margin-left: 15px;
+	font-weight: bold;
+}
+.div_botones{
+	display: inline-block;
+}
+#div_contenedor_botones{
+	width: 100%;
+	margin: 40px auto;
+}
+#boton_finalizar{
+	display: none;
+}
+#boton_anterior{
+	display: none;
+}
+#div_container_encuesta{
+	display: none;
+}
+#div_boton_comenzar{
+	margin: 35px auto;
+	text-align: center;
+}
+#comenzar{
+	padding:30px 70px;
+}
+#div_container_gracias{
+	display: none;
+}
+#div_container_error_usuario{
+	display: none;
+}

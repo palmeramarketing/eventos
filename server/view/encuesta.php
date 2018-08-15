@@ -21,6 +21,8 @@ session_start();
     <div class="row">
       <div class="col-md-6 col-md-offset-1">
         <h1 class="display-1">Lista de Encuestas</h1>
+        <input type="hidden" name="id_user_logeado" id="id_user_logeado" value="<?php echo $_SESSION['id']; ?>">
+        <input type="hidden" name="perfil_user_logeado" id="perfil_user_logeado" value="<?php echo $_SESSION['tipo']; ?>">
       </div>
     </div>
   </div>
@@ -150,7 +152,7 @@ session_start();
                 <!-- <input type="text" id="mod_tipo_pregunta" name="mod_tipo_pregunta" tabindex=2 placeholder="Tipo de pregunta" class="form-control col-xs-12 input_style"> -->
               </div>
             </div>
-            
+
             <!-- <div class="form-group">
               <button type="submit" class="btn btn-primary center-block">Guardar Cambios</button>
             </div> -->

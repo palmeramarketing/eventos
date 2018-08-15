@@ -18,9 +18,9 @@ if (isset($_POST)){
 		case 'eliminar':
 			echo json_encode($evento->estatus_evento($_POST));
 			break;
-		
+
 		default:
-			echo json_encode($evento->listar_eventos());
+			echo json_encode($evento->listar_eventos($_POST));
 			break;
 	}
 }

@@ -21,6 +21,8 @@ session_start();
     <div class="row">
       <div class="col-md-6 col-md-offset-1">
         <h1 class="display-1">Lista de Participantes</h1>
+        <input type="hidden" name="id_user_logeado" id="id_user_logeado" value="<?php echo $_SESSION['id']; ?>">
+        <input type="hidden" name="perfil_user_logeado" id="perfil_user_logeado" value="<?php echo $_SESSION['tipo']; ?>">
       </div>
     </div>
   </div>
@@ -53,7 +55,7 @@ session_start();
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-10">          
+          <div class="col-sm-10">
           <input type="text" class="form-control" id="nombre_participante" tabindex=2 placeholder="Nombre" name="nombre_participante">
           </div>
         </div>
@@ -72,7 +74,7 @@ session_start();
           <input type="text" class="form-control" id="telefono_participante" tabindex=5 placeholder="Tel&eacute;fono" name="telefono_participante">
           </div>
         </div>
-        <div class="form-group">        
+        <div class="form-group">
           <div class="col-sm-offset-0 col-sm-10">
           <button type="submit" class="btn btn-info btn-block">Registrar</button>
           </div>
