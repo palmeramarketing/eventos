@@ -18,6 +18,7 @@
           <li><a href="encuesta.php">Encuestas</a></li>
           <li><a href="participantes.php">Participantes</a></li>
           <li><a href="certificado.php">Certificados</a></li>
+          <li><a href="landing_page.php">Landing Page</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
