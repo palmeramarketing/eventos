@@ -13,9 +13,6 @@ class Recursos
 				   $arreglo[] = $row;
 				}
 				$conexion->cerrar_mysqli();
-				if (count($arreglo) == 1){
-					$arreglo = $arreglo[0];
-				}
 				return ["data"=>$arreglo, "error"=>"", "status"=>200];
 			}else{
 				$cod_error = ($mysqli["data"]->errno);
