@@ -17,6 +17,9 @@ class Usuario
 			$result = $conexion->sql_select($sql);
 
 			if ($result["status"] == 200) {
+				if (count($result["data"] == 1)) {
+					$result["data"] = $result["data"][0];
+				}
 				if($result["data"]["estatus"] == 1){
 					$id= $result['data']['id'];
 					$sqlup= "UPDATE usuario SET  logeado=1 WHERE id='$id'";

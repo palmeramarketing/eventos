@@ -1,0 +1,12 @@
+.div_titulo{
+	margin-top: -20px;
+	background-color: #f2f3f4; 
+	margin-bottom: 20px;
+}
+.div_datepicker{
+    left: 15px;
+    width: 80%;
+  }
+.div_titulo_form{
+	margin-bottom: 20px;
+}

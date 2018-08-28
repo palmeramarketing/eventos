@@ -19,17 +19,18 @@ $(document).ready(function() {
 			    dataType : 'json',
 			    success : function(respuesta) {
 			    	if (respuesta.status == 200) {
-							if(respuesta.data.estatus == 1){
-								var id= respuesta.data.id;
-								window.location.href = "view/inicio.php?login="+id;
-							}else if(respuesta.data.estatus == 2){
-								$("#inicio").hide();
-								$("#recuperar").hide();
-								$("#correo").val(respuesta.data.email);
-								$("#cambiar").show();
-							}else if (respuesta.data.estatus == 0) {
-								alert_message("Aviso! ","Su usuario se encuentra bloquedo temporalmente, comuniquese con el administrador del sistema.", "alert-warning");
-							}
+						if(respuesta.data.estatus == 1){
+							$("#id_user").val(respuesta.data.id);
+							$("#tipo_user").val(respuesta.data.tipo);
+							form.submit();
+						}else if(respuesta.data.estatus == 2){
+							$("#inicio").hide();
+							$("#recuperar").hide();
+							$("#correo").val(respuesta.data.email);
+							$("#cambiar").show();
+						}else if (respuesta.data.estatus == 0) {
+							alert_message("Aviso! ","Su usuario se encuentra bloquedo temporalmente, comuniquese con el administrador del sistema.", "alert-warning");
+						}
 			    	}else if (respuesta.status == 1062) {
 							alert_message("Aviso! ","El usuario ya existe.", "alert-warning");
 			    	}else if (respuesta.status == 404) {

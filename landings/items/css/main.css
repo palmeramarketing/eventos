@@ -1,0 +1,28 @@
+.sidebar{
+	background: #2c2c2d;
+	color: aliceblue;
+	position: fixed;
+	z-index: 1000;
+	bottom: 0px;
+	top: 0px;
+	padding: 0;
+}
+.botones_menu_slide{
+	list-style: none;
+	padding: 0;
+}
+.botones_menu_slide a li{
+	background-color: #505050;
+	padding: 5px;
+	margin: 0 0 1px 0;
+	text-align: center;
+}
+
+.botones_menu_slide a li:hover{
+	background-color: #3b3939;
+}
+
+.botones_menu_slide a{
+	color: aliceblue;
+	text-decoration: none;
+}

@@ -1,21 +1,15 @@
 <?php
-include "../model/usuario.php";
+
 session_start();
-  if (isset($_REQUEST["login"])){
-    $modelo = new Usuario();
-    $user= $modelo->buscarUsuarioId($_REQUEST["login"]);
-    $_SESSION["user"] = $user['data'];
-    $_SESSION["login"] = $user['data']["nombre"];
-    $logeo= $user['data']["logeado"];
-    if($logeo == 0){
-      header("Location: ../index.php");
-      exit;
-    }
-  }else if (!isset($_SESSION["login"]) && ($logeo == '0')) {
+
+if (isset($_POST["usuario"])) {
+  $_SESSION["login"] = $_POST["usuario"];
+  $_SESSION["id"] = $_POST["id_user"];
+  $_SESSION["tipo"] = $_POST["tipo_user"];
+}elseif (!isset($_SESSION["login"])) {
     header("Location: ../index.php");
     exit;
-  }
-
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,8 +27,8 @@ session_start();
     <div class="row">
       <div class="col-md-6 col-md-offset-1">
         <h1 class="display-1">Lista de Eventos</h1>
-        <input type="hidden" name="id_user_logeado" id="id_user_logeado" value="<?php echo $_SESSION['user']['id']; ?>">
-        <input type="hidden" name="perfil_user_logeado" id="perfil_user_logeado" value="<?php echo $_SESSION['user']['tipo']; ?>">
+        <input type="hidden" name="id_user_logeado" id="id_user_logeado" value="<?php echo $_SESSION['id']; ?>">
+        <input type="hidden" name="perfil_user_logeado" id="perfil_user_logeado" value="<?php echo $_SESSION['tipo']; ?>">
       </div>
     </div>
   </div>
@@ -83,7 +77,7 @@ session_start();
     </div>
   <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
-  <?php if($_SESSION['user']['tipo'] == 'superadmin'){  ?>
+  <?php if($_SESSION['tipo'] == 'superadmin'){  ?>
     <div class="row">
       <div class="col-md-2 col-md-offset-9"><center><button type="button" class="btn btn-info nuevo_evento">Nuevo Evento</button></center></div>
     </div>
