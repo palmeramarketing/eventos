@@ -79,7 +79,7 @@ class Encuesta
 					".$values."";
 			$result = $consulta->sql_insert_update($sql);
 			if ($result["status"] == 200) {
-				self::envioCorreoAsistencia($datos["email"]);
+				self::envioCorreoEncuesta($datos["email"]);
 				return ["data"=>"Registro Exitoso", "error"=>"", "status"=>200];
 			}
 		}else{
