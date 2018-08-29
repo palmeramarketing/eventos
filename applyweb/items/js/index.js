@@ -10,7 +10,7 @@ $(document).ready(function(){
         dataType: "json",
         data: data,
         success: function(respuesta, status, req){
-            console.log(respuesta, status, req);  
+            console.log(respuesta, status, req);
             if (respuesta["status"] == 401) {
                 alert_message("Disculpe.", "Usted no se encuentra registrado para realizar ésta encuesta.", "alert-warning");
             }else if (respuesta["status"] == 402) {
@@ -18,7 +18,7 @@ $(document).ready(function(){
             }
         },
         error: function(respuesta, status, req){
-            console.log(respuesta, status, req);  
+            console.log(respuesta, status, req);
             alert_message("Error del servidor.", "Por favor Intende de nuevo mas tarde.", "alert-danger");
         }
     });
@@ -26,8 +26,8 @@ $(document).ready(function(){
         $.ajax({
             url: "../controller/control.php",
             type: "POST",
-            dataType: "json", 
-            data: {datos: data, accion: "comprobar_cargar"}, 
+            dataType: "json",
+            data: {datos: data, accion: "comprobar_cargar"},
             success: function(respuesta, status, req) {
                 if (respuesta.status == 200) {
 
@@ -69,7 +69,7 @@ $(document).ready(function(){
                                             </div>";
                             }else if (encuesta[i].tipo == "libre") {
                                 resp_html = "<div class='div_resp'>\
-                                                <textarea name='textarea/"+encuesta[i].respuestas[o].id+"' id='respuesta_libre-"+encuesta[i].respuestas[o].id+"' cols='100' rows='5' placeholder='Describa aqui su respuesta'></textarea>\
+                                                <textarea name='textarea/"+encuesta[i].respuestas[o].id+"' id='respuesta_libre-"+encuesta[i].respuestas[o].id+"' style='color:black' cols='100' rows='5' placeholder='Describa aqui su respuesta'></textarea>\
                                             </div>";
                             }
 
@@ -135,8 +135,8 @@ $(document).ready(function(){
         $.ajax({
             url: "../controller/control.php",
             type: "POST",
-            dataType: "json", 
-            data: {datos: data, accion: "insertar_respuestas_eventos"}, 
+            dataType: "json",
+            data: {datos: data, accion: "insertar_respuestas_eventos"},
             success: function(respuesta, status, req){
                 if (respuesta["status"] == 200) {
                     $("#div_container_encuesta").css("display","none");

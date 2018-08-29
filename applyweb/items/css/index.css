@@ -3,11 +3,14 @@
 }
 .div_pregunta{
 	margin: 0px 0px 20px;
-	font-size: 16px;
+	font-size: 25px;
 	font-weight: bold;
+	color: white;
 }
 .div_respuesta{
 	margin: 0px 20px 20px 20px;
+	font-size: 20px;
+	color: white;
 }
 .div_resp{
 	margin: 10px auto;
@@ -36,12 +39,13 @@
 	margin: 35px auto;
 	text-align: center;
 }
-#comenzar{
-	padding:30px 70px;
-}
+
 #div_container_gracias{
 	display: none;
 }
 #div_container_error_usuario{
 	display: none;
+}
+.salir{
+	margin-bottom: 20px;
 }
