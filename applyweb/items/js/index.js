@@ -128,7 +128,8 @@ $(document).ready(function(){
         var data = {
             respuestas: $("#form_respuestas").serializeArray(),
             id_participante: $("#id_participante").val(),
-            id_evento: $("#id_evento").val()
+            id_evento: $("#id_evento").val(),
+            email: $("#email").val()
         }
 
         $.ajax({
