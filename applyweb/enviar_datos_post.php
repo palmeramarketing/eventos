@@ -7,30 +7,32 @@
 
 </head>
 <body>
-	<div class="container-fluid container_background">
-		<div class="div_contenedor_centrado">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 div_transparente">
-					<fieldset class="col-xs-10 col-xs-offset-1 fieldset_index">
-						<legend class="hidden-xs">
-							<h3>Ingrese el ID del evento y su Email para empezar la encuesta</h3>
-						</legend>
-						<form role="form" class="form-horizontal" id="form-inicio-sesion" method="POST" action="view/index.php">
-							<div class="form-group">
-								<div class="col-xs-10 col-xs-offset-1">
-									<input type="text" id="id_evento" name="id_evento" tabindex=1 placeholder="ID EVENTO" class="form-control input_style">
-									<br>
-									<input type="text" id="email" name="email" tabindex=2 placeholder="EMAIL" class="form-control input_style">
-								</div>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-info center-block" id="comenzar">Enviar</button>
-							</div>
-							<div class="mensaje-div">
-								<strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
-							</div>
-						</form>
-					</fieldset>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 quitar_padding">
+				<div id="imagen_header">
+					<img src="items/images/baner_encuesta.jpg" alt="" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-offset-1 col-md-offset-1  col-sm-offset-1 col-xs-offset-1 col-lg-10  col-md-10  col-sm-10 col-xs-10 text-center ">
+				<div id="div_contenedor_formulario">
+					<div class="div_parrafo_superior_formulario centrar" >
+						<p class="text_medium p_texto_gris">
+							Bienvenido a el sistema de encuestas.
+						</p>
+					</div>
+					<form role="form" class="form-horizontal" id="form-inicio-sesion" method="POST" action="view/index.php">
+						<input type="hidden" id="id_evento" value="2" name="id_evento">
+						<input type="text" id="email" name="email" tabindex=2 placeholder="EMAIL" class="inputCheck">
+						<div class="center-button">
+							<button type="submit" class="btn button-form" id="comenzar">Enviar</button>
+						</div>
+					</form>
+					<div class="mensaje-div">
+						<strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
+					</div>
 				</div>
 			</div>
 		</div>
