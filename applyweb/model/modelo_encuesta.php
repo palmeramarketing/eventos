@@ -1,5 +1,7 @@
 <?php
 include_once "recursos.php";
+require_once('../mailer/class.phpmailer.php');
+require '../mailer/PHPMailerAutoload.php';
 
 class Encuesta
 {
@@ -77,6 +79,7 @@ class Encuesta
 					".$values."";
 			$result = $consulta->sql_insert_update($sql);
 			if ($result["status"] == 200) {
+				self::envioCorreoAsistencia($datos["email"]);
 				return ["data"=>"Registro Exitoso", "error"=>"", "status"=>200];
 			}
 		}else{
@@ -146,6 +149,37 @@ class Encuesta
 		}elseif ($usuario["status"] == 404) {
 			return ["data"=>"", "error"=>"El usuario no existe.", "status"=>401];
 		}
+	}
+
+	function envioCorreoEncuesta($email) {
+	  	$mail = new PHPMailer;
+		$mail->setFrom('info@cwc.com', 'MENARINI');
+		$mail->addAddress($email,'');
+		$mail->Subject = 'Gracias por su Participacion';
+		$mail->msgHTML('
+		<html lang="es">
+		<head>
+			<meta charset="UTF-8">
+		</head>
+		<body style="font-family: Helvetica; margin: 0px;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+				<tbody>
+					<tr>
+						<td><img  style="position: absolute; top: 0;" src="http://palmera.marketing/check-in_system/assets/images/Web_Confirmacion_Banner.jpg" alt="" width="100%"></td>
+					</tr>
+					<tr>
+						<td align="center">
+							<p style="font-size: 30pt; color: #2d4c72; padding: 20px;">Gracias por participar en nuestra encuesta</p>
+						
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</body>
+		</html>'
+		);
+		$mail->AltBody = 'Agracias por Asistir a nuetro evento.';
+		$mail->send();
 	}
 }
 ?>
