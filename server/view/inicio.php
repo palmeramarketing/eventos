@@ -77,11 +77,9 @@ if (isset($_POST["usuario"])) {
     </div>
   <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
-  <?php if($_SESSION['tipo'] == 'superadmin'){  ?>
     <div class="row">
       <div class="col-md-2 col-md-offset-9"><center><button type="button" class="btn btn-info nuevo_evento">Nuevo Evento</button></center></div>
     </div>
-  <?php } ?>
 
   <!-- /////////////////////////DATATABLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
     <br>

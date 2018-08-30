@@ -13,7 +13,8 @@ class Evento
 					values ('".$datos['nombre']."','".$datos['fecha']."','".$datos['direccion']."',1)";
 			$result = $mysqli["data"]->query($sql);
 			if ($result === true) {
-				return ["data"=>"Evento registrado", "error"=>"", "status"=>200];
+				$id_pregunta = $mysqli["data"]->insert_id;
+				return ["data"=>$id_pregunta, "error"=>"", "status"=>200];
 			}else{
 				$cod_error = ($mysqli["data"]->errno);
 				$error = mysqli_error($mysqli["data"]);
