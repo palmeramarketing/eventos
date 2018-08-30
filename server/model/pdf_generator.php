@@ -6,7 +6,7 @@ class PDF_generator
 {
 
 	function imprimir_pdf($datos){
-		$html =  $datos["data"]["data_html"];
+		$html =  $datos["data"][0]["data_html"];
 		$mpdf = new Mpdf();
 		$mpdf->WriteHTML($html);
 		$mpdf->Output();
