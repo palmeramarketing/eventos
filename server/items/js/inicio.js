@@ -42,7 +42,8 @@ $(document).ready(function() {
 				tipo:"registrar",
 				nombre:$("#nombre_evento").val(),
 				fecha:$("#fecha_evento").val(),
-				direccion:$("#direccion_evento").val()
+				direccion:$("#direccion_evento").val(),
+				id_user:$("#id_user_logeado").val()
 			};
 			$.ajax({
 			    url : '../controller/evento.php',
