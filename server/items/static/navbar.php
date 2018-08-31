@@ -19,6 +19,7 @@
           <li><a href="participantes.php">Participantes</a></li>
           <li><a href="certificado.php">Certificados</a></li>
           <li><a href="landing_page.php">Landing Page</a></li>
+          <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/check-in_system/view/login.html">Visitador Medico</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
