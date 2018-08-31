@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 	listar_participante();
 
-	$(".boton_listar").click(function(){
+	$("#actualizar_datatable").click(function(){
 		listar_participante();
 	});
 
@@ -54,7 +54,6 @@ $(document).ready(function() {
 			    	if (respuesta.status == 200) {
 			    		alert_message("Exito! ","Nuevo evento registrado.", "alert-success");
 			    		$("#form_registro_evento")[0].reset();
-			    		listar_participante();
 			    	}else if (respuesta.status == 1062) {
 			    		alert_message("Aviso! ","El evento ya existe.", "alert-warning");
 			    	}else if (respuesta.status == 500) {
@@ -90,9 +89,9 @@ function listar_participante(){
 			{"data":"nombre"},
 			{"data":"fecha"},
 			{"data":"direccion"},
-			{"defaultContent":"<span id='boton-accion' class='accion_modificar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''>\
-							   </span><span id='boton-accion' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>\
-							   <span id='boton-accion' class='accion_graficar glyphicon glyphicon-stats'>"}
+			{"defaultContent":"<span id='boton-accion' class='accion_modificar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal'></span>\
+							   <span id='boton-accion' class='accion_eliminar glyphicon glyphicon-trash' data-toggle='confirmation' data-title='¿Estás seguro?'></span>\
+							   <span id='boton-accion' class='accion_graficar glyphicon glyphicon-stats'></span>"}
 		]
 	});
 	// ------------------------------------------
@@ -161,6 +160,8 @@ function listar_participante(){
 
 	// ACCION ELIMINAR EVENTO--------------------
 	$('#tabla_lista_usuario tbody').on("click", ".accion_eliminar", function(){
+		alert("HOLAAAA");
+		return false;
 		$(this).confirmation({
 			onConfirm: function() {
 				var data = table.row($(this).parents("tr")).data();

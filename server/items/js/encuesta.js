@@ -259,7 +259,8 @@ function listar_participantes(id_evento){
 				    dataType : 'json',
 				    success : function(respuesta) {
 				    	if (respuesta.status == 200) {
-				    		$(".boton_listar").click();
+				    		//$(".boton_listar").click();
+				    		listar_participantes($("#eventos_carga option:selected").val());
 				    	}else if (respuesta.status == 500) {
 				    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
 				    	};

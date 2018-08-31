@@ -140,5 +140,10 @@ function alert_message(strong, span, tipo){
 	$(".mensaje-span").text(span);
 	$(".mensaje-div").addClass("alert "+tipo);
 	$(".mensaje-div").slideDown();
-	setTimeout(function(){ $(".mensaje-div").slideUp(); }, 2500);
+	setTimeout(function(){ 
+		$(".mensaje-div").slideUp().promise().done(function() {
+   			$(".mensaje-div").removeClass("alert "+tipo);
+		}); 
+	}, 2500)
+	
 };
