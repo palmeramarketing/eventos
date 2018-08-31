@@ -14,7 +14,7 @@ body{
 	margin: 100px
 	box-shadow: 0px 0px 40px rgba(213,0,0 ,1),0px 0px 80px rgba(256,256,256 ,1);
 }
-.form_sesion:hover{
+.form_sesion{
     transition: .8s;
     background-color: rgba(0,0,0,.5);
 }

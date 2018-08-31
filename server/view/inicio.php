@@ -97,6 +97,7 @@ if (isset($_POST["usuario"])) {
       </table>
       <br>
       <button class="btn btn-link" id="actualizar_datatable">Actualizar</button>
+      <button class="btn btn-link" id="destruir">Destruir</button>
       </div>
     </div>
   </div>
