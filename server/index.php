@@ -11,7 +11,7 @@
     <div class="container form_sesion">
     	<div class="row">
     		<div class="col-xs-4 col-xs-offset-4">
-    			<img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/items/images/logo.jpg" class="logo center-block">
+    			<img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/items/images/menarini_icon.jpg" class="logo center-block">
     		</div>
     	</div>
     	<div class="espacio"></div>
