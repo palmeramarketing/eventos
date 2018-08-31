@@ -160,7 +160,7 @@ function listar_participante(){
 	// ------------------------------------------
 
 	// ACCION ELIMINAR EVENTO--------------------
-	$('#tabla_lista_usuario tbody').on("click", ".accion_eliminar", function(){
+	$('#tabla_lista_eventos tbody').on("click", ".accion_eliminar", function(){
 		$(this).confirmation({
 			onConfirm: function() {
 				var data = table.row($(this).parents("tr")).data();
