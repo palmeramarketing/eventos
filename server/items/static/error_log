@@ -1,0 +1,66 @@
+[09-Aug-2018 18:41:30 UTC] PHP Warning:  include(../../model/usuario.php): failed to open stream: No such file or directory in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[09-Aug-2018 18:41:31 UTC] PHP Warning:  include(): Failed opening '../../model/usuario.php' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[09-Aug-2018 18:41:31 UTC] PHP Fatal error:  Uncaught Error: Class 'Usuario' not found in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 6
+[09-Aug-2018 18:42:14 UTC] PHP Warning:  include(../../model/usuario.php): failed to open stream: No such file or directory in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 3
+[09-Aug-2018 18:42:14 UTC] PHP Warning:  include(): Failed opening '../../model/usuario.php' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 3
+[09-Aug-2018 18:42:14 UTC] PHP Fatal error:  Uncaught Error: Class 'Usuario' not found in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 11
+[09-Aug-2018 18:42:23 UTC] PHP Warning:  include(../../model/usuario.php): failed to open stream: No such file or directory in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 3
+[09-Aug-2018 18:42:23 UTC] PHP Warning:  include(): Failed opening '../../model/usuario.php' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 3
+[09-Aug-2018 18:42:23 UTC] PHP Fatal error:  Uncaught Error: Class 'Usuario' not found in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 11
+[10-Aug-2018 14:31:20 UTC] PHP Warning:  include(../../model/usuario.php): failed to open stream: No such file or directory in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 3
+[10-Aug-2018 14:31:20 UTC] PHP Warning:  include(): Failed opening '../../model/usuario.php' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 3
+[10-Aug-2018 14:31:20 UTC] PHP Fatal error:  Uncaught Error: Class 'Usuario' not found in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 11
+[10-Aug-2018 19:12:16 UTC] PHP Warning:  include(../../model/usuario.php): failed to open stream: No such file or directory in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 3
+[10-Aug-2018 19:12:16 UTC] PHP Warning:  include(): Failed opening '../../model/usuario.php' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 3
+[10-Aug-2018 19:12:16 UTC] PHP Fatal error:  Uncaught Error: Class 'Usuario' not found in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 11
+[30-Aug-2018 14:25:47 UTC] PHP Warning:  include(../../model/usuario.php): failed to open stream: No such file or directory in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[30-Aug-2018 14:25:47 UTC] PHP Warning:  include(): Failed opening '../../model/usuario.php' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[30-Aug-2018 14:25:47 UTC] PHP Fatal error:  Uncaught Error: Class 'Usuario' not found in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 6
+[30-Aug-2018 14:25:54 UTC] PHP Warning:  include(../../model/usuario.php): failed to open stream: No such file or directory in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[30-Aug-2018 14:25:54 UTC] PHP Warning:  include(): Failed opening '../../model/usuario.php' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[30-Aug-2018 14:25:54 UTC] PHP Fatal error:  Uncaught Error: Class 'Usuario' not found in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 6
+[30-Aug-2018 14:25:56 UTC] PHP Warning:  include(../../model/usuario.php): failed to open stream: No such file or directory in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[30-Aug-2018 14:25:56 UTC] PHP Warning:  include(): Failed opening '../../model/usuario.php' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[30-Aug-2018 14:25:56 UTC] PHP Fatal error:  Uncaught Error: Class 'Usuario' not found in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 6
+[30-Aug-2018 15:00:06 UTC] PHP Warning:  include(../../model/usuario.php): failed to open stream: No such file or directory in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[30-Aug-2018 15:00:06 UTC] PHP Warning:  include(): Failed opening '../../model/usuario.php' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[30-Aug-2018 15:00:06 UTC] PHP Fatal error:  Uncaught Error: Class 'Usuario' not found in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 6
+[30-Aug-2018 16:22:23 UTC] PHP Warning:  include(../../model/usuario.php): failed to open stream: No such file or directory in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[30-Aug-2018 16:22:23 UTC] PHP Warning:  include(): Failed opening '../../model/usuario.php' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[30-Aug-2018 16:22:23 UTC] PHP Fatal error:  Uncaught Error: Class 'Usuario' not found in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 6
+[30-Aug-2018 16:24:40 UTC] PHP Warning:  include(../../model/usuario.php): failed to open stream: No such file or directory in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[30-Aug-2018 16:24:40 UTC] PHP Warning:  include(): Failed opening '../../model/usuario.php' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 2
+[30-Aug-2018 16:24:40 UTC] PHP Fatal error:  Uncaught Error: Class 'Usuario' not found in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/adminpalmera/public_html/palmera.marketing/eventos/server/items/static/close_session.php on line 6
