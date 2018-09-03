@@ -54,6 +54,7 @@
 
 body, html{
 	height: 100%;
+	
 }
 
 /*----------ERROR BOTONES----------*/
@@ -65,3 +66,74 @@ label.error{display:none!important;}
 ::-webkit-input-placeholder{color:#3d0e73;}
 ::-moz-placeholder{color:#3d0e73;}
 /*---------------------------------*/
+
+#div_contenedor_formulario{
+	margin: 55px auto 20px auto;
+}
+
+.div_parrafo_superior_formulario{
+	margin: 55px auto 30px auto;
+}
+.centrar{
+	text-align: center;
+}
+.p_texto_gris{
+	font-size: 27px;
+	color: #767676;
+}
+.p_texto_azul{
+	font-size: 27px;
+	color: #6c829d;
+}
+.inputCheck {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid gray;
+    text-align: center;
+}
+.center-button{
+	text-align: center;
+  margin: 30px auto;
+}
+.button-form{
+	color: #f2f2f2;
+	background-color: #767676;
+	border-color: #767676;
+	border-radius: 14px;
+	font-family: 'FoundrySterling-BoldOSF', Sans-Serif;
+	font-size: 20pt;
+	margin: 20px auto 7%;
+	max-width: 367px;
+	width: 100%;
+	height: 55px;
+	padding: 12px 45px;
+}
+.button-encuesta{
+	color: white;
+	background-color: #c33318;
+	border-color: #c33318;
+	border-radius: 25px;
+	font-family: 'FoundrySterling-BoldOSF', Sans-Serif;
+	font-size: 20pt;
+	margin: 20px auto 7%;
+	max-width: 367px;
+	width: 100%;
+	height: 55px;
+	padding: 12px 45px;
+}
+#imagen_header_logo{
+	width: 100%;
+	margin: 30px auto 30px auto;
+}
+.fondo_azul{
+
+}
+
+.text_encuesta{
+	font-size: 40px;
+	color: white;
+	font-weight: bold;
+}

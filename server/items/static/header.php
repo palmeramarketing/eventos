@@ -1,5 +1,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="http://palmera.marketing/eventos/server/items/images/menarini_icon.jpg" name="msapplication-TileImage">
+<link href="http://palmera.marketing/eventos/server/items/images/menarini_icon.jpg" rel="icon" sizes="32x32">
+<link href="http://palmera.marketing/eventos/server/items/images/menarini_icon.jpg" rel="icon" sizes="192x192">
+<link href="http://palmera.marketing/eventos/server/items/images/menarini_icon.jpg" rel="apple-touch-icon-precomposed">
+
 <script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/plugins/jquery/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/plugins/jquery/jquery.validate.min.js"></script>
 <script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/plugins/jquery/jquery-ui.min.js"></script>

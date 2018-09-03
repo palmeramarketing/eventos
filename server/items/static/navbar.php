@@ -8,7 +8,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><img src="../items/images/logotipo.jpg" width="30" height="30" class="img-responsive" alt="C&W"></a>
+        <a class="navbar-brand" href="#"><img src="../items/images/menarini_icon.jpg" width="30" height="30" class="img-responsive" alt="C&W"></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,6 +17,10 @@
           <li><a href="inicio.php">Eventos</a></li>
           <li><a href="encuesta.php">Encuestas</a></li>
           <li><a href="participantes.php">Participantes</a></li>
+          <li><a href="certificado.php">Certificados</a></li>
+          <?php if($_SESSION['tipo'] == 'superadmin'){ ?>
+          <li><a href="landing_page.php">Landing Page</a></li>
+          <?php } ?>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
