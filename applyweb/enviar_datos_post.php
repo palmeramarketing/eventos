@@ -50,7 +50,7 @@
 
 					<form role="form" class="form-horizontal" id="form-inicio-sesion" method="POST" action="view/index.php">
 
-						<input type="hidden" id="id_evento" value="45" name="id_evento">
+						<input type="hidden" id="id_evento" value="2" name="id_evento">
 
 						<input type="text" id="email" name="email" tabindex=2 placeholder="EMAIL" class="inputCheck">
 
@@ -81,4 +81,3 @@
 </body>
 
 </html>
-
