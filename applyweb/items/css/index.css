@@ -1,5 +1,6 @@
 #div_contenedor_encuesta{
-	margin: 20px 25px 20px 25px;
+	margin: 20px 0px 20px 0px;
+	width: 100%;
 }
 .div_pregunta{
 	margin: 0px 0px 20px;
@@ -8,9 +9,11 @@
 	color: white;
 }
 .div_respuesta{
-	margin: 0px 20px 20px 20px;
 	font-size: 20px;
 	color: white;
+	text-align: justify;
+	transform: translateX(-50%);
+	margin-left: 50%;
 }
 .div_resp{
 	margin: 10px auto;
@@ -34,6 +37,7 @@
 }
 #div_container_encuesta{
 	display: none;
+	width: 100%;
 }
 #div_boton_comenzar{
 	margin: 35px auto;
