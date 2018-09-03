@@ -115,21 +115,21 @@ $(document).ready(function(){
                             if (encuesta[i].tipo == "multi") {
 
                                 resp_html = "<div class='div_resp'>\
-                                                <input type='checkbox' name='checkbox-"+i+"' value="+encuesta[i].respuestas[o].id+">\
+                                                <input type='checkbox' class='campo' name='checkbox-"+i+"' value="+encuesta[i].respuestas[o].id+">\
                                                 <span class='label_resp'>"+encuesta[i].respuestas[o].descripcion+"</span>\
                                             </div>";
 
                             }else if (encuesta[i].tipo == "simple") {
 
                                 resp_html = "<div class='div_resp'>\
-                                                <input type='radio' name='radio-"+i+"' value="+encuesta[i].respuestas[o].id+">\
+                                                <input type='radio' class='campo' name='radio-"+i+"' value="+encuesta[i].respuestas[o].id+">\
                                                 <span class='label_resp'>"+encuesta[i].respuestas[o].descripcion+"</span>\
                                             </div>";
 
                             }else if (encuesta[i].tipo == "libre") {
 
                                 resp_html = "<div class='div_resp'>\
-                                                <textarea name='textarea/"+encuesta[i].respuestas[o].id+"' id='respuesta_libre-"+encuesta[i].respuestas[o].id+"' style='color:black' cols='100' rows='5' placeholder='Describa aqui su respuesta'></textarea>\
+                                                <textarea class='campo' name='textarea/"+encuesta[i].respuestas[o].id+"' id='respuesta_libre-"+encuesta[i].respuestas[o].id+"' style='color:black' cols='100' rows='5' placeholder='Describa aqui su respuesta'></textarea>\
                                             </div>";
 
                             }
@@ -179,7 +179,22 @@ $(document).ready(function(){
     var con_preg = 0;
 
     $("#boton_siguiente").click(function(){
-
+      if( $('input[type=checkbox]').is(":visible") ){
+        if( $('input[type=checkbox]').is(':checked') ){
+        } else {
+          return false;
+        }
+      }else if( $('input[type=radio]').is(":visible") ){
+        if( $('input[type=radio]').is(':checked') ){
+        } else {
+          return false;
+        }
+      }else if( $('textarea').is(":visible") ){
+        if( $('textarea').val() == '' ){
+        } else {
+          return false;
+        }
+      }
         $("#div_pregunta-"+con_preg+", #div_respuesta-"+con_preg).css("display","none");
 
         con_preg += 1;
@@ -193,7 +208,6 @@ $(document).ready(function(){
 
 
     $("#boton_anterior").click(function(){
-
         $("#div_pregunta-"+con_preg+", #div_respuesta-"+con_preg).css("display","none");
 
         con_preg -= 1;
@@ -239,6 +253,22 @@ $(document).ready(function(){
 
 
     $("#boton_finalizar").click(function(){
+
+      if( $('input[type=checkbox]').is(":visible") ){
+        if( $('input[type=checkbox]').is(':checked') ){
+        } else {
+          return false;
+        }
+      }else if( $('input[type=radio]').is(":visible") ){
+        if( $('input[type=radio]').is(':checked') ){
+        } else {
+          return false;
+        }
+      }else if( $('textarea').is(":visible") ){
+        if( $('textarea').val() == '' ){
+          return false;
+        }
+      }
 
         var data = {
 
@@ -305,4 +335,3 @@ $(document).ready(function(){
         $("#div_container_error_usuario").css("display","block");
 
     };
-
