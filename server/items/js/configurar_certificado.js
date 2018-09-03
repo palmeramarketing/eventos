@@ -82,8 +82,8 @@ function listar_certificados(){
 			{"data":"id"},
 			{"data":"nombre"},
 			{"data":"nombre_certificado"},
-			{"defaultContent":"<span id='boton-accion' class='accion_ver glyphicon glyphicon-eye-open' data-toggle='modal' data-target='#myModal''>\
-								 </span><span id='boton-accion' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
+			{"defaultContent":"<span id='boton-accion' title='Mostrar Certificado' class='accion_ver glyphicon glyphicon-eye-open' data-toggle='modal' data-target='#myModal''>\
+							   </span><span id='boton-accion' title='Eliminar Certificado' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
 		]
 	});
 
@@ -130,6 +130,14 @@ function listar_certificados(){
 		});
 		$(this).confirmation( 'show' );
 	});
+	// ------------------------------------------
+	
+	// MOSTRAR CERTIFICADO --------------------
+	var id_evento = $("#id-evento").val();
+	var evento = $("#evento").val();
+	if (id_evento > 0) {
+		table.search(evento).draw();
+	}
 	// ------------------------------------------
 
 }
