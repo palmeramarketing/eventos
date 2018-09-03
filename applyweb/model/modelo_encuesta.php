@@ -34,7 +34,7 @@ class Encuesta
 
 				ON cue.id = res.id_pregunta
 
-				WHERE cue.id_evento = '".$datos["id_evento"]."'";
+				WHERE cue.id_evento = '".$datos["id_evento"]."' ORDER BY cue.id ASC";
 
 		$arreglo = $ejecutar->sql_select($sql);
 
