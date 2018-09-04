@@ -72,12 +72,12 @@ $(document).ready(function(){
 					}else if (respuesta.status == 1062) {
 						alert_message("Aviso! ","Ya existe un Landing Page con las mismas caracteristicas.", "alert-warning");
 					}else{
-						alert_message("Error! ","Hubo un error, pilla la consola a ver...", "alert-danger");
+						alert_message("Error! ","Error interno en el servidor, comuniquese con el administrador del sistema.", "alert-danger");
 					}
 					console.log(respuesta, status, req);
 				},
 				error: function(respuesta, status, req){
-					alert_message("Error! ","CRASH, pilla la consola a ver que paso...", "alert-danger");
+					alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
 					console.log(respuesta, status, req);
 				}
 			})

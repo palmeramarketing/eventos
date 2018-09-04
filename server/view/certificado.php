@@ -115,59 +115,6 @@ session_start();
     <input type="hidden" name="id_certificado" id="id_certificado" value="">
   </form>
   <!-- /////////////////////////DATATABLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-  <!-- /////////////////////////MODAL MODIFICAR EVENTO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-  <!-- Modal -->
-  <!-- <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modificar Usuario</h4>
-        </div>
-        <div class="modal-body">
-        <div class="mensaje-div">
-            <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
-        </div>
-          <form role="form" class="form-horizontal" id="form_modifi_usuario">
-            <div class="form-group">
-              <div class="col-xs-10 col-xs-offset-1">
-                <input type="text" id="mod_usuario" name="mod_usuario" tabindex=1 placeholder="Usuario" class="form-control input_style">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-xs-10 col-xs-offset-1">
-                <input type="text" id="mod_email" name="mod_email" tabindex=2 placeholder="Email" class="form-control input_style">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-xs-10 col-xs-offset-1">
-                <select class="form-control"  id="mod_tipo" name="mod_tipo" required>
-                  <option value="">Seleccionar</option>
-                  <option value="admin">Administrador</option>
-                  <option value="superadmin">Super Administrador</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-xs-10 col-xs-offset-1">
-                <select class="form-control" id="mod_estatus" name="mod_estatus" required>
-                  <option value="">Seleccionar</option>
-                  <option value="1">Activo</option>
-                  <option value="0">Inactivo</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary center-block">Guardar Cambios</button>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default cerrar_modal" data-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
 
 
     <script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/eventos/server/items/js/configurar_certificado.js" type="text/javascript" charset="utf-8"></script>

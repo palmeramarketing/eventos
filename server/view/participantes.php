@@ -105,6 +105,7 @@ session_start();
             <th>Apellido</th>
             <th>Direcci&oacute;n</th>
             <th>tel&eacute;fono</th>
+            <th>Asistencia</th>
             <th>Acciones</th>
           </tr>
         </thead>

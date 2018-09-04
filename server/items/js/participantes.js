@@ -125,8 +125,9 @@ function listar_participantes(id_evento){
 				{"data":"apellido"},
 				{"data":"direccion"},
 				{"data":"telefono"},
-				{"defaultContent":"<span id='boton-accion' title='Editar Participante' class='accion_modificar glyphicon glyphicon-edit' data-toggle='modal' data-target='#myModal''></span>\
-								   <span id='boton-accion' title='Eliminar Participante' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
+				{"data":"asistencia"},
+				{"defaultContent":"<span id='boton-accion' class='accion_modificar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''></span>\
+								   <span id='boton-accion' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
 			]
 		});
 	}else{

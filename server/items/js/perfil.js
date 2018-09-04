@@ -15,10 +15,10 @@ $(document).ready(function() {
  //    	},
  //    	submitHandler: function(form) {
 	// 		var datos = {
-	// 			tipo:"login", 
-	// 			usuario:$("#usuario").val(), 
+	// 			tipo:"login",
+	// 			usuario:$("#usuario").val(),
 	// 			password:$("#password").val()
-	// 		};         		
+	// 		};
  //    	}
  //    });
 });
@@ -32,12 +32,12 @@ function buscar_usuario(datos){
 	    success : function(respuesta) {
 	    	if (respuesta.status == 200) {
 	    		console.log(respuesta);
-	    		$("#email-show").text(respuesta.data.email);
-	    		$("#usuario-show").text(respuesta.data.nombre);
-	    		if (respuesta.data.tipo == "admin") {
+	    		$("#email-show").text(respuesta.data[0].email);
+	    		$("#usuario-show").text(respuesta.data[0].nombre);
+	    		if (respuesta.data[0].tipo == "admin") {
 	    			$("#tipo-show").text("Administrador");
 	    		}else{
-	    			$("#tipo-show").text(respuesta.data.tipo);
+	    			$("#tipo-show").text(respuesta.data[0].tipo);
 	    		}
 	    		return false;
 	    	}
@@ -52,5 +52,5 @@ function buscar_usuario(datos){
 	    // complete : function(xhr, status) {
 	    //     alert('LOADING!!!!!!!!!!');
 	    // }
-	});   
+	});
 }
