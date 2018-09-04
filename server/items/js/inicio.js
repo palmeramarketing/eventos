@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 	listar_participante();
 
-	$(".boton_listar").click(function(){
+	$("#actualizar_datatable").click(function(){
 		listar_participante();
 	});
 
@@ -54,13 +54,12 @@ $(document).ready(function() {
 			    	if (respuesta.status == 200) {
 			    		alert_message("Exito! ","Nuevo evento registrado.", "alert-success");
 			    		$("#form_registro_evento")[0].reset();
-			    		listar_participante();
+			    		AddRow(datos);
 			    	}else if (respuesta.status == 1062) {
 			    		alert_message("Aviso! ","El evento ya existe.", "alert-warning");
 			    	}else if (respuesta.status == 500) {
 			    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
 			    	};
-			    	listar_participante();
 			    },
 			    error : function(respuesta) {
 			        alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
@@ -75,9 +74,13 @@ $(document).ready(function() {
 	// ------------------------------------------
 
 });
+$("#destruir").click(function(){
+	$('#tabla_lista_eventos').DataTable().clear().draw();
+});
 
 function listar_participante(){
 	// LISTAR EVENTOS----------------------------
+	$('#tabla_lista_eventos').DataTable().destroy();
 	var table = $('#tabla_lista_eventos').DataTable({
 		"destroy":true,
 		"ajax":{
@@ -90,9 +93,9 @@ function listar_participante(){
 			{"data":"nombre"},
 			{"data":"fecha"},
 			{"data":"direccion"},
-			{"defaultContent":"<span id='boton-accion' class='accion_modificar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''>\
-							   </span><span id='boton-accion' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>\
-							   <span id='boton-accion' class='accion_graficar glyphicon glyphicon-stats'>"}
+			{"defaultContent":"<span id='boton-accion' class='accion_modificar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal'></span>\
+							   <span id='boton-accion' class='accion_eliminar glyphicon glyphicon-trash' data-toggle='confirmation' data-title='¿Estás seguro?'></span>\
+							   <span id='boton-accion' class='accion_graficar glyphicon glyphicon-stats'></span>"}
 		]
 	});
 	// ------------------------------------------
@@ -193,6 +196,26 @@ function listar_participante(){
 		$(this).confirmation( 'show' );
 	});
 	// ------------------------------------------
+}
+
+function AddRow(datos){
+	var table = $('#tabla_lista_eventos').DataTable();
+	var rowNode = table
+	    .row.add({
+	    	"nombre": datos["nombre"],
+	        "fecha": datos["fecha"],
+	        "direccion": datos["direccion"]
+	    })
+	    .draw()
+	    .node();
+	 
+	$( rowNode )
+	    .css( {
+	    	"opacity": "0"
+		})
+	    .animate({
+	    	opacity: "1"
+		});
 }
 
 function alert_message(strong, span, tipo){
