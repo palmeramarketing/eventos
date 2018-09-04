@@ -147,8 +147,8 @@ function listar_participantes(id_evento){
 			"columns":[
 				{"data":"pregunta"},
 				{"data":"tipo"},
-				{"defaultContent":"<span id='boton-accion' class='glyphicon glyphicon-eye-open accion_modificar' data-toggle='modal' data-target='#myModal''>\
-				</span><span id='boton-accion' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
+				{"defaultContent":"<span id='boton-accion' title='Editar Encuesta' class='glyphicon glyphicon-eye-open accion_modificar' data-toggle='modal' data-target='#myModal''>\
+				</span><span id='boton-accion' title='Eliminar Encuesta' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
 			]
 		});
 	}else{
