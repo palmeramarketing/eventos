@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 30-08-2018 a las 17:12:28
--- Versión del servidor: 5.6.39-cll-lve
--- Versión de PHP: 5.6.30
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 04-09-2018 a las 17:28:30
+-- Versión del servidor: 10.1.26-MariaDB
+-- Versión de PHP: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `evento_palmera`
+-- Base de datos: `evento`
 --
 
 -- --------------------------------------------------------
@@ -41,14 +41,17 @@ CREATE TABLE `certificado` (
 --
 
 INSERT INTO `certificado` (`id`, `id_evento`, `nombre_certificado`, `data_html`) VALUES
-(5, 2, 'Certificado de prueba', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<meta charset=\"utf-8\">\r\n	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n	<title>HTML de mPDF</title>\r\n	<link rel=\"stylesheet\" href=\"\">\r\n</head>\r\n<body>\r\n	<div style=\"width: 100%\">\r\n		<div style=\"padding: 0px 15px;\">\r\n			<div style=\"margin: auto; text-align: center;\">\r\n				<h1>\r\n					Certificado de prueba\r\n				</h1>\r\n				<br>\r\n				<span style=\"font-size: 25px;\">Felicidades <span style=\"font-weight: bold;\">@name</span> por su asistencia nuestro evento.</span><br>\r\n				<img src=\"http://palmera.marketing/check-in_system/assets/images/header_gracias.png\" alt=\"\" width=\"100%\">\r\n			</div>\r\n		</div>\r\n	</div>\r\n</body>\r\n</html>'),
-(8, 3, 'Certificado de prueba Evento 3', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<meta charset=\"utf-8\">\r\n	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n	<title>HTML de mPDF</title>\r\n	<link rel=\"stylesheet\" href=\"\">\r\n</head>\r\n<body>\r\n	<div style=\"width: 100%\">\r\n		<div style=\"padding: 0px 15px;\">\r\n			<div style=\"margin: auto; text-align: center;\">\r\n				<h1>\r\n					Certificado de prueba\r\n				</h1>\r\n				<br>\r\n				<span style=\"font-size: 25px;\">Felicidades <span style=\"font-weight: bold;\">@name</span> por su asistencia nuestro evento.</span><br>\r\n				<img src=\"http://palmera.marketing/check-in_system/assets/images/header_gracias.png\" alt=\"\" width=\"100%\">\r\n			</div>\r\n		</div>\r\n	</div>\r\n</body>\r\n</html>\r\n'),
 (9, 15, 'prueba', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<meta charset=\"utf-8\">\r\n	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n	<title>HTML de mPDF</title>\r\n	<link rel=\"stylesheet\" href=\"\">\r\n</head>\r\n<body>\r\n	<div style=\"width: 100%\">\r\n		<div style=\"padding: 0px 15px;\">\r\n			<div style=\"margin: auto; text-align: center;\">\r\n				<h1>\r\n					Certificado de prueba\r\n				</h1>\r\n				<br>\r\n				<span style=\"font-size: 25px;\">Felicidades <span style=\"font-weight: bold;\">@name</span> por su asistencia nuestro evento.</span><br>\r\n				<img src=\"http://palmera.marketing/check-in_system/assets/images/header_gracias.png\" alt=\"\" width=\"100%\">\r\n			</div>\r\n		</div>\r\n	</div>\r\n</body>\r\n</html>\r\n'),
 (10, 16, 'Asistencia ', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<meta charset=\"utf-8\">\r\n	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n	<title>HTML de mPDF</title>\r\n	<link rel=\"stylesheet\" href=\"\">\r\n</head>\r\n<body>\r\n	<div style=\"width: 100%\">\r\n		<div style=\"padding: 0px 15px;\">\r\n			<div style=\"margin: auto; text-align: center;\">\r\n				<h1>\r\n					Certificado de prueba\r\n				</h1>\r\n				<br>\r\n				<span style=\"font-size: 25px;\">Felicidades <span style=\"font-weight: bold;\">@name</span> por su asistencia nuestro evento.</span><br>\r\n				<img src=\"http://palmera.marketing/check-in_system/assets/images/header_gracias.png\" alt=\"\" width=\"100%\">\r\n			</div>\r\n		</div>\r\n	</div>\r\n</body>\r\n</html>\r\n'),
 (12, 1, 'Prueba 2', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<meta charset=\"utf-8\">\r\n	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n	<title>Certificado</title>\r\n	<link href=\"http://palmera.marketing/check-in_system/assets/plugins/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">\r\n</head>\r\n<style>\r\n	body{\r\n		font-family: Helvetica; \r\n		margin: 0px;\r\n	}\r\n	hr{\r\n		border-top: 2px solid #0a0a0a;\r\n	}\r\n	.primer-parrafos{\r\n		font-size: 14pt; \r\n		padding-top: 20px;\r\n	}\r\n	.segundo-parrafos{\r\n		font-size: 14pt; \r\n		margin-bottom: 60px; \r\n		margin-top: 20px\r\n	}\r\n	.nombre-participante{\r\n		font-size: 40pt; \r\n		color: white;\r\n	}\r\n	.seccion-firmas{\r\n		font-size: 10pt;\r\n	}\r\n</style>\r\n<body>\r\n	<div class=\"container-fluid\">\r\n		<div class=\"row\">\r\n			<div class=\"col-xs-12\">\r\n				<img src=\"http://palmera.marketing/check-in_system/assets/images/Header_Menarini_Logo.jpg\" alt=\"\" width=\"100%\">\r\n			</div>	\r\n		</div>\r\n		<div class=\"row\">\r\n			<div class=\"col-xs-12 text-center\">\r\n				<p class=\"primer-parrafos\">Se otorga el siguiente reconocimiento a</p>\r\n			</div>	\r\n		</div>\r\n		<div class=\"row\">\r\n			<div class=\"col-xs-2\">\r\n			</div>\r\n			<div class=\"col-xs-8 text-center\">\r\n				<p class=\"nombre-participante\" >nombre participamte</p>\r\n				<hr/>\r\n			</div>\r\n			<div class=\"col-xs-2\">\r\n			</div>\r\n		</div>\r\n		<div class=\"row\">\r\n			<div class=\"col-xs-12 text-center\">\r\n				<p class=\"segundo-parrafos\">Por haber asistido al IX Simposium de CentroamÃ©rica y el Caribe <br> y actualizar sus conocimientos en la especialidad de OdontoestomatologÃ­a.</p>\r\n			</div>\r\n		</div>	\r\n		<div class=\"row\">\r\n			<div class=\"col-xs-4 text-center seccion-firmas\">\r\n				<hr width=\"75%\"/>\r\n				<p\">Dr. JosÃ© Luis Cobos Serrano</p>\r\n			</div>\r\n			<div class=\"col-xs-4 text-center seccion-firmas\">\r\n				<hr width=\"75%\"/>\r\n				<p>Dr. JosÃ© Manual Navarro MartÃ­nez</p>\r\n			</div>\r\n			<div class=\"col-xs-4 text-center seccion-firmas\">\r\n				<hr width=\"75%\"/>\r\n				<p>Dr. Rafael Palencia DÃ­az</p>	\r\n			</div>\r\n		</div>						\r\n	</div>				\r\n</body>\r\n</html>'),
-(13, 4, 'Certificado nuevo', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<meta charset=\"utf-8\">\r\n	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n	<title>Certificado</title>\r\n	<link href=\"http://palmera.marketing/check-in_system/assets/plugins/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">\r\n</head>\r\n<body style=\"font-family: Helvetica; margin: 0px;\">\r\n	<div class=\"container-fluid\">\r\n		<div class=\"row\">\r\n			<div class=\"col-xs-12\">\r\n				<img src=\"http://palmera.marketing/check-in_system/assets/images/Header_Menarini_Logo.jpg\" alt=\"\" width=\"100%\">\r\n			</div>	\r\n		</div>\r\n		<div class=\"row\">\r\n			<div class=\"col-xs-12 text-center\">\r\n				<p style=\"font-size: 14pt; padding-top: 20px;\">Se otorga el siguiente reconocimiento a</p>\r\n			</div>	\r\n		</div>\r\n		<div class=\"row\">\r\n			<div class=\"col-xs-2\">\r\n			</div>\r\n			<div class=\"col-xs-8 text-center\">\r\n				<p style=\"font-size: 40pt; font-style: italic; font-weight: bold;\">@name</p>\r\n				<hr style=\"border-top: 2px solid #0a0a0a;\" />\r\n			</div>\r\n			<div class=\"col-xs-2\">\r\n			</div>\r\n		</div>\r\n		<div class=\"row\">\r\n			<div class=\"col-xs-12 text-center\">\r\n				<p style=\"font-size: 14pt; margin-bottom: 60px; margin-top: 20px;\">Por haber asistido al IX Simposium de CentroamÃ©rica y el Caribe <br> y actualizar sus conocimientos en la especialidad de OdontoestomatologÃ­a.</p>\r\n			</div>\r\n		</div>	\r\n		<div class=\"row\">\r\n			<div class=\"col-xs-4 text-center\">\r\n				<hr style=\"border-top: 2px solid #0a0a0a;\" width=\"75%\"/>\r\n				<p style=\"font-size: 10pt; \">Dr. JosÃ© Luis Cobos Serrano</p>\r\n			</div>\r\n			<div class=\"col-xs-4 text-center\">\r\n				<hr style=\"border-top: 2px solid #0a0a0a;\" width=\"75%\"/>\r\n				<p style=\"font-size: 10pt; \">Dr. JosÃ© Manual Navarro MartÃ­nez</p>\r\n			</div>\r\n			<div class=\"col-xs-4 text-center\">\r\n				<hr style=\"border-top: 2px solid #0a0a0a;\" width=\"75%\"/>\r\n				<p style=\"font-size: 10pt; \">Dr. Rafael Palencia DÃ­az</p>	\r\n			</div>\r\n		</div>						\r\n	</div>				\r\n</body>\r\n</html>'),
 (14, 47, 'Asistencia 2', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<meta charset=\"utf-8\">\r\n	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n	<title>Certificado</title>\r\n</head>\r\n<body style=\"font-family: Helvetica; margin: 0px;\">\r\n	<div class=\"container-fluid\">\r\n		<div >\r\n			<img src=\"http://palmera.marketing/check-in_system/assets/images/Header_Menarini_Logo.jpg\" alt=\"\" width=\"100%\">\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 12pt; text-align: center;\">Se otorga el siguiente reconocimiento a</p>	\r\n		</div>\r\n		<div>\r\n			<table width=\"60%\"  cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<p style=\"font-size: 20pt; font-style: italic; font-weight: bold;\">@name</p>\r\n						<hr style=\"border-top: 2px solid black;\" width=\"100%\"/>\r\n					</td>\r\n				</tr>\r\n			</table>\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 14pt; margin-bottom: 50px; margin-top: 10px; text-align: center;\">Por haber asistido al IX Simposium de CentroamÃ©rica y el Caribe <br> y actualizar sus conocimientos en la especialidad de OdontoestomatologÃ­a.</p>\r\n		</div>	\r\n		<div>\r\n			<table width=\"100%\" height=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Luis Cobos Serrano</p>\r\n					</td>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Manual Navarro MartÃ­nez</p>\r\n					</td>	\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. Rafael Palencia DÃ­az</p>\r\n					</td>			\r\n				</tr>\r\n			</table>\r\n		</div>						\r\n	</div>				\r\n</body>\r\n</html>'),
-(15, 45, 'Asistencia 3', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<meta charset=\"utf-8\">\r\n	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n	<title>Certificado</title>\r\n</head>\r\n<body style=\"font-family: Helvetica; margin: 0px;\">\r\n	<div class=\"container-fluid\">\r\n		<div >\r\n			<img src=\"http://palmera.marketing/check-in_system/assets/images/Header_Menarini_Logo.jpg\" alt=\"\" width=\"100%\">\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 12pt; text-align: center;\">Se otorga el siguiente reconocimiento a</p>	\r\n		</div>\r\n		<div>\r\n			<table width=\"60%\"  cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<p style=\"font-size: 20pt; font-style: italic; font-weight: bold;\">@name</p>\r\n						<hr style=\"border-top: 2px solid black;\" width=\"100%\"/>\r\n					</td>\r\n				</tr>\r\n			</table>\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 14pt; margin-bottom: 50px; margin-top: 10px; text-align: center;\">Por haber asistido al IX Simposium de CentroamÃ©rica y el Caribe <br> y actualizar sus conocimientos en la especialidad de OdontoestomatologÃ­a.</p>\r\n		</div>	\r\n		<div>\r\n			<table width=\"100%\" height=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Luis Cobos Serrano</p>\r\n					</td>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Manual Navarro MartÃ­nez</p>\r\n					</td>	\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. Rafael Palencia DÃ­az</p>\r\n					</td>			\r\n				</tr>\r\n			</table>\r\n		</div>						\r\n	</div>				\r\n</body>\r\n</html>');
+(15, 45, 'Asistencia 3', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<meta charset=\"utf-8\">\r\n	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n	<title>Certificado</title>\r\n</head>\r\n<body style=\"font-family: Helvetica; margin: 0px;\">\r\n	<div class=\"container-fluid\">\r\n		<div >\r\n			<img src=\"http://palmera.marketing/check-in_system/assets/images/Header_Menarini_Logo.jpg\" alt=\"\" width=\"100%\">\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 12pt; text-align: center;\">Se otorga el siguiente reconocimiento a</p>	\r\n		</div>\r\n		<div>\r\n			<table width=\"60%\"  cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<p style=\"font-size: 20pt; font-style: italic; font-weight: bold;\">@name</p>\r\n						<hr style=\"border-top: 2px solid black;\" width=\"100%\"/>\r\n					</td>\r\n				</tr>\r\n			</table>\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 14pt; margin-bottom: 50px; margin-top: 10px; text-align: center;\">Por haber asistido al IX Simposium de CentroamÃ©rica y el Caribe <br> y actualizar sus conocimientos en la especialidad de OdontoestomatologÃ­a.</p>\r\n		</div>	\r\n		<div>\r\n			<table width=\"100%\" height=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Luis Cobos Serrano</p>\r\n					</td>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Manual Navarro MartÃ­nez</p>\r\n					</td>	\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. Rafael Palencia DÃ­az</p>\r\n					</td>			\r\n				</tr>\r\n			</table>\r\n		</div>						\r\n	</div>				\r\n</body>\r\n</html>'),
+(17, 34, 'asistencia', '<form id=\"subForm\" class=\"js-cm-form\" action=\"https://www.createsend.com/t/subscribeerror?description=\" method=\"post\" data-id=\"A61C50BEC994754B1D79C5819EC1255CE7111AEE467CFD454455420C3FC199129FC5E021EF11092734D1DA286836C013AFE800FC2766238F9467BCEB2748A1EA\">	\n<p>\n    <label for=\"fieldName\">Name</label>\n    <br />\n    <input id=\"fieldName\" name=\"cm-name\" type=\"text\" />\n</p>\n<p>\n    <label for=\"fieldEmail\">Email</label>\n    <br />\n    <input id=\"fieldEmail\" name=\"cm-wdtdti-wdtdti\" type=\"email\" class=\"js-cm-email-input\"\n    required />\n</p>\n<div>\n    <input id=\"cm-privacy-consent\" name=\"cm-privacy-consent\" required type=\"checkbox\"\n    />\n    <label for=\"cm-privacy-consent\">I agree to be emailed</label>\n    <input id=\"cm-privacy-consent-hidden\" name=\"cm-privacy-consent-hidden\"\n    type=\"hidden\" value=\"true\" />\n</div>\n<p>\n    <button class=\"js-cm-submit-button\" type=\"submit\">Subscribe</button>\n</p>\n</form>\n<script type=\"text/javascript\" src=\"https://js.createsend1.com/javascript/copypastesubscribeformlogic.js\"></script>'),
+(18, 49, 'asistencia', ''),
+(23, 19, 'Certificado nuevo', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<meta charset=\"utf-8\">\r\n	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n	<title>Certificado</title>\r\n</head>\r\n<body style=\"font-family: Helvetica; margin: 0px;\">\r\n	<div class=\"container-fluid\">\r\n		<div >\r\n			<img src=\"http://palmera.marketing/check-in_system/assets/images/Header_Menarini_Logo.jpg\" alt=\"\" width=\"100%\">\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 12pt; text-align: center;\">Se otorga el siguiente reconocimiento a</p>	\r\n		</div>\r\n		<div>\r\n			<table width=\"60%\"  cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<p style=\"font-size: 20pt; font-style: italic; font-weight: bold;\">@name</p>\r\n						<hr style=\"border-top: 2px solid black;\" width=\"100%\"/>\r\n					</td>\r\n				</tr>\r\n			</table>\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 14pt; margin-bottom: 50px; margin-top: 10px; text-align: center;\">Por haber asistido al IX Simposium de CentroamÃ©rica y el Caribe <br> y actualizar sus conocimientos en la especialidad de OdontoestomatologÃ­a.</p>\r\n		</div>	\r\n		<div>\r\n			<table width=\"100%\" height=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Luis Cobos Serrano</p>\r\n					</td>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Manual Navarro MartÃ­nez</p>\r\n					</td>	\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. Rafael Palencia DÃ­az</p>\r\n					</td>			\r\n				</tr>\r\n			</table>\r\n		</div>						\r\n	</div>				\r\n</body>\r\n</html>'),
+(26, 24, 'Certificado nuevo', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<meta charset=\"utf-8\">\r\n	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n	<title>Certificado</title>\r\n</head>\r\n<body style=\"font-family: Helvetica; margin: 0px;\">\r\n	<div class=\"container-fluid\">\r\n		<div >\r\n			<img src=\"http://palmera.marketing/check-in_system/assets/images/Header_Menarini_Logo.jpg\" alt=\"\" width=\"100%\">\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 12pt; text-align: center;\">Se otorga el siguiente reconocimiento a</p>	\r\n		</div>\r\n		<div>\r\n			<table width=\"60%\"  cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<p style=\"font-size: 20pt; font-style: italic; font-weight: bold;\">@name</p>\r\n						<hr style=\"border-top: 2px solid black;\" width=\"100%\"/>\r\n					</td>\r\n				</tr>\r\n			</table>\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 14pt; margin-bottom: 50px; margin-top: 10px; text-align: center;\">Por haber asistido al IX Simposium de CentroamÃ©rica y el Caribe <br> y actualizar sus conocimientos en la especialidad de OdontoestomatologÃ­a.</p>\r\n		</div>	\r\n		<div>\r\n			<table width=\"100%\" height=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Luis Cobos Serrano</p>\r\n					</td>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Manual Navarro MartÃ­nez</p>\r\n					</td>	\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. Rafael Palencia DÃ­az</p>\r\n					</td>			\r\n				</tr>\r\n			</table>\r\n		</div>						\r\n	</div>				\r\n</body>\r\n</html>'),
+(31, 53, 'Certificado de Asistencia 1', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<meta charset=\"utf-8\">\r\n	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n	<title>Certificado</title>\r\n</head>\r\n<body style=\"font-family: Helvetica; margin: 0px;\">\r\n	<div class=\"container-fluid\">\r\n		<div >\r\n			<img src=\"http://palmera.marketing/check-in_system/assets/images/Header_Menarini_Logo.jpg\" alt=\"\" width=\"100%\">\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 12pt; text-align: center;\">Se otorga el siguiente reconocimiento a</p>	\r\n		</div>\r\n		<div>\r\n			<table width=\"60%\"  cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<p style=\"font-size: 20pt; font-style: italic; font-weight: bold;\">@name</p>\r\n						<hr style=\"border-top: 2px solid black;\" width=\"100%\"/>\r\n					</td>\r\n				</tr>\r\n			</table>\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 14pt; margin-bottom: 50px; margin-top: 10px; text-align: center;\">Por haber asistido al IX Simposium de CentroamÃ©rica y el Caribe <br> y actualizar sus conocimientos en la especialidad de OdontoestomatologÃ­a.</p>\r\n		</div>	\r\n		<div>\r\n			<table width=\"100%\" height=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Luis Cobos Serrano</p>\r\n					</td>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Manual Navarro MartÃ­nez</p>\r\n					</td>	\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. Rafael Palencia DÃ­az</p>\r\n					</td>			\r\n				</tr>\r\n			</table>\r\n		</div>						\r\n	</div>				\r\n</body>\r\n</html>'),
+(32, 55, 'MIMI SAN CERTIFICATE', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n	<meta charset=\"utf-8\">\r\n	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n	<title>Certificado</title>\r\n</head>\r\n<body style=\"font-family: Helvetica; margin: 0px;\">\r\n	<div class=\"container-fluid\">\r\n		<div >\r\n			<img src=\"http://palmera.marketing/check-in_system/assets/images/Header_Menarini_Logo.jpg\" alt=\"\" width=\"100%\">\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 12pt; text-align: center;\">Se otorga el siguiente reconocimiento a</p>	\r\n		</div>\r\n		<div>\r\n			<table width=\"60%\"  cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<p style=\"font-size: 20pt; font-style: italic; font-weight: bold;\">@name</p>\r\n						<hr style=\"border-top: 2px solid black;\" width=\"100%\"/>\r\n					</td>\r\n				</tr>\r\n			</table>\r\n		</div>\r\n		<div>\r\n			<p style=\"font-size: 14pt; margin-bottom: 50px; margin-top: 10px; text-align: center;\">Por haber asistido al IX Simposium de CentroamÃ©rica y el Caribe <br> y actualizar sus conocimientos en la especialidad de OdontoestomatologÃ­a.</p>\r\n		</div>	\r\n		<div>\r\n			<table width=\"100%\" height=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\">\r\n				<tr>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Luis Cobos Serrano</p>\r\n					</td>\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. JosÃ© Manual Navarro MartÃ­nez</p>\r\n					</td>	\r\n					<td align=\"center\">\r\n						<hr style=\"border-top: 2px solid black;\" width=\"50%\"/>\r\n						<p style=\"font-size: 9pt; \">Dr. Rafael Palencia DÃ­az</p>\r\n					</td>			\r\n				</tr>\r\n			</table>\r\n		</div>						\r\n	</div>				\r\n</body>\r\n</html>');
 
 -- --------------------------------------------------------
 
@@ -70,24 +73,34 @@ CREATE TABLE `cuestionario` (
 
 INSERT INTO `cuestionario` (`id`, `id_evento`, `pregunta`, `tipo`) VALUES
 (67, 3, 'QWERTY', 'simple'),
-(66, 1, 'pregunta de prueba', 'libre'),
 (65, 6, 'Pregunta 1', 'simple'),
 (64, 1, 'Pregunta 1', 'multi'),
 (57, 1, 'Pregunta 1', 'simple'),
-(60, 1, 'Pregunta 2', 'multi'),
-(59, 1, 'Pregunta 3', 'libre'),
 (61, 2, 'Pregunta de prueba', 'simple'),
-(62, 2, 'Pregunta de prueba 2', 'multi'),
-(63, 2, 'Pregunta de prueba 3', 'libre'),
+(84, 51, 'En tu opiniÃ³n, Â¿cuanta relaciÃ³n hay entre las acciones y los valores de la compaÃ±Ã­a?', 'simple'),
 (69, 15, 'Color del logo PALM ERA', 'simple'),
-(70, 15, 'Seleccione las opciones que le de mas satisfaccion', 'multi'),
-(71, 15, 'Explique como se siente hoy', 'libre'),
+(91, 53, 'Seleccione dos jugos naturales preferidos', 'multi'),
+(90, 53, 'Indique su comida preferida', 'simple'),
 (74, 16, 'Seleccione el dÃ­a favorito de la semana para usted', 'simple'),
 (75, 16, 'Seleccione su tipo de cafe favorito', 'multi'),
 (76, 16, 'Â¿Que le dirÃ­as a Nicolas Maduro?', 'libre'),
 (77, 45, 'Seleccione su color favorito', 'simple'),
 (79, 45, 'Que lo hace mas feliz?', 'multi'),
-(80, 45, 'Que le dirias a Maduro?', 'libre');
+(83, 51, ' Â¿Cuan bien conoces los valores de la compaÃ±Ã­a?', 'simple'),
+(81, 23, 'que hora es', 'libre'),
+(82, 23, 'que hora fue', 'simple'),
+(85, 51, 'En tu opiniÃ³n, Â¿cuanta relaciÃ³n hay entre las acciones y los valores de la compaÃ±Ã­a?', 'simple'),
+(86, 51, 'Â¿Cuan identificado consideras tus propias acciones con respecto a los valores de la compaÃ±Ã­a?', 'simple'),
+(87, 51, 'Â¿CuÃ¡l valor corporativo incorporarÃ­as como un pilar en Palm Era?', 'simple'),
+(88, 51, 'Â¿En cuÃ¡l lÃ­der identificas los 4 pilares?', 'simple'),
+(89, 51, 'Â¿QuÃ© te motiva a desarrollar tus actividades diarias en la empresa?', 'simple'),
+(92, 53, 'Indique en cual tipo de estructura prefiere vivir', 'simple'),
+(93, 53, 'Describa cÃ³mo es su automovil ', 'libre'),
+(94, 53, 'Seleccione su programa de  TV favorito', 'simple'),
+(95, 53, 'Tipo de calzado preferido', 'multi'),
+(96, 53, 'Seleccione tipo de mascota preferida', 'multi'),
+(98, 55, 'Pregunta 2 iaudhfysdyuffsdufusef', 'libre'),
+(99, 55, 'Pregunta 3 iuhfusihfiuhdig', 'simple');
 
 -- --------------------------------------------------------
 
@@ -148,7 +161,13 @@ INSERT INTO `evento_participante` (`id`, `id_evento`, `id_participante`) VALUES
 (46, 45, 76),
 (47, 45, 77),
 (48, 45, 78),
-(49, 45, 79);
+(49, 45, 79),
+(50, 51, 79),
+(51, 45, 81),
+(52, 45, 82),
+(53, 45, 83),
+(54, 45, 84),
+(55, 45, 85);
 
 -- --------------------------------------------------------
 
@@ -180,7 +199,19 @@ INSERT INTO `evento_usuario` (`id`, `fk_usuario`, `fk_evento`) VALUES
 (10, 0, 44),
 (11, 28, 45),
 (12, 28, 46),
-(13, 28, 47);
+(13, 28, 47),
+(14, 20, 48),
+(15, 28, 49),
+(16, 28, 50),
+(17, 32, 15),
+(18, 6, 21),
+(19, 6, 37),
+(20, 6, 45),
+(21, 20, 51),
+(22, 28, 52),
+(23, 28, 53),
+(24, 28, 54),
+(25, 28, 55);
 
 -- --------------------------------------------------------
 
@@ -225,6 +256,7 @@ CREATE TABLE `lista_evento` (
   `nombre` varchar(128) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `fecha` date NOT NULL,
   `direccion` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
+  `hash` varchar(50) DEFAULT NULL,
   `estatus` int(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -232,50 +264,58 @@ CREATE TABLE `lista_evento` (
 -- Volcado de datos para la tabla `lista_evento`
 --
 
-INSERT INTO `lista_evento` (`id`, `nombre`, `fecha`, `direccion`, `estatus`) VALUES
-(1, 'evento1', '2017-11-08', 'direccionaa', 1),
-(2, 'evento2', '2017-11-22', 'direccion2', 1),
-(3, 'evento3', '2017-11-15', 'direccion3', 1),
-(4, 'evento4', '2017-11-30', 'la direccion', 1),
-(5, 'evento5', '2017-11-29', 'En Los Teques', 1),
-(6, 'evento6', '2017-12-14', 'En Caracas', 0),
-(7, 'evento7', '2017-12-27', 'En Valencia', 0),
-(8, 'evento8', '2017-12-29', 'Aragua', 0),
-(9, 'evento9', '2017-12-29', 'San Homero', 0),
-(10, 'evento9', '2017-12-31', 'San Homero', 0),
-(11, 'evento7', '2017-12-25', 'Aragua', 0),
-(12, 'evento7', '2017-12-31', 'Aragua', 0),
-(13, 'evento7', '2017-12-31', 'Aragua', 0),
-(14, 'ddd', '2017-12-19', 'qeeee', 0),
-(15, 'Evento de Prueba con Check In', '2018-08-10', 'Caracas', 1),
-(16, 'Salida a Produccion', '2018-09-01', 'Hotel Alba CCS', 1),
-(17, 'Prueba de Usuario 1', '2018-09-07', 'Hotel Pestana', 1),
-(18, 'Prueba de Usuario', '2018-09-07', 'Hotel Pestana', 1),
-(19, 'pRUBEAS DOS', '2018-08-31', 'Hotel Pestana', 1),
-(20, 'pRUBEAS DOS', '2018-08-31', 'Hotel Pestana', 1),
-(21, 'pRUBEAS DOS', '2018-08-31', 'Hotel Pestana', 1),
-(22, 'pRUBEAS DOS', '2018-08-31', 'Hotel Pestana', 1),
-(23, 'pRUBEAS DOS', '2018-08-31', 'Hotel Pestana', 1),
-(24, 'pRUEBA 2', '2018-08-31', 'Hotel Alba CCS', 1),
-(25, 'pRUEBA 2', '2018-08-31', 'Hotel Alba CCS', 1),
-(26, 'pRUEBA 2', '2018-09-02', 'Hotel Alba CCS', 1),
-(27, 'pRUEBA 2', '2018-09-02', 'Hotel Alba CCS', 1),
-(28, 'pRUEBA 2', '2018-09-02', 'Hotel Alba CCS', 1),
-(29, 'pRUEBA 2', '2018-09-02', 'Hotel Alba CCS', 1),
-(34, 'aaaaa', '2018-08-22', 'aaaaa', 1),
-(35, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', 1),
-(36, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', 1),
-(37, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', 1),
-(38, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', 1),
-(39, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', 1),
-(40, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', 1),
-(41, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', 1),
-(42, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', 1),
-(43, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', 1),
-(44, 'Prueba de Usuario 3', '2018-09-02', 'Hotel Pestana', 1),
-(45, 'Meeting IT', '2018-08-31', 'Hotel Marriot CCS', 1),
-(46, 'Prueba funcional 2', '2018-08-30', 'Hotel Alba CCS', 1),
-(47, 'PF4', '2018-08-30', 'Hotel Alba CCS', 1);
+INSERT INTO `lista_evento` (`id`, `nombre`, `fecha`, `direccion`, `hash`, `estatus`) VALUES
+(1, 'evento1', '2017-11-08', 'direccionaa', NULL, 1),
+(2, 'evento2', '2017-11-22', 'direccion2', NULL, 1),
+(3, 'evento3', '2017-11-15', 'direccion3', NULL, 1),
+(4, 'evento4', '2017-11-30', 'la direccion', NULL, 1),
+(5, 'evento5', '2017-11-29', 'En Los Teques', NULL, 1),
+(6, 'evento6', '2017-12-14', 'En Caracas', NULL, 0),
+(7, 'evento7', '2017-12-27', 'En Valencia', NULL, 0),
+(8, 'evento8', '2017-12-29', 'Aragua', NULL, 0),
+(9, 'evento9', '2017-12-29', 'San Homero', NULL, 0),
+(10, 'evento9', '2017-12-31', 'San Homero', NULL, 0),
+(11, 'evento7', '2017-12-25', 'Aragua', NULL, 0),
+(12, 'evento7', '2017-12-31', 'Aragua', NULL, 0),
+(13, 'evento7', '2017-12-31', 'Aragua', NULL, 0),
+(14, 'ddd', '2017-12-19', 'qeeee', NULL, 0),
+(15, 'Evento de Prueba con Check In', '2018-08-10', 'Caracas', NULL, 1),
+(16, 'Salida a Produccion', '2018-09-01', 'Hotel Alba CCS', NULL, 1),
+(17, 'Prueba de Usuario 1', '2018-09-07', 'Hotel Pestana', NULL, 0),
+(18, 'Prueba de Usuario', '2018-09-07', 'Hotel Pestana', NULL, 0),
+(19, 'pRUBEAS DOS', '2018-08-31', 'Hotel Pestana', NULL, 1),
+(20, 'pRUBEAS DOS', '2018-08-31', 'Hotel Pestana', NULL, 1),
+(21, 'pRUBEAS DOS', '2018-08-31', 'Hotel Pestana', NULL, 1),
+(22, 'pRUBEAS DOS', '2018-08-31', 'Hotel Pestana', NULL, 1),
+(23, 'pRUBEAS DOS', '2018-08-31', 'Hotel Pestana', NULL, 1),
+(24, 'pRUEBA 2', '2018-08-31', 'Hotel Alba CCS', NULL, 1),
+(25, 'pRUEBA 2', '2018-08-31', 'Hotel Alba CCS', NULL, 1),
+(26, 'pRUEBA 2', '2018-09-02', 'Hotel Alba CCS', NULL, 1),
+(27, 'pRUEBA 2', '2018-09-02', 'Hotel Alba CCS', NULL, 1),
+(28, 'pRUEBA 2', '2018-09-02', 'Hotel Alba CCS', NULL, 0),
+(29, 'pRUEBA 2', '2018-09-02', 'Hotel Alba CCS', NULL, 1),
+(34, 'aaaaa', '2018-08-22', 'aaaaa', NULL, 0),
+(35, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', NULL, 0),
+(36, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', NULL, 1),
+(37, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', NULL, 1),
+(38, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', NULL, 1),
+(39, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', NULL, 1),
+(40, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', NULL, 1),
+(41, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', NULL, 0),
+(42, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', NULL, 0),
+(43, 'Pruebas  de Usuario 3', '2018-09-01', 'Hotel Pestana', NULL, 1),
+(44, 'Prueba de Usuario 3', '2018-09-02', 'Hotel Pestana', NULL, 1),
+(45, 'Meeting IT', '2018-08-31', 'Hotel Marriot CCS', NULL, 1),
+(46, 'Prueba funcional 2', '2018-08-30', 'Hotel Alba CCS', NULL, 0),
+(47, 'PF4', '2018-08-30', 'Hotel Alba CCS', NULL, 1),
+(48, 'BlizzCon', '2018-11-02', 'Anaheim Convention Center de Anaheim, California.', NULL, 1),
+(49, 'BlizzCon2', '2018-08-30', 'Anaheim Convention Center de Anaheim, California.', NULL, 1),
+(50, 'BlizzCon 2018', '2018-08-15', 'Anaheim Convention Center de Anaheim', NULL, 0),
+(51, 'Encuesta State of Union', '2018-09-03', 'Oficinas PALM ERA CCS', NULL, 0),
+(52, 'Encuesta PALM ERA', '2018-09-05', 'Hotel Renassisenn', NULL, 0),
+(53, 'ENCUESTA Palmera', '2018-09-05', 'Hotel Renassisenn', NULL, 0),
+(54, 'BPO Summit', '2018-11-09', 'Guatemala', NULL, 0),
+(55, 'BPO Summit 2', '2018-10-15', 'Guatemala', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -286,45 +326,44 @@ INSERT INTO `lista_evento` (`id`, `nombre`, `fecha`, `direccion`, `estatus`) VAL
 DROP TABLE IF EXISTS `participante`;
 CREATE TABLE `participante` (
   `id` int(255) NOT NULL,
-  `email` varchar(128) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `nombre` varchar(128) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `apellido` varchar(128) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `direccion` varchar(128) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `telefono` varchar(15) NOT NULL,
-  `estatus` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nombre` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido_1` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido_2` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `especialidad` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `colegiado` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `celular` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `ciudad` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `pais` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `direccion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `asistencia` varchar(70) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Sin asistencia',
+  `estatus` int(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `participante`
 --
 
-INSERT INTO `participante` (`id`, `email`, `nombre`, `apellido`, `direccion`, `telefono`, `estatus`) VALUES
-(1, 'yleal@palmeramarketing.com', 'Yanuel', 'Leal', 'Caracas', '02123216202', 1),
-(2, 'correo', 'nombre', 'apellido', 'direccion', '12345', 1),
-(4, 'yanueltex2@gmail.com', 'Alejandro', 'Tortoza', 'Los Teques', '04166228987', 1),
-(6, 'yanueltex3@gmail.com', 'Alejandro', 'Tortoza', 'Los Teques', '04166228987', 1),
-(7, 'yanueltex4@gmail.com', 'Alejandro2', 'Tortoza2', 'Los Teques2', '04166228982', 1),
-(8, 'yanueltexsd@gmail.com', 'Alejandro', 'Tortoza', 'Los Teques2', '04166228982', 1),
-(9, 'prueba@prueba.com', 'Prueba', 'Prueba', 'Prueba', 'Prueba', 1),
-(10, 'prueba2@prueba.com', 'Yanuel P2', 'Leal P2', 'Los Teques', '0416622898777', 1),
-(12, 'prueba3@prueba.com', 'Prueba3', 'Prueba3', 'Prueba3', 'Prueba3', 1),
-(14, 'yanuetex@hotmail.com', 'Yanueltex', 'Lealtex', 'Los Tequex', '02123216202', 1),
-(16, 'palmera@palmera.marketing', 'palmera', 'marketing', 'caracas', '123456983', 1),
-(20, 'prueba@esprueba.com', 'Yanuel Prueba', 'Leal', 'Los Teques', '0416622898777', 1),
-(38, 'Prueba1@prueba1.com', 'Yanuel P1', 'Leal P1', 'los teques', '3234234234234', 1),
-(40, 'Prueba2@prueba1.com', 'Yanuel P2', 'Leal P2', 'Los Teques', '04126515', 1),
-(48, 'dariana@palmera.marketing', 'Dariana', 'Garcia', 'Altamira', '02128374657', 1),
-(52, 'vielman@palmera.marketing', 'vielman', 'paredes', 'altamira', '45454545', 1),
-(55, 'yanuel@palmera.marketing', 'Yanuel', 'Leal', 'Los Teques', '02123216202', 1),
-(65, 'carmenmende55@gmail.com', 'Ana MarÃ¬a', 'Palacios', 'La Candelaria', '04126104574', 1),
-(71, 'mileydi@palmera.marketing', 'Angel', 'Palacios', 'victaria', '041485473201', 1),
-(72, 'daniel@palmera.marketing', 'Myriam', 'pereez', 'La Candelaria', '04126104574', 1),
-(73, 'mileidysantos@yahoo.com', 'Daniela', 'Palacios', 'Calle 49', '02129847412', 1),
-(75, 'yanueltex@gmail.com', 'Yanuel', 'Leal', 'Los Teques', '02123216202', 1),
-(76, 'darimartinez_26@hotmail.com', 'Dariana', 'Garcia', 'Altamira', '02123659874', 1),
-(77, 'luis@hotmail.com', 'Luis', 'Hernadez', 'Las palmeras', '02120529974', 1),
-(78, 'neongelion@hotmail.com', 'Alejandro', 'Tortoza', 'Los Teques', '3234234234234', 1),
-(79, 'mileidy.santos@gmail.com', 'Ana MaeÃ­a', 'PerÃ©z', 'Plaza Venezuela', '041485473201', 1);
+INSERT INTO `participante` (`id`, `nombre`, `apellido_1`, `apellido_2`, `especialidad`, `colegiado`, `celular`, `email`, `ciudad`, `pais`, `direccion`, `telefono`, `asistencia`, `estatus`) VALUES
+(10, 'Yanuelwwwww', 'Leal2', 'Tortoza2', 'Programacion2', '12345', '04166228987', 'yanueltexx@gmail.com', 'Caracas2', 'Venezuela2', 'Los Teques2', '3234234234234', 'Sin asistencia', 1),
+(15, 'Yanuel Prueba', 'Leal', 'Tortoza', 'Programacion', '550321', '04166228987', 'prueba@esprueba.com', 'Caracas', 'Venezuela', 'Los Teques', '0416622898777', 'Sin asistencia', 1),
+(18, 'Yanuel P1', 'Leal P1', 'Tortoza P1', 'Programado P1', '123456789', '1112312312312', 'Prueba1@prueba1.com', 'Los teques', 'Venezuela', 'los teques', '3234234234234', 'Con asistencia', 1),
+(19, 'Yanuel P2', 'Leal P2', 'Tortoza P2', 'Programado P2', '123456789', '1112312312312', 'Prueba2@prueba.com', 'Los teques', 'Venezuela3', 'Los Teques', '0416622898777', 'Sin asistencia', 1),
+(20, 'Yanuel P2', 'Leal P2', 'Tortoza P2', 'Programado P2', '123456789', '04166228987', 'Prueba2@prueba1.com', 'Los teques', 'Venezuela3', 'Los Teques', '04126515', 'Con asistencia', 1),
+(24, 'Dariana', 'Garcia', 'Martinez', 'Web Master', '852', '04123971680', 'dariana@palmera.marketing', 'Caracas', 'Venezuela', 'Altamira', '02128374657', 'Con asistencia', 1),
+(30, 'vielman', 'paredes', 'espinoza', 'medico', '2224', '42525245', 'vielman2@palmera.marketing', 'caracas', 'venezuela', 'altamira', '45454545', 'Sin asistencia', 1),
+(31, 'Yanuel', 'Leal', 'Tortoza', 'Programacion', '0123456', '04166228987', 'yanuel@palmera.marketing', 'Caracas', 'Venezuela', 'Los Teques', '02123216202', 'Con asistencia', 1),
+(33, 'vielman', 'paredes', 'espinoza', 'medico', '2224', '42525245', 'vielman@palmera.marketing', 'caracas', 'venezuela', 'altamira', '45454545', 'Con asistencia', 1),
+(41, 'Ana MarÃ¬a', 'Palacios', 'Moreno', 'OdontologÃ­a', '413258', '04125427709', 'carmenmende55@gmail.com', 'Caracas', 'Colombia', 'La Candelaria', '04126104574', 'Con asistencia', 1),
+(47, 'Angel', 'Palacios', 'Mendez', 'pediatria', '963241', '04128524712', 'mileydi@palmera.marketing', 'Caracas', 'Venezuela', 'victaria', '041485473201', 'Con asistencia', 1),
+(48, 'Myriam', 'pereez', 'olivares', 'ginecologÃ­a', '063818', '04125427709', 'daniel@palmera.marketing', 'BogotÃ¡', 'Colombia', 'La Candelaria', '04126104574', 'Con asistencia', 1),
+(49, 'Daniela', 'Palacios', 'Ãturbe', 'OdontologÃ­a', '044618', '04125427709', 'mileidysantos@yahoo.com', 'BogotÃ¡', 'Colombia', 'Calle 49', '02129847412', 'Sin asistencia', 1),
+(51, 'Yanuel', 'Leal', 'Tortoza', 'Programador', '20746625', '04166228987', 'yanueltex@gmail.com', 'Los teques', 'Venezuela', 'Los Teques', '02123216202', 'Con asistencia', 1),
+(52, 'Dariana', 'Garcia', 'Martinez', 'Web master', '153', '04169986532', 'darimartinez_26@hotmail.com', 'Caracas', 'Venezuela', 'Altamira', '02123659874', 'Con asistencia', 1),
+(53, 'Luis', 'Hernadez', 'Perez', 'Dermatologo', '785', '04169986532', 'luis@hotmail.com', 'Valencia', 'Venezuela', 'Las palmeras', '02120529974', 'Con asistencia', 1),
+(54, 'Alejandro', 'Tortoza', 'Leal', 'Programador', '21746625', '04166228987', 'neongelion@hotmail.com', 'Los teques', 'Venezuela', 'Los Teques', '3234234234234', 'Con asistencia', 1),
+(55, 'Ana MaeÃ­a', 'PerÃ©z', 'Monasterios', 'PediatrÃ­a', '061718', '04125427709', 'mileidy.santos@gmail.com', 'Caracas', 'Venezuela', 'Plaza Venezuela', '041485473201', 'Sin asistencia', 1);
 
 -- --------------------------------------------------------
 
@@ -344,38 +383,36 @@ CREATE TABLE `respuesta` (
 --
 
 INSERT INTO `respuesta` (`id`, `id_pregunta`, `descripcion`) VALUES
-(51, 62, 'La opcion 4'),
-(50, 62, 'La opcion 3'),
-(49, 62, 'La opcion 2'),
-(48, 62, 'La opcion 1'),
+(125, 85, 'Mucho'),
+(124, 84, 'Nada'),
+(123, 84, 'Poco'),
+(122, 84, 'Bastante'),
 (47, 61, 'Opcion2'),
 (46, 61, 'Opcion1'),
-(42, 59, 'textarea'),
-(45, 60, 'opc 3'),
-(44, 60, 'opc 2'),
-(43, 60, 'opc 1'),
+(127, 85, 'Poco'),
+(121, 84, 'Mucho'),
+(120, 83, 'Nada'),
+(119, 83, 'Poco'),
 (38, 57, 'Opcion3'),
 (37, 57, 'Opcion2'),
 (36, 57, 'Opcion1'),
-(52, 63, 'textarea'),
+(126, 85, 'Bastante'),
 (53, 64, '1'),
 (54, 64, '2'),
 (55, 64, '3'),
 (56, 64, '4'),
 (57, 65, '1'),
 (58, 65, '2'),
-(59, 66, 'Respuesta Libre'),
+(128, 85, 'Nada'),
 (60, 67, '11'),
 (61, 67, '22'),
 (65, 69, 'Verde'),
 (66, 69, 'Azul'),
 (67, 69, 'Amarillo'),
 (68, 69, 'Rojo'),
-(69, 70, 'Carro'),
-(70, 70, 'Dinero'),
-(71, 70, 'Casa'),
-(72, 70, 'Vacaciones'),
-(73, 71, 'Respuesta Libre'),
+(148, 90, 'pollo con vegetales'),
+(147, 90, 'pizza'),
+(146, 90, 'lasaÃ±a'),
 (84, 75, 'Con leche'),
 (83, 74, 'Viernes'),
 (82, 74, 'Jueves'),
@@ -400,7 +437,60 @@ INSERT INTO `respuesta` (`id`, `id_pregunta`, `descripcion`) VALUES
 (105, 79, 'Dinero'),
 (109, 79, 'Super autos'),
 (110, 79, 'Super poderes'),
-(111, 80, 'Respuesta Libre');
+(118, 83, 'Mucho'),
+(112, 81, 'Respuesta Libre'),
+(113, 82, '11'),
+(114, 82, '12'),
+(115, 82, '13'),
+(116, 82, '14'),
+(117, 82, '15'),
+(129, 86, 'Mucho'),
+(130, 86, 'Bastante'),
+(131, 86, 'Poco'),
+(132, 86, 'Nada'),
+(133, 87, 'Compromiso'),
+(134, 87, 'Respeto'),
+(135, 87, 'InterÃ©s por las asignaciones'),
+(136, 88, 'Carolina Vila'),
+(137, 88, 'Alfredo Ceballos'),
+(138, 88, 'Simon Gabay'),
+(139, 88, 'Mayli Mesa'),
+(140, 88, 'Daniel Molina'),
+(141, 88, 'Jose Pena'),
+(142, 89, 'Dinero'),
+(143, 89, 'Reconocimiento'),
+(144, 89, 'Aprendizaje'),
+(145, 89, 'Crecimiento Profesional '),
+(149, 90, 'crema de vegetales'),
+(150, 91, 'Naranja'),
+(151, 91, 'Melon'),
+(152, 91, 'Parchita'),
+(153, 91, 'Guanabana'),
+(154, 91, 'patilla'),
+(155, 92, 'Edificio'),
+(156, 92, 'Casa'),
+(157, 92, 'choza'),
+(158, 92, 'rancho'),
+(159, 92, 'palafito'),
+(160, 93, 'Respuesta Libre'),
+(161, 94, 'Reto Cooking'),
+(162, 94, 'Vestido de novia'),
+(163, 94, 'Game of thrones'),
+(164, 94, 'Liga BBVA'),
+(165, 94, 'FÃºtbol EspaÃ±ol'),
+(166, 95, 'casual'),
+(167, 95, 'deportivo'),
+(168, 95, 'formal'),
+(169, 95, 'escalada'),
+(170, 96, 'Perros'),
+(171, 96, 'Aves'),
+(172, 96, 'Gatos'),
+(173, 96, 'Reptiles'),
+(174, 96, 'Roedores'),
+(178, 98, 'Respuesta Libre'),
+(179, 99, 'Opcion 1'),
+(180, 99, 'Opcion 2'),
+(181, 99, 'Opcion ');
 
 -- --------------------------------------------------------
 
@@ -496,7 +586,37 @@ INSERT INTO `respuesta_evento` (`id`, `id_participante`, `id_respuesta`, `respue
 (79, 55, 91, ''),
 (80, 55, 105, ''),
 (81, 55, 110, ''),
-(82, 55, 111, 'CONOOOOO EEEH TU MADREEEEE!!!!!');
+(82, 55, 111, 'CONOOOOO EEEH TU MADREEEEE!!!!!'),
+(83, 72, 92, ''),
+(84, 72, 108, ''),
+(85, 79, 91, ''),
+(86, 79, 108, ''),
+(87, 79, 94, ''),
+(88, 79, 106, ''),
+(89, 79, 126, ''),
+(90, 79, 122, ''),
+(91, 79, 128, ''),
+(92, 79, 124, ''),
+(93, 79, 118, ''),
+(94, 79, 128, ''),
+(95, 79, 120, ''),
+(96, 79, 129, ''),
+(97, 79, 133, ''),
+(98, 79, 140, ''),
+(99, 79, 142, ''),
+(100, 79, 125, ''),
+(101, 79, 124, ''),
+(102, 79, 125, ''),
+(103, 79, 124, ''),
+(104, 71, 120, ''),
+(105, 71, 142, ''),
+(106, 85, 118, ''),
+(107, 85, 122, ''),
+(108, 85, 128, ''),
+(109, 85, 131, ''),
+(110, 85, 135, ''),
+(111, 85, 138, ''),
+(112, 85, 145, '');
 
 -- --------------------------------------------------------
 
@@ -540,7 +660,39 @@ INSERT INTO `usuario` (`id`, `email`, `nombre`, `password`, `tipo`, `estatus`, `
 (28, 'mileidy.santos@gmail.com', 'Mimi San', '64178bf83cb7cc8292b626bc65ae89ce', 'admin', 1, 1),
 (29, 'prueba2@prueba.com', 'prueba2', '96080775c113b0e5c3e32bdd26214aec', 'admin', 1, 1),
 (30, 'mariale@palmera.marketing', 'Mariale FernÃ¡ndez', 'bc3b03752471f39d94ad3a8d9ae70706', 'admin', 1, 0),
-(31, 'rodolfo@palmera.marketing', 'Rodolfo Mendez ', '6a97eec79683f8582de1c9531c858682', 'admin', 1, 0);
+(31, 'rodolfo@palmera.marketing', 'Rodolfo Mendez ', '6a97eec79683f8582de1c9531c858682', 'admin', 1, 0),
+(32, 'daniel@palmera.marketing', 'daniel', '972c1cd7b1ef449a8eaccffa6e7e17ff', 'superadmin', 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vista_respuesta_evento`
+-- (Véase abajo para la vista actual)
+--
+DROP VIEW IF EXISTS `vista_respuesta_evento`;
+CREATE TABLE `vista_respuesta_evento` (
+`id_participante` int(255)
+,`id_respuesta` int(255)
+,`respuesta_libre` varchar(255)
+,`id_pregunta` int(255)
+,`descripcion` varchar(255)
+,`id_evento` int(255)
+,`pregunta` varchar(128)
+,`tipo` varchar(128)
+,`nombre` varchar(128)
+,`fecha` date
+,`direccion` varchar(255)
+,`estatus` int(1)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vista_respuesta_evento`
+--
+DROP TABLE IF EXISTS `vista_respuesta_evento`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_respuesta_evento`  AS  select `rese`.`id_participante` AS `id_participante`,`rese`.`id_respuesta` AS `id_respuesta`,`rese`.`respuesta_libre` AS `respuesta_libre`,`res`.`id_pregunta` AS `id_pregunta`,`res`.`descripcion` AS `descripcion`,`cues`.`id_evento` AS `id_evento`,`cues`.`pregunta` AS `pregunta`,`cues`.`tipo` AS `tipo`,`liste`.`nombre` AS `nombre`,`liste`.`fecha` AS `fecha`,`liste`.`direccion` AS `direccion`,`liste`.`estatus` AS `estatus` from (((`respuesta_evento` `rese` left join `respuesta` `res` on((`rese`.`id_respuesta` = `res`.`id`))) left join `cuestionario` `cues` on((`res`.`id_pregunta` = `cues`.`id`))) left join `lista_evento` `liste` on((`cues`.`id_evento` = `liste`.`id`))) ;
 
 --
 -- Índices para tablas volcadas
@@ -588,14 +740,15 @@ ALTER TABLE `landing_registro`
 -- Indices de la tabla `lista_evento`
 --
 ALTER TABLE `lista_evento`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `hash` (`hash`);
 
 --
 -- Indices de la tabla `participante`
 --
 ALTER TABLE `participante`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email_unique` (`email`);
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indices de la tabla `respuesta`
@@ -624,68 +777,57 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `certificado`
 --
 ALTER TABLE `certificado`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT de la tabla `cuestionario`
 --
 ALTER TABLE `cuestionario`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
-
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 --
 -- AUTO_INCREMENT de la tabla `custom_fields`
 --
 ALTER TABLE `custom_fields`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT de la tabla `evento_participante`
 --
 ALTER TABLE `evento_participante`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
-
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT de la tabla `evento_usuario`
 --
 ALTER TABLE `evento_usuario`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `landing_registro`
 --
 ALTER TABLE `landing_registro`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
 -- AUTO_INCREMENT de la tabla `lista_evento`
 --
 ALTER TABLE `lista_evento`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
-
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT de la tabla `participante`
 --
 ALTER TABLE `participante`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
-
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT de la tabla `respuesta`
 --
 ALTER TABLE `respuesta`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
-
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
 --
 -- AUTO_INCREMENT de la tabla `respuesta_evento`
 --
 ALTER TABLE `respuesta_evento`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
-
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-COMMIT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
