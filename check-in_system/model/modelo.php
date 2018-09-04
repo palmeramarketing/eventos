@@ -18,7 +18,7 @@ class Modelo
 		if ($registro["status"] != 200) {
 			return $registro;
 		}
-		$insert = "INSERT INTO participantes (nombre,apellido_1,apellido_2,especialidad,colegiado,celular,email,ciudad,pais,direccion,telefono,asistencia)
+		$insert = "INSERT INTO participante (nombre,apellido_1,apellido_2,especialidad,colegiado,celular,email,ciudad,pais,direccion,telefono,asistencia)
 					VALUES ('".$datos["nombre"]."','".$datos["apellido_1"]."','".$datos["apellido_2"]."','".$datos["especialidad"]."','".$datos["colegiado"]."','".$datos["celular"]."','".$datos["email"]."','".$datos["ciudad"]."','".$datos["pais"]."','".$datos["direccion"]."','".$datos["telefono"]."','".$datos["asistencia"]."')";
 		$result = $sql->sql_insert_update($insert);
 
@@ -36,7 +36,7 @@ class Modelo
 			}
 
 		}elseif ($result["status"] == 1062) {
-			$update = "UPDATE participantes SET nombre = '".$datos["nombre"]."', apellido_1 = '".$datos["apellido_1"]."', apellido_2 = '".$datos["apellido_2"]."', especialidad = '".$datos["especialidad"]."', colegiado = '".$datos["colegiado"]."', celular = '".$datos["celular"]."', ciudad = '".$datos["ciudad"]."', pais = '".$datos["pais"]."', direccion = '".$datos["direccion"]."', telefono = '".$datos["telefono"]."' WHERE email = '".$datos["email"]."'";
+			$update = "UPDATE participante SET nombre = '".$datos["nombre"]."', apellido_1 = '".$datos["apellido_1"]."', apellido_2 = '".$datos["apellido_2"]."', especialidad = '".$datos["especialidad"]."', colegiado = '".$datos["colegiado"]."', celular = '".$datos["celular"]."', ciudad = '".$datos["ciudad"]."', pais = '".$datos["pais"]."', direccion = '".$datos["direccion"]."', telefono = '".$datos["telefono"]."' WHERE email = '".$datos["email"]."'";
 			$result = $sql->sql_insert_update($update);
 			return $result;
 		}
@@ -77,12 +77,12 @@ class Modelo
 
 	function buscar_participante($email){
 		$conexion = new Recursos();
-		$sql= "SELECT * FROM participantes WHERE email='$email'";
+		$sql= "SELECT * FROM participante WHERE email='$email'";
 		$ejecutar= $conexion->sql_select($sql);
 
 		if ($ejecutar["status"] == 200) {
 			self::update_participante_asistencia_eventos($email, $conexion);
-			$sqlupdate= "UPDATE participantes SET asistencia='Con asistencia' WHERE email='$email'";
+			$sqlupdate= "UPDATE participante SET asistencia='Con asistencia' WHERE email='$email'";
 			$ejecutarupdate= $conexion->sql_insert_update($sqlupdate);
 
 			if($ejecutarupdate["status"] == 200){
@@ -104,7 +104,7 @@ class Modelo
 		$conexion = new Recursos();
 		$id_evento= $datos["id_evento"];
 		$codigo= $datos["cod_part"];
-		$select = "SELECT * FROM participantes WHERE email='$codigo' OR colegiado='$codigo'";
+		$select = "SELECT * FROM participante WHERE email='$codigo' OR colegiado='$codigo'";
 		$datos = $conexion->sql_select($select);
 		if ($datos["status"] == 200) {
 			$select = "SELECT * FROM certificado WHERE id_evento = $id_evento";
