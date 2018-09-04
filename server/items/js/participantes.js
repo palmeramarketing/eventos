@@ -21,6 +21,12 @@ $(document).ready(function() {
 	    }
 	});
 
+	// MOSTRAR PARTICIPANTES-----------------------------
+	var evento = $("#evento").val();
+	if (evento > 0) {
+		listar_participantes(evento);
+	}
+
 	// SELECT EVENTO-----------------------------
 	$("#eventos_carga").change(function(){
 		listar_participantes($("#eventos_carga option:selected").val());
