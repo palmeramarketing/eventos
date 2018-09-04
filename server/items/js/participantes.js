@@ -116,7 +116,7 @@ function listar_participantes(id_evento){
 			"columns":[
 				{"data":"email"},
 				{"data":"nombre"},
-				{"data":"apellido"},
+				{"data":"apellido_1"},
 				{"data":"direccion"},
 				{"data":"telefono"},
 				{"data":"asistencia"},

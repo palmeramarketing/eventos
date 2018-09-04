@@ -99,7 +99,7 @@ class Usuario
 
 	function listar_usuario(){
 		$conexion = new Recursos();
-		$sql= "SELECT id, email, nombre, password, CASE WHEN tipo = 'admin' THEN 'Administrador' ELSE 'Super Administrador' END AS tipo, CASE WHEN estatus = 0 THEN 'Inactivo' ELSE 'Activo' END AS estatus FROM usuario";
+		$sql= "SELECT id, email, nombre, password, CASE WHEN tipo = 'admin' THEN 'Administrador' ELSE 'Super Administrador' END AS tipo, CASE WHEN estatus = 0 THEN 'Inactivo' ELSE 'Activo' END AS estatus FROM usuario WHERE estatus=1";
 		$ejecutar= $conexion->sql_select($sql);
 
 		if ($ejecutar["status"] == 200) {

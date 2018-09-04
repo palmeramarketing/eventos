@@ -32,6 +32,10 @@
 							<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
 								<div id="div_boton_comenzar">
 									<input type="button" class="btn button-encuesta" value="COMENZAR" id="comenzar">
+<!-- 
+									<div class="text-center salir">
+										<a href="../enviar_datos_post.php" class=" p_texto_azul">Omitir encuesta ></a>
+									</div> -->
 								</div>
 							</div>
 						</div>
@@ -100,9 +104,7 @@
 			      </div>
 		      </div>
 
-					<div class="text-center salir">
-						<a href="../enviar_datos_post.php" class=" p_texto_azul">Omitir encuesta ></a>
-					</div>
+
 		<?php
 	}else{
 		?>
