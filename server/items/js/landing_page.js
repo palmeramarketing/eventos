@@ -19,6 +19,12 @@ $(document).ready(function(){
 	    }
 	});
 
+	// MOSTRAR LANDING PAGE-----------------------------
+	var evento = $("#evento").val();
+	if (evento > 0) {
+		listar_landing_page(evento);
+	}
+
 	// SELECT EVENTO-----------------------------
 	$("#eventos_carga").change(function(){
 		listar_landing_page($("#eventos_carga option:selected").val());
@@ -97,9 +103,9 @@ function listar_landing_page(id_evento){
 				{"data":"nombre_landing"},
 				{"data":"hash_id"},
 				{"data":"estatus"},
-				{"defaultContent":"<span id='boton-accion' class='accion_modificar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal'></span>\
-								   <span id='boton-accion' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>\
-								   <span id='boton-accion' class='glyphicon glyphicon-link accion_linkear' data-toggle='modal' data-target='#ModalLink'></span>"}
+				{"defaultContent":"<span id='boton-accion' title='Editar Landing Page' class='accion_modificar glyphicon glyphicon-edit' data-toggle='modal' data-target='#myModal'></span>\
+								   <span id='boton-accion' title='Eliminar Landing Page' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>\
+								   <span id='boton-accion' title='Mostrar Enlace de Landing Page' class='glyphicon glyphicon-link accion_linkear' data-toggle='modal' data-target='#ModalLink'></span>"}
 			]
 		});
 	}else{
