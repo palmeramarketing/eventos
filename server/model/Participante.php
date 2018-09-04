@@ -16,7 +16,7 @@ class Participante
 				return self::insertar_relacion($mysqli, $existe, $datos['id_evento']);
 			}
 			$sql = "INSERT INTO 
-					participante (email,nombre,apellido,direccion,telefono,estatus) 
+					participante (email,nombre,apellido_1,direccion,telefono,estatus) 
 					VALUES 
 					('".$datos['email']."','".$datos['nombre']."','".$datos['apellido']."',
 					'".$datos['direccion']."','".$datos['telefono']."',1)";

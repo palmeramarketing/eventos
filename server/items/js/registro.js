@@ -91,7 +91,6 @@ $(document).ready(function() {
 					{"data":"nombre"},
 					{"data":"email"},
 					{"data":"tipo"},
-					{"data":"estatus"},
 					{"defaultContent":"<span id='boton-accion' title='Ediat Usuario' class='accion_modificar glyphicon glyphicon-edit' data-toggle='modal' data-target='#myModal''>\
 										 </span><span id='boton-accion'title='Asociar Enevento'  class='accion_evento glyphicon glyphicon-plus' data-toggle='modal' data-target='#modalEventos''>\
 									   </span><span id='boton-accion' title='Eliminar Usuario' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}

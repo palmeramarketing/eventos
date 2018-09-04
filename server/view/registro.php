@@ -88,7 +88,6 @@ session_start();
             <th>Usuario</th>
             <th>Email</th>
             <th>Perfil</th>
-            <th>Estatus</th>
             <th>Acciones</th>
           </tr>
         </thead>
