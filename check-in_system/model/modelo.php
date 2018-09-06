@@ -130,7 +130,7 @@ class Modelo
 	function login($correo, $clave){
 		$conexion = new Recursos();
 		$claveEn= md5($clave);
-		$sql= "SELECT * FROM usuario WHERE email='$correo' AND password='$claveEn'";
+		$sql= "SELECT * FROM usuario WHERE email='$correo' AND password='$claveEn' AND tipo='visitadormedico'";
 		$ejecutar= $conexion->sql_select($sql);
 
 		if ($ejecutar["status"] == 200) {
