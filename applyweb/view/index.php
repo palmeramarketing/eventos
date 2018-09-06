@@ -19,9 +19,9 @@
 
 		<div class="row fondo_azul text-center">
 <?php
-
-	if (isset($_POST) && $_POST['id_evento'] != "" && $_POST['email'] != "") {
-		$id_evento = $_POST['id_evento'];
+	error_reporting(0);
+	if (isset($_POST) && $_POST['hash'] != "" && $_POST['email'] != "") {
+		$hash = $_POST['hash'];
 		$email = $_POST['email'];
 		?>
 					<div id="div_container_bienvenida">
@@ -32,7 +32,7 @@
 							<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
 								<div id="div_boton_comenzar">
 									<input type="button" class="btn button-encuesta" value="COMENZAR" id="comenzar">
-<!--
+									<!--
 									<div class="text-center salir">
 										<a href="../enviar_datos_post.php" class=" p_texto_azul">Omitir encuesta ></a>
 									</div> -->
@@ -44,7 +44,7 @@
 						<div class="div_parrafo_superior_formulario">
 						  <p class="text_encuesta">Encuesta</p>
 						</div>
-						<input type="hidden" name="id_evento" id="id_evento" value="<?php echo $id_evento; ?>">
+						<input type="hidden" name="hash" id="hash" value="<?php echo $hash; ?>">
 						<input type="hidden" name="email" id="email" value="<?php echo $email; ?>">
 						<div class="row">
 							<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">

@@ -30,11 +30,15 @@ class Encuesta
 
 				FROM cuestionario cue
 
-				INNER JOIN respuesta res
+				INNER JOIN lista_evento eve
+                
+                ON eve.id = cue.id_evento
+                
+                INNER JOIN respuesta res
+                
+                ON cue.id = res.id_pregunta
 
-				ON cue.id = res.id_pregunta
-
-				WHERE cue.id_evento = '".$datos["id_evento"]."' ORDER BY cue.id ASC";
+				WHERE eve.hash = '".$datos["hash"]."' ORDER BY cue.id ASC";
 
 		$arreglo = $ejecutar->sql_select($sql);
 
@@ -176,7 +180,7 @@ class Encuesta
 
 
 
-	function validar_respuesta_usuario($id_evento, $id_participante){
+	function validar_respuesta_usuario($hash, $id_participante){
 
 		$consulta = new Recursos();
 
@@ -186,7 +190,7 @@ class Encuesta
 
 				WHERE id_participante = '".$id_participante."'
 
-				AND id_evento = '".$id_evento."'";
+				AND hash = '".$hash."'";
 
 		$consult = $consulta->sql_select($sql);
 
@@ -276,13 +280,13 @@ class Encuesta
 
 
 
-	function validar_participacion_usuario($id_evento, $email){
+	function validar_participacion_usuario($hash, $email){
 
 		$usuario = self::buscar_participante($email);
 
 		if ($usuario["status"] == 200) {
 
-			$participacion = self::validar_respuesta_usuario($id_evento, $usuario["data"]["id"]);
+			$participacion = self::validar_respuesta_usuario($hash, $usuario["data"]["id"]);
 
 			if ($participacion) {
 

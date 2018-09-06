@@ -1,3 +1,13 @@
+<?php
+	session_start();
+  if (isset($_REQUEST["hash"])){
+    $_SESSION["hash"] = $_REQUEST["hash"];
+  } elseif (!isset($_SESSION["hash"])) {
+    header("Location: error.php");
+    exit;
+  }
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -64,7 +74,7 @@
 
             <input class="form-control input-form" tabindex="1" type="text" name=cod_part id=input_codigo  placeholder="Ingrese su email o codigo de colegiado">
 
-            <input type="hidden" name=id_evento id=id_evento value="45">
+            <input type="hidden" name=hash id=hash value="<?php echo $_SESSION['hash']; ?>">
 
             <input type="hidden" name="accion" value="imprimir_certificado">
 
@@ -85,8 +95,6 @@
 	</div>
 
 	<script type="text/javascript" src="../assets/plugins/jquery/jquery-3.2.1.min.js"></script>
-
-	<script type="text/javascript" src="../assets/js/certificado.js"></script>
 
 </body>
 

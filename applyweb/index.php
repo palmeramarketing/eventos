@@ -1,3 +1,13 @@
+<?php
+	session_start();
+  if (isset($_REQUEST["hash"])){
+    $_SESSION["hash"] = $_REQUEST["hash"];
+  } elseif (!isset($_SESSION["hash"])) {
+    header("Location: login.html");
+    exit;
+  }
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -50,9 +60,9 @@
 
 					<form role="form" class="form-horizontal" id="form-inicio-sesion" method="POST" action="view/index.php">
 
-						<input type="hidden" id="id_evento" value="51" name="id_evento">
+						<input type="hidden" id="hash" value="<?php echo $_SESSION['hash']; ?>" name="hash">
 
-						<input type="text" id="email" name="email" tabindex=2 placeholder="EMAIL" class="inputCheck">
+						<input type="text" id="email" name="email" tabindex=1 placeholder="EMAIL" class="inputCheck">
 
 						<div class="center-button">
 

@@ -33,7 +33,7 @@ if (isset($_POST["usuario"])) {
     </div>
   </div>
   <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-  <div class="container">
+  <div class="container-fluid">
     <div class="row div_registrar" hidden>
       <div class="col-md-10 col-lg-offset-1">
     <div class="panel panel-info">
@@ -84,7 +84,7 @@ if (isset($_POST["usuario"])) {
   <!-- /////////////////////////DATATABLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
     <br>
     <div class="row">
-      <div class="col-md-10 col-lg-offset-1">
+      <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
         <table class="table table-striped" id="tabla_lista_eventos" cellspacing="0" width="100%">
         <thead>
           <tr>
@@ -92,6 +92,7 @@ if (isset($_POST["usuario"])) {
             <th>Nombre</th>
             <th>Fecha</th>
             <th>Direcci&oacute;n</th>
+            <th>Hash</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -146,6 +147,65 @@ if (isset($_POST["usuario"])) {
     </div>
   </div>
   <!-- /////////////////////////MODAL MODIFICAR EVENTO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+  <!-- /////////////////////////MODAL GENERADOR LINK CHECKIN\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+  <!-- Modal -->
+  <div class="modal fade" id="ModalLink" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Enlaces</h4>
+        </div>
+        <div class="mensaje-div">
+            <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
+        </div>
+        <div class="modal-body">
+          <div class='form-group' id='div_group_generar_link'>
+            <div class="row">
+              <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                <label for="link_input_reg_principal">Registro Principal</label>
+                <div class='input-group'>
+                  <input type='text' id='link_input_reg_principal' name='link_input_reg_principal' tabindex="1" class='form-control input_style'>
+                  <a href="#" class="btn btn-success input-group-addon" target="_blank" id="vinculo_reg_principal">Ir al enlace</a>
+                </div>
+                <br>
+                <label for="link_input_visitador">Visitador Médico</label>
+                <div class='input-group'>
+                  <input type='text' id='link_input_visitador' name='link_input_visitador' tabindex="2" class='form-control input_style'>
+                  <a href="#" class="btn btn-success input-group-addon" target="_blank" id="vinculo_visitador">Ir al enlace</a>
+                </div>
+                <br>
+                <label for="link_input_asistencia">Asistencia</label>
+                <div class='input-group'>
+                  <input type='text' id='link_input_asistencia' name='link_input_asistencia' tabindex="2" class='form-control input_style'>
+                  <a href="#" class="btn btn-success input-group-addon" target="_blank" id="vinculo_asistencia">Ir al enlace</a>
+                </div>
+                <br>
+                <label for="link_input_encuesta">Encuesta</label>
+                <div class='input-group'>
+                  <input type='text' id='link_input_encuesta' name='link_input_encuesta' tabindex="2" class='form-control input_style'>
+                  <a href="#" class="btn btn-success input-group-addon" target="_blank" id="vinculo_encuesta">Ir al enlace</a>
+                </div>
+                <br>
+                <label for="link_input_certificado">Certificado</label>
+                <div class='input-group'>
+                  <input type='text' id='link_input_certificado' name='link_input_certificado' tabindex="2" class='form-control input_style'>
+                  <a href="#" class="btn btn-success input-group-addon" target="_blank" id="vinculo_certificado">Ir al enlace</a>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default cerrar_modal" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <link rel="stylesheet" type="text/css" href="../items/css/inicio.css">
 <script type="text/javascript" src="../items/js/inicio.js"></script>
 </body>

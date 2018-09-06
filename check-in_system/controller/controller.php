@@ -10,9 +10,6 @@ switch ($_POST["accion"]) {
 	case 'buscar_participante':
 		echo json_encode($modelo->buscar_participante($_POST["email"]));
 		break;
-	case 'actualizar_asistencia':
-		echo json_encode($modelo->actualizar_asistencia($_POST["email"]));
-		break;
 	case 'guardar_certificado':
 		$archivo = $_FILES["archivo_html"];
 		echo json_encode($modelo->guardar_certificado($_POST, $archivo));

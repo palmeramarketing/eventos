@@ -1,3 +1,13 @@
+<?php
+	session_start();
+  if (isset($_REQUEST["hash"])){
+    $_SESSION["hash"] = $_REQUEST["hash"];
+  } elseif (!isset($_SESSION["hash"])) {
+    header("Location: error.php");
+    exit;
+  }
+?>
+
 <!DOCTYPE html>
 <html lang=es>
 	 <head>
@@ -121,11 +131,15 @@
 							</div>
 								<input type="hidden" name="url" id="url" value="../controller/controller.php">
 								<input type="hidden" name="url_gracias" id="url_gracias" value="../view/gracias_checkin.html"/>
-								<input type="hidden" value="45" name="id_evento" id="id_evento">
+
+								<input type="hidden" value="<?php echo $_SESSION['hash']; ?>" name="hash" id="hash">
+
 								<input type="hidden" value="Con asistencia" name="asistencia" id="asistencia">
 							<div class="col-lg-12  col-md-12  col-sm-12 col-xs-12">
 		            <div class="center-button">
-		            	<input type="checkbox" value="1" name="terminos" id="terminos" tabindex="9" class="ui-corner-all"><span class="span_terminos">Acepto las políticas de manejo de datos</span></center>
+
+		            	<input type="checkbox" value="1" name="terminos" id="terminos" tabindex="12" class="ui-corner-all"><span class="span_terminos">Acepto las políticas de manejo de datos</span></center>
+
 		            </div>
 							</div>
 							<div class="col-lg-12  col-md-12  col-sm-12 col-xs-12">
@@ -155,6 +169,5 @@
    </body>
 	 <!-- JS -->
 	 <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-	 <script type="text/javascript" src="../assets/plugins/html2canvas/html2canvas.js"></script>
 	 <script src="../assets/js/validate.js"></script>
 </html>
