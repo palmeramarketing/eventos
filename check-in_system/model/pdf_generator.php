@@ -44,7 +44,7 @@ class PDF_generator
 	function imprimir_gafete($nombre){
 		$gafete = file_get_contents('../gafetes/gafete-1.html');
         $html = str_replace("@name", $nombre, $gafete);
-        $mpdf = new Mpdf(['mode' => 'utf-8', 'format' => 'utf-8', [210, 148]]);
+        $mpdf = new Mpdf('utf-8', array(100, 140));
         $mpdf->WriteHTML($html);
         $mpdf->SetJS('this.print();');
         $mpdf->Output();

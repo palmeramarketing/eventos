@@ -34,6 +34,7 @@ $(document).ready(function() {
             usuario_r:{required:!0,minlength:2},
             email_r:{required:!0,email:!0},
             password_r:{required:!0,minlength:5}
+            tipo_usuario:{required:!0,minlength:5}
     	},
     	submitHandler: function(form) {
 			var datos = {
