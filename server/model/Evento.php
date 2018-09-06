@@ -15,7 +15,7 @@ class Evento
 			$result = $mysqli["data"]->query($sql);
 			if ($result === true) {
 				$id_pregunta = $mysqli["data"]->insert_id;
-				return ["data"=>$id_pregunta, "error"=>"", "status"=>200];
+				return ["data"=>["id"=>$id_pregunta,"hash"=>$hash], "error"=>"", "status"=>200];
 			}else{
 				$cod_error = ($mysqli["data"]->errno);
 				$error = mysqli_error($mysqli["data"]);
