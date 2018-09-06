@@ -24,7 +24,11 @@ $(document).ready(function() {
 	// MOSTRAR PARTICIPANTES-----------------------------
 	var evento = $("#evento").val();
 	if (evento > 0) {
-		listar_participantes(evento);
+		//listar_participantes(evento);
+		//$("#eventos_carga option:selected").val(evento);
+		$("#eventos_carga option[value="+ evento +"]").attr('selected', 'selected');
+		console.log(evento);
+
 	}
 
 	// SELECT EVENTO-----------------------------
