@@ -95,7 +95,7 @@ class Modelo
 		if ($datos["status"] == 200) {
 			$select = "SELECT * FROM certificado cer
 						INNER JOIN lista_evento eve
-						ON cer.id_evento = eve.id 
+						ON cer.id_evento = eve.id
 						WHERE eve.hash = '$hash'";
 			$result = $conexion->sql_select($select);
 			$datos["data"]["data_html"] = $result["data"]["data_html"];

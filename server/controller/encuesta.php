@@ -5,7 +5,6 @@ error_reporting(0);
 include "../model/Encuesta.php";
 include "../model/Evento.php";
 
-
 if (isset($_POST)){
 	$encuesta = new Encuesta();
 	switch ($_POST["tipo"]) {
@@ -24,6 +23,10 @@ if (isset($_POST)){
 
 		case 'eliminar':
 			echo json_encode($encuesta->eliminar_pregunta($_POST));
+			break;
+
+		case 'eliminar_respuesta':
+			echo json_encode($encuesta->eliminar_respuesta($_POST));
 			break;
 
 		case 'buscar-respuestas':
