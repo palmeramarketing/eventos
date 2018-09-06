@@ -58,7 +58,7 @@ session_start();
                 </div>
                 <div class="form-group">
                   <div class="col-xs-10 ">
-                    <select name="tipo_usuario" id="tipo_usuario" placeholder="tipo de Usuario"class="form-control col-xs-12 input_style">
+                    <select name="tipo_usuario" id="tipo_usuario" tabindex=4 class="form-control col-xs-12 input_style">
                       <option value="">Seleccionar</option>
                       <option value="admin">Administrador</option>
                       <option value="superadmin">Super Administrador</option>

@@ -33,16 +33,19 @@ $(document).ready(function() {
     	rules:{
             usuario_r:{required:!0,minlength:2},
             email_r:{required:!0,email:!0},
-            password_r:{required:!0,minlength:5}
-            tipo_usuario:{required:!0,minlength:5}
+            password_r:{required:!0,minlength:5},
+            tipo_usuario:{required:!0}
     	},
     	submitHandler: function(form) {
 			var datos = {
 				tipo:"registrar",
 				usuario:$("#usuario_r").val(),
 				email:$("#email_r").val(),
-				password:$("#password_r").val()
+				password:$("#password_r").val(),
+				perfil:$("#tipo_usuario").val()
+				
 			};
+			console.log(perfil);
 			$.ajax({
 			    url : '../controller/usuario.php',
 			    data : datos,

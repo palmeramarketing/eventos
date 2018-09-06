@@ -64,7 +64,7 @@ class Usuario
 		if($mysqli["status"] == 200){
 			$pass = md5($datos['password']);
 			$sql = "INSERT INTO usuario (email,nombre,password,tipo,estatus)
-					values ('".$datos['email']."','".$datos['usuario']."','".$pass."','admin',1)";
+					values ('".$datos['email']."','".$datos['usuario']."','".$pass."','".$datos['perfil']."',1)";
 			$result = $mysqli["data"]->query($sql);
 			if ($result === true) {
 				return ["data"=>"Usuario registrado", "error"=>"", "status"=>200];
@@ -99,7 +99,7 @@ class Usuario
 
 	function listar_usuario(){
 		$conexion = new Recursos();
-		$sql= "SELECT id, email, nombre, password, CASE WHEN tipo = 'admin' THEN 'Administrador' ELSE 'Super Administrador' END AS tipo, CASE WHEN estatus = 0 THEN 'Inactivo' ELSE 'Activo' END AS estatus FROM usuario WHERE estatus=1";
+		$sql= "SELECT id, email, nombre, password,tipo, CASE WHEN estatus = 0 THEN 'Inactivo' ELSE 'Activo' END AS estatus FROM usuario WHERE estatus=1";
 		$ejecutar= $conexion->sql_select($sql);
 
 		if ($ejecutar["status"] == 200) {
