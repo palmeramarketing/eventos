@@ -1,11 +1,11 @@
 <?php
-session_start();
+/*session_start();
   if (isset($_REQUEST["login_visitador"])){
     $_SESSION["login_visitador"] = $_REQUEST["login_visitador"];
   } elseif (!isset($_SESSION["login_visitador"])) {
     header("Location: error.php");
     exit;
-  }
+  }*/
 ?>
 <input type="hidden" id="login_id" name="login_id" value="<?php echo $_SESSION['login_visitador']; ?>">
 <!DOCTYPE html>
