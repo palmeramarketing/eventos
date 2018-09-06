@@ -21,7 +21,7 @@ switch ($_POST["accion"]) {
 		break;
 	
 	default:
-		echo json_encode($modelo_encuesta->validar_participacion_usuario($_POST["id_evento"], $_POST["email"]));
+		echo json_encode($modelo_encuesta->validar_participacion_usuario($_POST["hash"], $_POST["email"]));
 		break;
 }
 ?>

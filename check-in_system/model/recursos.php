@@ -6,7 +6,6 @@ class Recursos
 	function sql_select($sql){
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
-
 		if ($mysqli["status"] == 200) {
 			$result = $mysqli["data"]->query($sql);
 			if ($result->num_rows > 0) {
@@ -38,7 +37,6 @@ class Recursos
 	function sql_insert_update($sql){
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
-
 		if($mysqli["status"] == 200){
 			$result = $mysqli["data"]->query($sql);
 			if ($result === true) {

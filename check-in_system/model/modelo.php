@@ -13,30 +13,20 @@ class Modelo
 	function registrar_participantes($datos){
 		$sql = new Recursos();
 		$result = "";
-		$clave = "";
+		$result = self::registrar_participante_sistema_eventos($datos, $sql);
 
-		$insert = "INSERT INTO participante (nombre,apellido_1,apellido_2,especialidad,colegiado,celular,email,ciudad,pais,direccion,telefono,asistencia)
-					VALUES ('".$datos["nombre"]."','".$datos["apellido_1"]."','".$datos["apellido_2"]."','".$datos["especialidad"]."','".$datos["colegiado"]."','".$datos["celular"]."','".$datos["email"]."','".$datos["ciudad"]."','".$datos["pais"]."','".$datos["direccion"]."','".$datos["telefono"]."','".$datos["asistencia"]."')";
-		$result = $sql->sql_insert_update($insert);
-
-		if ($result["status"] == 200) {
-			$clave = $datos["id_evento"]."-".$result["data"];
+		if (($result["status"] == 200) && (isset($datos["id_usuario"]))) {
 
 			self::relacion_usuario_participante($datos["id_usuario"],$result["data"],$sql);
 
-			$resp = self::registrar_clave_participante($clave,$result["data"],$datos["id_evento"]);
-
-			if($resp["status"] = 200){
-
-				$envioEmail= self::envioCorreo($datos["email"]);
-				return $result;
-			}
-
-		}elseif ($result["status"] == 1062) {
-			$update = "UPDATE participante SET nombre = '".$datos["nombre"]."', apellido_1 = '".$datos["apellido_1"]."', apellido_2 = '".$datos["apellido_2"]."', especialidad = '".$datos["especialidad"]."', colegiado = '".$datos["colegiado"]."', celular = '".$datos["celular"]."', ciudad = '".$datos["ciudad"]."', pais = '".$datos["pais"]."', direccion = '".$datos["direccion"]."', telefono = '".$datos["telefono"]."' WHERE email = '".$datos["email"]."'";
-			$result = $sql->sql_insert_update($update);
-			return $result;
 		}
+
+		if($result["status"] = 200){
+
+			self::envioCorreo($datos["email"]);
+
+		}
+		return $result;
 	}
 
 	function relacion_usuario_participante($id_usuario, $id_participante, $conexion){
@@ -45,20 +35,38 @@ class Modelo
 		$conexion->sql_insert_update($sql);
 	}
 
-	function registrar_clave_participante($clave, $id_participante, $id_evento){
-		$sql = new Recursos();
-		$insert = "INSERT INTO clave_participante (clave,id_participante,id_evento)
-					VALUES ('".$clave."','".$id_participante."','".$id_evento."')";
+	function registrar_participante_sistema_eventos($datos, $conexion){
+		$sql = "INSERT INTO participante (nombre,apellido_1,apellido_2,especialidad,colegiado,celular,email,ciudad,pais,direccion,telefono,asistencia)
+					VALUES ('".$datos["nombre"]."','".$datos["apellido_1"]."','".$datos["apellido_2"]."','".$datos["especialidad"]."','".$datos["colegiado"]."','".$datos["celular"]."','".$datos["email"]."','".$datos["ciudad"]."','".$datos["pais"]."','".$datos["direccion"]."','".$datos["telefono"]."','".$datos["asistencia"]."')";
+		$resp = $conexion->sql_insert_update($sql);
 
-		return $sql->sql_insert_update($insert);
+		if ($resp["status"] == 1062) {
+			return self::update_participante_sistema_eventos($datos, $conexion);
+
+		}elseif ($resp["status"] == 200) {
+			$buscar = "SELECT id FROM lista_evento WHERE hash='".$datos["hash"]."'";
+			$id_evento = $conexion->sql_select($buscar);
+
+			$sql = "INSERT INTO evento_participante (id_evento,id_participante)
+				VALUES ('".$id_evento["data"]["id"]."','".$resp["data"]."')";
+			$resp = $conexion->sql_insert_update($sql);
+		}
+
+		return $resp;
+	}
+
+	function update_participante_sistema_eventos($datos, $conexion){
+		$sql = "UPDATE participante SET nombre = '".$datos["nombre"]."', apellido_1 = '".$datos["apellido_1"]."', apellido_2 = '".$datos["apellido_2"]."', especialidad = '".$datos["especialidad"]."', colegiado = '".$datos["colegiado"]."', celular = '".$datos["celular"]."', ciudad = '".$datos["ciudad"]."', pais = '".$datos["pais"]."', direccion = '".$datos["direccion"]."', telefono = '".$datos["telefono"]."', estatus='1' WHERE email = '".$datos["email"]."'";
+		return $conexion->sql_insert_update($sql);
 	}
 
 	function buscar_participante($email){
 		$conexion = new Recursos();
 		$sql= "SELECT * FROM participante WHERE email='$email'";
-		$ejecutar= $conexion->sql_select($sql);
+		$ejecutar = $conexion->sql_select($sql);
 
 		if ($ejecutar["status"] == 200) {
+			self::update_participante_asistencia_eventos($email, $conexion);
 			$sqlupdate= "UPDATE participante SET asistencia='Con asistencia' WHERE email='$email'";
 			$ejecutarupdate= $conexion->sql_insert_update($sqlupdate);
 
@@ -73,14 +81,22 @@ class Modelo
 		}
 	}
 
+	function update_participante_asistencia_eventos($email, $conexion){
+		$sql = "UPDATE participante SET asistencia = 'Con asistencia' WHERE email = '$email'";
+		return $conexion->sql_insert_update($sql);
+	}
+
 	function imprimir_certificado($datos, $imprimir = false){
 		$conexion = new Recursos();
-		$id_evento= $datos["id_evento"];
+		$hash= $datos["hash"];
 		$codigo= $datos["cod_part"];
 		$select = "SELECT * FROM participante WHERE email='$codigo' OR colegiado='$codigo'";
 		$datos = $conexion->sql_select($select);
 		if ($datos["status"] == 200) {
-			$select = "SELECT * FROM certificado WHERE id_evento = $id_evento";
+			$select = "SELECT * FROM certificado cer
+						INNER JOIN lista_evento eve
+						ON cer.id_evento = eve.id
+						WHERE eve.hash = '$hash'";
 			$result = $conexion->sql_select($select);
 			$datos["data"]["data_html"] = $result["data"]["data_html"];
 		}else{

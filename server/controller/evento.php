@@ -13,8 +13,9 @@ if (isset($_POST)){
 			if ($result["status"] == 200) {
 				$_POST["id_evento"] = $result["data"];
 				$usuario = new Usuario();
-				echo json_encode($usuario->asignar_evento($_POST));
+				$usuario->asignar_evento($_POST);
 			}
+			echo json_encode($result);
 			break;
 
 		case 'modificar':

@@ -8,13 +8,14 @@ class Evento
 	{
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
+		$hash = hash('crc32', $datos['nombre'].rand(), FALSE);
 		if($mysqli["status"] == 200){
-			$sql = "INSERT INTO lista_evento (nombre,fecha,direccion,estatus)
-					values ('".$datos['nombre']."','".$datos['fecha']."','".$datos['direccion']."',1)";
+			$sql = "INSERT INTO lista_evento (nombre,fecha,direccion,hash,estatus)
+					values ('".$datos['nombre']."','".$datos['fecha']."','".$datos['direccion']."','$hash',1)";
 			$result = $mysqli["data"]->query($sql);
 			if ($result === true) {
 				$id_pregunta = $mysqli["data"]->insert_id;
-				return ["data"=>$id_pregunta, "error"=>"", "status"=>200];
+				return ["data"=>["id"=>$id_pregunta,"hash"=>$hash], "error"=>"", "status"=>200];
 			}else{
 				$cod_error = ($mysqli["data"]->errno);
 				$error = mysqli_error($mysqli["data"]);
