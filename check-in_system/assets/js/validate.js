@@ -1,5 +1,3 @@
-
-
 $("#nuevo_user").click(function(){
 	if ($(this).hasClass("active")) {
 		$("#registroUser").slideUp();
@@ -57,7 +55,7 @@ $("#form_register").validate({
 			pais : $("#pais").val(),
 			direccion : $("#direccion").val(),
 			telefono : $("#telefono").val(),
-			id_evento : $("#id_evento").val(),
+			hash : $("#hash").val(),
 			asistencia : $("#asistencia").val(),
 			id_usuario : $("#login_id").val()
 		};
@@ -72,12 +70,12 @@ $("#form_register").validate({
 		    dataType : 'json',
 		    success : function(respuesta, status, req) {
 		    	if(respuesta.status == 200){
-					$("#form_register")[0].reset();
-	    		$(location).attr('href', url_gracias);
-				}else {
-					$("#form_register")[0].reset();
-					alert("Error. Imposible conectar con el servidor, intente de nuevo más tarde.");
-				}
+						$("#form_register")[0].reset();
+		    		$(location).attr('href', url_gracias);
+					}else {
+						$("#form_register")[0].reset();
+						alert("Error. Imposible conectar con el servidor, intente de nuevo más tarde.");
+					}
 		    },
 		    error : function(respuesta, status, req) {
 		    	console.log(status, respuesta, req);
@@ -131,7 +129,7 @@ $("#form_register_express").validate({
 			pais : $("#pais").val(),
 			direccion : $("#direccion").val(),
 			telefono : $("#telefono").val(),
-			id_evento : $("#id_evento").val(),
+			hash : $("#hash").val(),
 			asistencia : $("#asistencia").val(),
 			id_usuario : $("#login_id").val()
 		};
@@ -145,11 +143,11 @@ $("#form_register_express").validate({
 		    dataType : 'json',
 		    success : function(respuesta, status, req) {
 		    	if(respuesta.status == 200){
-					$("#form_register_express")[0].reset();
-					imprimir_gafete(datos);
-	    		$(location).attr('href', url_gracias);
-				}else {
-					$("#form_register")[0].reset();
+						$("#form_register_express")[0].reset();
+						imprimir_gafete(datos);
+		    		$(location).attr('href', url_gracias);
+					}else {
+						$("#form_register_express")[0].reset();
 					alert("Error. Imposible conectar con el servidor, intente de nuevo más tarde.");
 				}
 		    },
@@ -288,31 +286,6 @@ $("#form_register_express").validate({
 				var nombre = result["nombre"]+" "+result["apellido_1"];
 				$('#FormGafete').append('<input type="hidden" name="nombre" value="'+nombre+'" />');
 				$("#FormGafete").submit();
-				// $("#nombre_participante").css("display","block").text(result["nombre"]+" "+result["apellido_1"]);
-				// var element = $("#nombre_participante");
-			 //  html2canvas(element, {
-			 //    onrendered: function (canvas) {
-			 //      getCanvas = canvas;
-			 //    	var img = canvas.toDataURL("image/png",1.0);
-			 //    	$("#div_img_gafete").css("display","block").html("<img id='Image' src=" + img + " style='width:100%;'></img>").ready(function(){
-				//     	var htmlToPrint = '' +
-			 //        '<style type="text/css">' +
-				// 		    '@media print {'+
-				// 			  '@page { margin: 0; }'+
-				// 			'}'+
-			 //        '</style>';
-			 //        htmlToPrint += $("#div_img_gafete").html();
-			 //        var tWindow = window.open("");
-			 //        $(tWindow.document.body)
-			 //          .html(htmlToPrint)
-			 //          tWindow.focus();
-			 //          tWindow.print();
-			 //          tWindow.close();
-			 //    	$("#div_img_gafete").css("display","none");
-			 //    	$("#nombre_participante").css("display","none");
-			 //    	});
-			 //    }
-			 //  });
 			}
 
 		 $("#volver").on("click", function(){
@@ -596,3 +569,30 @@ function doKey(event){
 	event.preventDefault();
   }
 }
+
+/*-----------Mensaje de advertencia al cerrar ventana----------*/
+$(window).on('mouseover', (function () {
+    window.onbeforeunload = null;
+}));
+$(window).on('mouseout', (function () {
+    window.onbeforeunload = ConfirmLeave;
+}));
+function ConfirmLeave() {
+    return "";
+}
+var prevKey="";
+$(document).keydown(function (e) {            
+    if (e.key=="F5") {
+        window.onbeforeunload = ConfirmLeave;
+    }
+    else if (e.key.toUpperCase() == "W" && prevKey == "CONTROL") {                
+        window.onbeforeunload = ConfirmLeave;   
+    }
+    else if (e.key.toUpperCase() == "R" && prevKey == "CONTROL") {
+        window.onbeforeunload = ConfirmLeave;
+    }
+    else if (e.key.toUpperCase() == "F4" && (prevKey == "ALT" || prevKey == "CONTROL")) {
+        window.onbeforeunload = ConfirmLeave;
+    }
+    prevKey = e.key.toUpperCase();
+});
