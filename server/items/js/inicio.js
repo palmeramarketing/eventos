@@ -94,12 +94,14 @@ function listar_participante(){
 			{"data":"nombre"},
 			{"data":"fecha"},
 			{"data":"direccion"},
+			{"data":"hash"},
 			{"defaultContent":"<span id='boton-accion' class='accion_modificar glyphicon glyphicon-edit' data-toggle='modal' title='Editar Evento' data-target='#myModal''>\
 							   </span><span id='boton-accion' title='Eliminar Evento' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>\
 							   <span id='boton-accion' title='Mostrar grafico' class='accion_graficar glyphicon glyphicon-stats'></span>\
 							   <span id='boton-accion' title='Mostrar Participantes' class='accion_participantes glyphicon glyphicon-user'></span>\
 							   <span id='boton-accion' title='Mostrar Certificado' class='accion_certificado glyphicon glyphicon-eye-open'></span>\
-							   <span id='boton-accion' title='Mostrar Landing Page' class='accion_landing glyphicon glyphicon-plane'></span>"} 
+							   <span id='boton-accion' title='Mostrar Landing Page' class='accion_landing glyphicon glyphicon-plane'></span>\
+							   <span id='boton-accion' title='Mostrar Enlaces del Evento' class='glyphicon glyphicon-link accion_linkear' data-toggle='modal' data-target='#ModalLink'></span>"} 
 		]
 	});
 	// ------------------------------------------
@@ -113,7 +115,33 @@ function listar_participante(){
 		$("#mod_direccion_evento").val(data.direccion);
 	});
 	// ------------------------------------------
-
+	
+	// ACCION LINKEAR LANDING PAGE---------------
+	$('#tabla_lista_eventos tbody').on("click", ".accion_linkear", function(){
+		var host = location.hostname;
+		var data = table.row($(this).parents("tr")).data();
+		var hash = data.hash;
+		var link = "http://"+host+"/eventos/check-in_system/view/inicio.php?hash="+hash;
+		$("#link_input_reg_principal").val(link);
+		$("#vinculo_reg_principal").attr("href", link);
+		// ---
+		var link = "http://"+host+"/eventos/check-in_system/view/login.php?hash="+hash;
+		$("#link_input_visitador").val(link);
+		$("#vinculo_visitador").attr("href", link);
+		// ---
+		var link = "http://"+host+"/eventos/check-in_system/view/buscar.php?hash="+hash;
+		$("#link_input_asistencia").val(link);
+		$("#vinculo_asistencia").attr("href", link);
+		// ---
+		var link = "http://"+host+"/eventos/applyweb/index.php?hash="+hash;
+		$("#link_input_encuesta").val(link);
+		$("#vinculo_encuesta").attr("href", link);
+		// ---
+		var link = "http://"+host+"/eventos/check-in_system/view/certificado.php?hash="+hash;
+		$("#link_input_certificado").val(link);
+		$("#vinculo_certificado").attr("href", link);
+	});
+	// ------------------------------------------
 
 	// ACCION GRAFICAR EVENTO--------------------
 	$("#tabla_lista_eventos tbody").on("click", ".accion_graficar", function(){

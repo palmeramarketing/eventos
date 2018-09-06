@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     var data = {
 
-        id_evento: $("#id_evento").val(),
+        hash: $("#hash").val(),
 
         email: $("#email").val()
 
@@ -278,7 +278,7 @@ $(document).ready(function(){
 
             id_participante: $("#id_participante").val(),
 
-            id_evento: $("#id_evento").val(),
+            hash: $("#hash").val(),
 
             email: $("#email").val()
 

@@ -1,3 +1,13 @@
+<?php
+	session_start();
+  if (isset($_REQUEST["hash"])){
+    $_SESSION["hash"] = $_REQUEST["hash"];
+  } elseif (!isset($_SESSION["hash"])) {
+    header("Location: error.php");
+    exit;
+  }
+?>
+
 <!DOCTYPE html>
 
 <html lang=es>
@@ -140,7 +150,7 @@
 
 							<input type="hidden" name="url_gracias" id="url_gracias" value="../view/gracias.html"/>
 
-							<input type="hidden" value="45" name="id_evento" id="id_evento">
+							<input type="hidden" value="<?php echo $_SESSION["hash"]; ?>" name="hash" id="hash">
 
               <input type="hidden" value="Sin asistencia" name="asistencia" id="asistencia">
 

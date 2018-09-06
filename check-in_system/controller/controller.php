@@ -34,14 +34,6 @@ switch ($_POST["accion"]) {
 
 
 
-	case 'actualizar_asistencia':
-
-		echo json_encode($modelo->actualizar_asistencia($_POST["email"]));
-
-		break;
-
-
-
 	case 'guardar_certificado':
 
 		$archivo = $_FILES["archivo_html"];
