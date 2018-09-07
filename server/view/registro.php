@@ -56,6 +56,16 @@ session_start();
                     <input type="password" id="password_r" tabindex=3 placeholder="Password" name="password_r" class="form-control col-xs-12 input_style">
                   </div>
                 </div>
+                <div class="form-group">
+                  <div class="col-xs-10 ">
+                    <select name="tipo_usuario" id="tipo_usuario" tabindex=4 class="form-control col-xs-12 input_style">
+                      <option value="">Seleccionar</option>
+                      <option value="admin">Administrador</option>
+                      <option value="superadmin">Super Administrador</option>
+                      <option value="visitadormedico">Visitador medico</option>
+                    </select>
+                  </div>
+                </div>
                 <div class="form-group text-center">
                   <div class="col-xs-10 ">
                     <button type="submit" class="btn btn-success " id="btn_registrar">Registrar</button>
@@ -127,6 +137,7 @@ session_start();
                   <option value="">Seleccionar</option>
                   <option value="admin">Administrador</option>
                   <option value="superadmin">Super Administrador</option>
+                  <option value="visitadormedico">Visitador medico</option>
                 </select>
               </div>
             </div>

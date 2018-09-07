@@ -18,9 +18,9 @@
           <li><a href="encuesta.php">Encuestas</a></li>
           <li><a href="participantes.php">Participantes</a></li>
           <li><a href="certificado.php">Certificados</a></li>
-          <?php if($_SESSION['tipo'] == 'superadmin'){ ?>
-          <li><a href="landing_page.php">Landing Page</a></li>
-          <?php } ?>
+          <?php// if($_SESSION['tipo'] == 'superadmin'){ ?>
+           <!-- <li><a href="landing_page.php">Landing Page</a></li>-->
+          <?php //} ?>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
