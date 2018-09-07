@@ -99,8 +99,7 @@ function listar_participante(){
 							   </span><span id='boton-accion' title='Eliminar Evento' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>\
 							   <span id='boton-accion' title='Mostrar grafico' class='accion_graficar glyphicon glyphicon-stats'></span>\
 							   <span id='boton-accion' title='Mostrar Participantes' class='accion_participantes glyphicon glyphicon-user'></span>\
-							   <span id='boton-accion' title='Mostrar Certificado' class='accion_certificado glyphicon glyphicon-eye-open'></span>\
-							   <span id='boton-accion' title='Mostrar Landing Page' class='accion_landing glyphicon glyphicon-plane'></span>\
+							   <span id='boton-accion' title='Mostrar Certificado' class='accion_certificado glyphicon glyphicon-file'></span>\
 							   <span id='boton-accion' title='Mostrar Enlaces del Evento' class='glyphicon glyphicon-link accion_linkear' data-toggle='modal' data-target='#ModalLink'></span>"}
 		]
 	});
@@ -236,7 +235,7 @@ function listar_participante(){
 	});
 	// ------------------------------------------
 
-	// ACCION MOSTRAR lANDING PAGE--------------------
+	// ACCION MOSTRAR CERTIFICADO--------------------
 	$("#tabla_lista_eventos tbody").on("click", ".accion_certificado", function(){
 		var data = table.row($(this).parents("tr")).data();
 		window.location.href = "certificado.php?id_event="+data.id+"&evento="+data.nombre;
@@ -244,10 +243,11 @@ function listar_participante(){
 	// ------------------------------------------
 
 	// ACCION MOSTRAR lANDING PAGE--------------------
-	$("#tabla_lista_eventos tbody").on("click", ".accion_landing", function(){
-		var data = table.row($(this).parents("tr")).data();
-		window.location.href = "landing_page.php?id_event="+data.id;
-	});
+	//$("#tabla_lista_eventos tbody").on("click", ".accion_landing", function(){
+	//	var data = table.row($(this).parents("tr")).data();
+
+	//	window.location.href = "landing_page.php?id_event="+data.id;
+	//});
 	// ------------------------------------------
 }
 

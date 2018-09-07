@@ -1,10 +1,14 @@
 <?php
 session_start();
-  if (isset($_REQUEST["login_visitador"])){
+  if (isset($_REQUEST["login_visitador"]) && isset($_REQUEST["hash"])){
     $_SESSION["login_visitador"] = $_REQUEST["login_visitador"];
+    $_SESSION["hash"] = $_REQUEST["hash"];
   } elseif (!isset($_SESSION["login_visitador"])) {
-    header("Location: error.php");
+    header("Location: login.php");
     exit;
+  }elseif (!isset($_SESSION["hash"])) {
+  	header("Location: error.php");
+  	exit;
   }
 ?>
 <input type="hidden" id="login_id" name="login_id" value="<?php echo $_SESSION['login_visitador']; ?>">
@@ -108,7 +112,7 @@ session_start();
 						</div>
 							<input type="hidden" name="url" id="url" value="../controller/controller.php">
 							<input type="hidden" name="url_gracias" id="url_gracias" value="../view/gracias.html"/>
-							<input type="hidden" value="45" name="id_evento" id="id_evento">
+							<input type="hidden" value="<?php echo $_SESSION['hash']; ?>" name="hash" id="hash">
 			              	<input type="hidden" value="Sin asistencia" name="asistencia" id="asistencia">
 				         	<div class="center-button">
 				            	<button type="submit" class="btn button-form" id="boton_asistir">ENVIAR</button>
