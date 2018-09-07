@@ -1,3 +1,12 @@
+<?php
+	session_start();
+  if (isset($_REQUEST["hash"])){
+    $_SESSION["hash"] = $_REQUEST["hash"];
+  } elseif (!isset($_SESSION["hash"])) {
+    header("Location: error.php");
+    exit;
+  }
+?>
 <!DOCTYPE html>
 <html lang=es>
 	 <head>
@@ -42,10 +51,11 @@
 							</div>
 							<form class="form-horizontal" id="frm-login" method="post" target="_self">
 								<input class="form-control input-form" tabindex="1" type="email" name=correo id=correo  placeholder="Ingrese su correo">
-								<input class="form-control input-form" tabindex="1" type="password" name=clave id=clave  placeholder="Ingrese su password">
+								<input class="form-control input-form" tabindex="2" type="password" name=clave id=clave  placeholder="Ingrese su password">
+								<input type="hidden" id="hash" name="hash" value="<?php echo $_SESSION['hash']; ?>">
 								<a href="#" id="olvido_passw" style="color: #fff ">Olvido su password?</a>
 								<div class="center-button">
-									<input class="btn button-form" name=ingresar tabindex=8 type=submit value=Ingresar>
+									<input class="btn button-form" name=ingresar tabindex=3 type=submit value=Ingresar>
 								</div>
 							</form>
 						</div>

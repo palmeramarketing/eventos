@@ -338,7 +338,7 @@ $("#form_register_express").validate({
 												alert("Disculpe ha ocurrido un error interno en el servidor"); return false;
 											}else {
 												if(result.estatus == 1){
-													window.location.href = "visitador_medico.php?login="+result.id;
+													window.location.href = "visitador_medico.php?login_visitador="+result.id+"&hash="+$("#hash").val();
 												}else if(result.estatus == 2){
 													$("#div_login").hide();
 													$("#div_recperar").hide();
