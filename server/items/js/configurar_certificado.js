@@ -145,7 +145,6 @@ function listar_certificados(){
 		table.search(evento).draw();
 	}
 	// ------------------------------------------
-
 }
 
 function AddRow(datos, respuesta){

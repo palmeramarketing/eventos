@@ -26,6 +26,10 @@ if (isset($_POST)){
 			echo json_encode($evento->estatus_evento($_POST));
 			break;
 
+		case 'imprimir_certificado_evento':
+			$evento->imprimir_certificado_evento($_POST["id_certificado"],true);
+			break;
+
 		default:
 			echo json_encode($evento->listar_eventos($_POST));
 			break;

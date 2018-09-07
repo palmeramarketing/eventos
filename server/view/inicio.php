@@ -10,6 +10,14 @@ if (isset($_POST["usuario"])) {
     header("Location: ../index.php");
     exit;
 }
+if (isset($_GET["error"])) {
+ ?> 
+    <script>
+      alert("No Hay Certificado Asociado a este Envento");
+      window.close();
+    </script>
+<?php
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -103,6 +111,10 @@ if (isset($_POST["usuario"])) {
       </div>
     </div>
   </div>
+  <form role="form" method="post"  action="../controller/evento.php"  name="formCertificado" id="formCertificado" target="_blank">
+    <input type="hidden" name="tipo" id="tipo" value="imprimir_certificado_evento">
+    <input type="hidden" name="id_certificado" id="id_certificado" value="">
+  </form>
   <!-- /////////////////////////DATATABLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
   <!-- /////////////////////////MODAL MODIFICAR EVENTO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->

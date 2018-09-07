@@ -238,7 +238,9 @@ function listar_participante(){
 	// ACCION MOSTRAR CERTIFICADO--------------------
 	$("#tabla_lista_eventos tbody").on("click", ".accion_certificado", function(){
 		var data = table.row($(this).parents("tr")).data();
-		window.location.href = "certificado.php?id_event="+data.id+"&evento="+data.nombre;
+		var id_cert = data.id;
+		$("#id_certificado").val(id_cert);
+		$("#formCertificado").submit();
 	});
 	// ------------------------------------------
 
