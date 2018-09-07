@@ -45,7 +45,6 @@ $(document).ready(function() {
 				perfil:$("#tipo_usuario").val()
 				
 			};
-			console.log(perfil);
 			$.ajax({
 			    url : '../controller/usuario.php',
 			    data : datos,
