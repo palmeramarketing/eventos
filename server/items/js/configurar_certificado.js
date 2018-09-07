@@ -35,19 +35,23 @@ $("#form_registrar_certificado").validate({
 	submitHandler: function(form) {
 
 		var form_data = new FormData($('#form_registrar_certificado')[0]);
-
+		var datos = {
+			nombre:$('#eventos_carga option:selected').text(),
+			nombre_certificado:$("#nombre").val()
+		};
 		$.ajax({
 			url: "../controller/certificado.php",
 			data: form_data,
 			contentType: false,
-	        processData: false,
+	    processData: false,
 			type: "POST",
 			dataType: "json",
 			success: function(respuesta, status, req){
 				if (respuesta.status == 200) {
 					alert_message("Exito! ","Certificado agregado.", "alert-success");
 					setTimeout(function(){
-						listar_certificados(); }, 2000);
+						AddRow(datos, respuesta); }, 2000);
+						$("#form_registrar_certificado")[0].reset();
 				}else if (respuesta.status == 1062) {
 					alert_message("Aviso! ","Ya existe un certificado para este evento.", "alert-warning");
 				}else{
@@ -71,11 +75,13 @@ $("#enviar_cod_part").click(function(){
 
 function listar_certificados(){
 	// LISTAR EVENTOS----------------------------
+	$('#tabla_lista_cert').DataTable().destroy();
 	var table = $('#tabla_lista_cert').DataTable({
 		"destroy":true,
 		"ajax":{
 			"method":"POST",
 			"url":"../controller/certificado.php",
+			"data":{id: $('#id_user_logeado').val(), perfil: $('#perfil_user_logeado').val()},
 			"dataType":"json"
 		},
 		"columns":[
@@ -131,7 +137,7 @@ function listar_certificados(){
 		$(this).confirmation( 'show' );
 	});
 	// ------------------------------------------
-	
+
 	// MOSTRAR CERTIFICADO --------------------
 	var id_evento = $("#id-evento").val();
 	var evento = $("#evento").val();
@@ -139,19 +145,37 @@ function listar_certificados(){
 		table.search(evento).draw();
 	}
 	// ------------------------------------------
-
 }
 
+function AddRow(datos, respuesta){
+	var table = $('#tabla_lista_cert').DataTable();
+	var rowNode = table
+	    .row.add({
+	    	"id": respuesta["data"],
+	    	"nombre": datos["nombre"],
+	      "nombre_certificado": datos["nombre_certificado"]
+	    })
+	    .draw()
+	    .node();
+
+	$( rowNode )
+	    .css( {
+	    	"opacity": "0"
+		})
+	    .animate({
+	    	opacity: "1"
+		});
+}
 
 function alert_message(strong, span, tipo){
 	$(".mensaje-strong").text(strong+" ");
 	$(".mensaje-span").text(span);
 	$(".mensaje-div").addClass("alert "+tipo);
 	$(".mensaje-div").slideDown();
-	setTimeout(function(){ 
+	setTimeout(function(){
 		$(".mensaje-div").slideUp().promise().done(function() {
    			$(".mensaje-div").removeClass("alert "+tipo);
-		}); 
+		});
 	}, 2500)
-	
+
 };

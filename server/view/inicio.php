@@ -10,6 +10,14 @@ if (isset($_POST["usuario"])) {
     header("Location: ../index.php");
     exit;
 }
+if (isset($_GET["error"])) {
+ ?> 
+    <script>
+      alert("No Hay Certificado Asociado a este Envento");
+      window.close();
+    </script>
+<?php
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,7 +76,7 @@ if (isset($_POST["usuario"])) {
         </div>
         <div class="col-sm-12">
           <div class="mensaje-div">
-            <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
+            <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
           </div>
         </div>
       </div>
@@ -103,6 +111,10 @@ if (isset($_POST["usuario"])) {
       </div>
     </div>
   </div>
+  <form role="form" method="post"  action="../controller/evento.php"  name="formCertificado" id="formCertificado" target="_blank">
+    <input type="hidden" name="tipo" id="tipo" value="imprimir_certificado_evento">
+    <input type="hidden" name="id_certificado" id="id_certificado" value="">
+  </form>
   <!-- /////////////////////////DATATABLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
   <!-- /////////////////////////MODAL MODIFICAR EVENTO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
@@ -117,7 +129,7 @@ if (isset($_POST["usuario"])) {
         </div>
         <div class="modal-body">
         <div class="mensaje-div">
-            <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
+            <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
         </div>
           <form role="form" class="form-horizontal" id="form_modifi_evento">
             <div class="form-group">
@@ -159,7 +171,7 @@ if (isset($_POST["usuario"])) {
           <h4 class="modal-title">Enlaces</h4>
         </div>
         <div class="mensaje-div">
-            <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
+            <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
         </div>
         <div class="modal-body">
           <div class='form-group' id='div_group_generar_link'>

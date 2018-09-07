@@ -23,8 +23,8 @@ session_start();
     <div class="row">
       <div class="col-md-6 col-md-offset-1">
         <h1 class="display-1">Certificado</h1>
-        <input type="hidden" name="id_user_logeado" id="id_user_logeado" value="<?php echo $_SESSION['user']['id']; ?>">
-        <input type="hidden" name="perfil_user_logeado" id="perfil_user_logeado" value="<?php echo $_SESSION['user']['tipo']; ?>">
+        <input type="hidden" name="id_user_logeado" id="id_user_logeado" value="<?php echo $_SESSION['id']; ?>">
+        <input type="hidden" name="perfil_user_logeado" id="perfil_user_logeado" value="<?php echo $_SESSION['tipo']; ?>">
         <input type="hidden" name="id-evento" id="id-evento" value="<?php echo $_GET['id_event']; ?>">
         <input type="hidden" name="evento" id="evento" value="<?php echo $_GET['evento']; ?>">
       </div>
