@@ -68,7 +68,7 @@ if (isset($_POST["usuario"])) {
         </div>
         <div class="col-sm-12">
           <div class="mensaje-div">
-            <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
+            <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
           </div>
         </div>
       </div>
@@ -117,7 +117,7 @@ if (isset($_POST["usuario"])) {
         </div>
         <div class="modal-body">
         <div class="mensaje-div">
-            <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
+            <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
         </div>
           <form role="form" class="form-horizontal" id="form_modifi_evento">
             <div class="form-group">
@@ -159,7 +159,7 @@ if (isset($_POST["usuario"])) {
           <h4 class="modal-title">Enlaces</h4>
         </div>
         <div class="mensaje-div">
-            <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
+            <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
         </div>
         <div class="modal-body">
           <div class='form-group' id='div_group_generar_link'>
