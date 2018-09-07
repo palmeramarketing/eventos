@@ -35,7 +35,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 quitar_padding">
 					<div id="imagen_header">
-						<img src="../assets/images/baner_check-in.jpg" alt="" width="100%">
+						<img src="../assets/images/baner_Check-In.jpg" alt="" width="100%">
 					</div>
 					<div id="imagen_header_bienvenido" style="display:none" >
 						<img src="../assets/images/Web_Found.jpg" alt="" width="100%">
