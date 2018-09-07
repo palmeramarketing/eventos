@@ -256,7 +256,7 @@ class Modelo
 							en nuestro evento:</p>
 							<p style="font-size: 20pt;">IX Simposium de Centroamérica y el Caribe <br>
 							de actualización en Odontoestomatología</p>
-							<p style="font-size: 14pt; padding-bottom: 20px;">Uno de nuestros representantes <br>
+							<p style="font-size: 14pt; padding-bottom: 20px;">Uno de nuestros visitadores médicos <br>
 							estará contactándote en los próximos días.</p>
 						</td>
 					</tr>

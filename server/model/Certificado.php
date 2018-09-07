@@ -29,6 +29,9 @@ class Certificado
 				JOIN lista_evento eve ON cert.id_evento = eve.id";
 			}
 			$result = $conexion->sql_select($sql);
+			if ($result["status"] == 404) {
+				$result["error"] = "";
+			}
 			return $result;
 	}
 
