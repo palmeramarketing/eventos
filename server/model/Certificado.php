@@ -16,12 +16,18 @@ class Certificado
 		return $conexion->sql_insert_update($insert);
   }
 
-	function listar_certificados(){
+	function listar_certificados($datos){
 			$conexion = new Recursos();
-
-			$sql = "SELECT cert.id, cert.nombre_certificado, eve.nombre
-							FROM certificado cert
-							JOIN lista_evento eve ON cert.id_evento = eve.id";
+			if($datos["perfil"]==  'admin'){
+				$sql = "SELECT cert.id, cert.nombre_certificado, eve.nombre
+				FROM certificado cert JOIN lista_evento eve ON cert.id_evento = eve.id
+				JOIN evento_usuario ue ON cert.id_evento = ue.fk_evento
+				WHERE ue.fk_usuario=".$datos["id"]."";
+			}else {
+				$sql = "SELECT cert.id, cert.nombre_certificado, eve.nombre
+				FROM certificado cert
+				JOIN lista_evento eve ON cert.id_evento = eve.id";
+			}
 			$result = $conexion->sql_select($sql);
 			return $result;
 	}

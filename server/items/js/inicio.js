@@ -100,7 +100,7 @@ function listar_participante(){
 							   <span id='boton-accion' title='Mostrar grafico' class='accion_graficar glyphicon glyphicon-stats'></span>\
 							   <span id='boton-accion' title='Mostrar Participantes' class='accion_participantes glyphicon glyphicon-user'></span>\
 							   <span id='boton-accion' title='Mostrar Certificado' class='accion_certificado glyphicon glyphicon-file'></span>\
-							   <span id='boton-accion' title='Mostrar Enlaces del Evento' class='glyphicon glyphicon-link accion_linkear' data-toggle='modal' data-target='#ModalLink'></span>"} 
+							   <span id='boton-accion' title='Mostrar Enlaces del Evento' class='glyphicon glyphicon-link accion_linkear' data-toggle='modal' data-target='#ModalLink'></span>"}
 		]
 	});
 	// ------------------------------------------
@@ -114,7 +114,7 @@ function listar_participante(){
 		$("#mod_direccion_evento").val(data.direccion);
 	});
 	// ------------------------------------------
-	
+
 	// ACCION LINKEAR LANDING PAGE---------------
 	$('#tabla_lista_eventos tbody').on("click", ".accion_linkear", function(){
 		var host = location.hostname;
@@ -234,18 +234,18 @@ function listar_participante(){
 		window.location.href = "participantes.php?id_event="+data.id;
 	});
 	// ------------------------------------------
-	
+
 	// ACCION MOSTRAR CERTIFICADO--------------------
 	$("#tabla_lista_eventos tbody").on("click", ".accion_certificado", function(){
 		var data = table.row($(this).parents("tr")).data();
 		window.location.href = "certificado.php?id_event="+data.id+"&evento="+data.nombre;
 	});
 	// ------------------------------------------
-	
+
 	// ACCION MOSTRAR lANDING PAGE--------------------
 	//$("#tabla_lista_eventos tbody").on("click", ".accion_landing", function(){
 	//	var data = table.row($(this).parents("tr")).data();
-	
+
 	//	window.location.href = "landing_page.php?id_event="+data.id;
 	//});
 	// ------------------------------------------
@@ -263,7 +263,7 @@ function AddRow(datos, respuesta){
 	    })
 	    .draw()
 	    .node();
-	 
+
 	$( rowNode )
 	    .css( {
 	    	"opacity": "0"
@@ -274,8 +274,8 @@ function AddRow(datos, respuesta){
 }
 
 function alert_message(strong, span, tipo){
-	$("#mensaje-strong").text(strong+" ");
-	$("#mensaje-span").text(span);
+	$(".mensaje-strong").text(strong+" ");
+	$(".mensaje-span").text(span);
 	$(".mensaje-div").addClass("alert "+tipo);
 	$(".mensaje-div").slideDown();
 	setTimeout(function(){ $(".mensaje-div").slideUp(); }, 2500);

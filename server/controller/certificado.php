@@ -22,7 +22,7 @@ if (isset($_POST)){
 			break;
 
 		default:
-			echo json_encode($certificado->listar_certificados());
+			echo json_encode($certificado->listar_certificados($_POST));
 			break;
 	}
 
