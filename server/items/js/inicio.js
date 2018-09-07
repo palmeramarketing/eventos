@@ -54,7 +54,7 @@ $(document).ready(function() {
 			    	if (respuesta.status == 200) {
 			    		alert_message("Exito! ","Nuevo evento registrado.", "alert-success");
 			    		$("#form_registro_evento")[0].reset();
-			    		AddRow(datos);
+			    		AddRow(datos, respuesta);
 			    	}else if (respuesta.status == 1062) {
 			    		alert_message("Aviso! ","El evento ya existe.", "alert-warning");
 			    	}else if (respuesta.status == 500) {
@@ -251,13 +251,15 @@ function listar_participante(){
 	// ------------------------------------------
 }
 
-function AddRow(datos){
+function AddRow(datos, respuesta){
 	var table = $('#tabla_lista_eventos').DataTable();
 	var rowNode = table
 	    .row.add({
+	    	"id": respuesta["data"]["id"],
 	    	"nombre": datos["nombre"],
 	        "fecha": datos["fecha"],
-	        "direccion": datos["direccion"]
+	        "direccion": datos["direccion"],
+	        "hash": respuesta["data"]["hash"]
 	    })
 	    .draw()
 	    .node();

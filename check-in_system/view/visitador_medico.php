@@ -50,7 +50,7 @@
 				<div id="form_background">
 					<div id="div_contenedor_formulario">
 						<div class="text-center p_texto_blanco"><h1>IX Simposium de Centroamérica y el Caribe <br>
-							de actualización en Odontoestomatología</h1> 
+							de actualización en Odontoestomatología</h1>
 						</div>
 						<div id="div_parrafo_superior_formulario" class="centrar">
 							<p class="text_book p_texto_blanco">
@@ -60,15 +60,15 @@
 						<form class="form-horizontal" method="post" id="form_register">
 						<div class="row centrar-contenido">
 							<div class="col-xs-4">
-								<input class="form-control input-form" type="text" tabindex="1" placeholder="NOMBRES:" name="nombre" id="nombre" />	
+								<input class="form-control input-form" type="text" tabindex="1" placeholder="NOMBRES:" name="nombre" id="nombre" />
 							</div>
 							<div class="col-xs-4">
-								<input class="form-control input-form" type="text" tabindex="2" placeholder="1er APELLIDO:" name="apellido_1" id="apellido_1"/>
+								<input class="form-control input-form" type="text" tabindex="2" placeholder="PRIMER APELLIDO:" name="apellido_1" id="apellido_1"/>
 							</div>
 						</div>
 						<div class="row centrar-contenido">
 							<div class="col-xs-4">
-								<input class="form-control input-form" type="text" tabindex="3" placeholder="2do. APELLIDO:" name="apellido_2" id="apellido_2"/>
+								<input class="form-control input-form" type="text" tabindex="3" placeholder="SEGUNDO APELLIDO:" name="apellido_2" id="apellido_2"/>
 							</div>
 							<div class="col-xs-4">
 								<input class="form-control input-form" type="text" tabindex="4" placeholder="ESPECIALIDAD:" name="especialidad" id="especialidad" />
@@ -117,10 +117,9 @@
 					</div>
 				</div>
 			</div>
-    	</div>	
+    	</div>
 	</body>
 	<!-- JS -->
 	<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../assets/js/validate.js"></script>
 </html>
-
