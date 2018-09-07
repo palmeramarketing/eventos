@@ -1,7 +1,8 @@
 $(document).ready(function() {
 	var id_event;
 	var table;
-
+	var evento = $("#evento").val();
+	
 	$(".nuevo_participante").attr("disabled",true);
 
 	$.ajax({
@@ -13,24 +14,19 @@ $(document).ready(function() {
 	    	$(respuesta.data).each(function(indice, valor){
                 $("#eventos_carga").append('<option value="' + valor.id + '">' + valor.nombre + '</option>');
             })
-
+            // MOSTRAR PARTICIPANES Y EVENTO-------
+            if (evento > 0) {
+				$("#eventos_carga").val(evento);
+				listar_participantes(evento);
+			}
 	    },
 	    error : function(respuesta) {
 	    },
 	    complete : function(xhr, status) {
 	    }
+			
+			
 	});
-
-	// MOSTRAR PARTICIPANTES-----------------------------
-	var evento = $("#evento").val();
-	if (evento > 0) {
-		//listar_participantes(evento);
-		//$("#eventos_carga option:selected").val(evento);
-		$("#eventos_carga option[value="+ evento +"]").attr('selected', 'selected');
-		console.log(evento);
-
-	}
-
 	// SELECT EVENTO-----------------------------
 	$("#eventos_carga").change(function(){
 		listar_participantes($("#eventos_carga option:selected").val());
