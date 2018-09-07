@@ -131,15 +131,6 @@ function listar_certificados(){
 		$(this).confirmation( 'show' );
 	});
 	// ------------------------------------------
-	
-	// MOSTRAR CERTIFICADO --------------------
-	var id_evento = $("#id-evento").val();
-	var evento = $("#evento").val();
-	if (id_evento > 0) {
-		table.search(evento).draw();
-	}
-	// ------------------------------------------
-
 }
 
 

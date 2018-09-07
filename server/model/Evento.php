@@ -1,6 +1,8 @@
 <?php
 
 require_once("Conexion.php");
+require_once("recursos.php");
+require_once("pdf_generator.php");
 
 class Evento
 {
@@ -94,6 +96,23 @@ class Evento
 		}
 		$conexion->cerrar_mysqli();
 	}
+
+	function imprimir_certificado_evento($id, $imprimir = false){
+		$conexion = new Recursos();
+		$select = "SELECT *	FROM  certificado	WHERE id_evento = $id";
+		$datos = $conexion->sql_select($select);
+		if ($imprimir) {
+			if ($datos["status"] == 200) {
+				$pdf = new PDF_generator();
+				$pdf->imprimir_pdf($datos);
+			}else{
+				header("location: ../view/inicio.php?error='true'");
+			}
+		}else{
+			return $datos;
+		}
+	}
+
 }
 
 ?>
