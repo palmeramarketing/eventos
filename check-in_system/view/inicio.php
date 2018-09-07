@@ -120,9 +120,9 @@
 
 	            <input class="form-control input-form" type="text" tabindex="1" placeholder="NOMBRES:" name="nombre" id="nombre" />
 
-	            <input class="form-control input-form" type="text" tabindex="2" placeholder="1er APELLIDO:" name="apellido_1" id="apellido_1"/>
+	            <input class="form-control input-form" type="text" tabindex="2" placeholder="PRIMER APELLIDO:" name="apellido_1" id="apellido_1"/>
 
-	            <input class="form-control input-form" type="text" tabindex="3" placeholder="2do. APELLIDO:" name="apellido_2" id="apellido_2"/>
+	            <input class="form-control input-form" type="text" tabindex="3" placeholder="SEGUNDO APELLIDO:" name="apellido_2" id="apellido_2"/>
 
 	            <input class="form-control input-form" type="text" tabindex="4" placeholder="ESPECIALIDAD:" name="especialidad" id="especialidad" />
 
@@ -682,7 +682,7 @@
 
 						 En cumplimiento de la ley 1581 de 2012 y el Decreto 1377 de 2013 sobre protección de datos personales, le manifestamos que la información aquí suministrada se encontrará incluida en nuestras bases de datos y tendrá el siguiente tratamiento:<br>
 
-						 Autorizo a MENARINI /o la agencia Palmera Marketing S.A.S. para recolectar, procesar y utilizar lo datos personales contenidos en el presente formulario y para administrarlos en desarrollo de su objeto.
+						 Autorizo a MENARINI /o la agencia Palmera Marketing S.A. para recolectar, procesar y utilizar lo datos personales contenidos en el presente formulario y para administrarlos en desarrollo de su objeto.
 
 					 </p>
 
@@ -705,4 +705,3 @@
 	 </body>
 
 </html>
-

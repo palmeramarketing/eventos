@@ -60,6 +60,17 @@
 
 				<div id="div_contenedor_formulario">
 
+					<?php if (isset($_REQUEST["error"])){		?>
+						<div class="col-md-10 col-md-offset-1">
+							<div class="mensaje-div alert alert-danger">
+								<strong class="mensaje-strong">Error! </strong><span class="mensaje-span">El codigo o correo no existe.</span>
+							</div>
+						</div>
+						<div class="col-md-10 col-md-offset-1">
+							<a href="certificado.php">Volver</a>
+						</div>
+					<?php } else {?>
+
 					<div id="div_parrafo_superior_formulario" class="centrar">
 
 						<p class="text_book p_texto_gris">
@@ -86,6 +97,8 @@
 
           </form>
 
+					<?php }?>
+
         </div>
 
       </div>
@@ -99,4 +112,3 @@
 </body>
 
 </html>
-

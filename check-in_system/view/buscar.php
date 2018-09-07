@@ -196,13 +196,13 @@
 
 							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
 
-	            	<input class="form-control input-form" type="text" tabindex="2" placeholder="1er APELLIDO:" name="apellido_1" id="apellido_1"/>
+	            	<input class="form-control input-form" type="text" tabindex="2" placeholder="PRIMER APELLIDO:" name="apellido_1" id="apellido_1"/>
 
 							</div>
 
 							<div class="col-lg-6  col-md-6  col-sm-6 col-xs-6">
 
-								<input class="form-control input-form" type="text" tabindex="3" placeholder="2do. APELLIDO:" name="apellido_2" id="apellido_2"/>
+								<input class="form-control input-form" type="text" tabindex="3" placeholder="SEGUNDO APELLIDO:" name="apellido_2" id="apellido_2"/>
 
 							</div>
 

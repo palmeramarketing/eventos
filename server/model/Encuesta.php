@@ -1,30 +1,77 @@
 <?php
 
 require_once("Conexion.php");
+require_once("recursos.php");
 
 class Encuesta
 {
 	function registrar_encuesta($datos)
 	{
-		$conexion = new Conexion();
-		$mysqli = $conexion->conectar_mysqli();
-		if($mysqli["status"] == 200){
+		$conexion = new Recursos();
+
 			$sql = "INSERT INTO
 					cuestionario (id_evento,pregunta,tipo)
 					VALUES
 					('".$datos['id_evento']."','".$datos['pregunta']."','".$datos['tipo_pregunta']."')";
-			$result = $mysqli["data"]->query($sql);
-			if ($result === true) {
-				$id_pregunta = $mysqli["data"]->insert_id;
+
+			$result = $conexion->sql_insert_update($sql);
+
+			if ($result["status"] == 200) {
+				$id_pregunta = $result["data"];
 				if (($datos['tipo_pregunta'] == "simple") || ($datos['tipo_pregunta'] == "multi")) {
-					return self::registrar_multi_resp($id_pregunta, $datos["respuestas"], $mysqli);
+					return self::registrar_multi_resp($id_pregunta, $datos["respuestas"]);
 				}elseif ($datos['tipo_pregunta'] == "libre") {
-					return self::registrar_resp_libre($id_pregunta, $datos["respuestas"], $mysqli);
+					return self::registrar_resp_libre($id_pregunta, $datos["respuestas"], $conexion);
 				}
 			}else{
-				$cod_error = ($mysqli["data"]->errno);
-				$error = mysqli_error($mysqli["data"]);
-				return ["data"=>"", "error"=>$error, "status"=>$cod_error];
+				return $result;
+			}
+	}
+
+	function modificar_encuesta($datos){
+		$conexion = new Recursos();
+		$sql = "UPDATE cuestionario SET pregunta='".$datos["pregunta"]."', tipo='".$datos["tipo_pregunta"]."' WHERE id='".$datos["id"]."'";
+		$ejecutar= $conexion->sql_insert_update($sql);
+		if($ejecutar["status"] == 200){
+			if (($datos['tipo_pregunta'] == "simple") || ($datos['tipo_pregunta'] == "multi")) {
+				if(count($datos['respuestas']) > 0){
+					$editar_respuestas= self::editar_multi_resp($datos["id"], $datos["respuestas"], $datos["respuestas_id"]);
+				}
+				if(count($datos['respuestas_new']) > 0){
+					$sqldel = "DELETE FROM respuesta  WHERE id_pregunta='".$datos["id"]."' and descripcion='Respuesta Libre'";
+					$conexion->sql_insert_update($sqldel);
+					return self::registrar_multi_resp($datos["id"], $datos["respuestas_new"]);
+				}else{
+					return $editar_respuestas;
+				}
+			}else if ($datos['tipo_pregunta'] == "libre") {
+				if($datos['respuestas_id'] == 0){
+					$sqldelete = "DELETE FROM respuesta  WHERE id_pregunta='".$datos["id"]."'";
+					$conexion->sql_insert_update($sqldelete);
+					return self::registrar_resp_libre($datos["id"], $datos["respuestas"], $conexion);
+				}else {
+					return $ejecutar;
+				}
+			}
+		}
+	}
+
+
+	function registrar_multi_resp($id_pregunta, $datos){
+		$conexion = new Conexion();
+		$mysqli = $conexion->conectar_mysqli();
+		if($mysqli["status"] == 200){
+			$sql = "INSERT INTO respuesta (id_pregunta,descripcion) VALUES (?,?)";
+			$query = $mysqli["data"]->prepare($sql);
+			$query->bind_param("ss", $id_pregunta, $descripcion);
+			foreach ($datos as $row) {
+			    $descripcion = $row['value'];
+			    $confirm = $query->execute();
+			}
+			if ($confirm) {
+				return ["data"=>"Registros Exitosos", "error"=>"", "status"=>200];
+			}else{
+				return ["data"=>"", "error"=>$confirm["error"], "status"=>500];
 			}
 		}else{
 			return ["data"=>"", "error"=>$mysqli["error"], "status"=>500];
@@ -32,31 +79,19 @@ class Encuesta
 		$conexion->cerrar_mysqli();
 	}
 
-	function registrar_multi_resp($id_pregunta, $datos, $mysqli){
-		$sql = "INSERT INTO respuesta (id_pregunta,descripcion) VALUES (?,?)";
-		$query = $mysqli["data"]->prepare($sql);
-		$query->bind_param("ss", $id_pregunta, $descripcion);
-		foreach ($datos as $row) {
-		    $descripcion = $row['value'];
-		    $confirm = $query->execute();
+	function editar_multi_resp($id_pregunta, $respuesta, $id_respuestas){
+		$conexion = new Recursos();
+		for ($i=0; $i < count($respuesta); $i++) {
+			$sql = "UPDATE respuesta SET descripcion='".$respuesta[$i]["value"]."' WHERE id='".$id_respuestas[$i]["value"]."'";
+			$ejecutar= $conexion->sql_insert_update($sql);
 		}
-		if ($confirm) {
-			return ["data"=>"Registros Exitosos", "error"=>"", "status"=>200];
-		}else{
-			return ["data"=>"", "error"=>$confirm["error"], "status"=>500];
-		}
+		return $ejecutar;
 	}
 
-	function registrar_resp_libre($id_pregunta, $respuesta, $mysqli){
+	function registrar_resp_libre($id_pregunta, $respuesta, $conexion){
 		$sql = "INSERT INTO respuesta (id_pregunta,descripcion) VALUES ('$id_pregunta','$respuesta')";
-		$result = $mysqli["data"]->query($sql);
-		if ($result === true) {
-			return ["data"=>"Respuesta registrada", "error"=>"", "status"=>200];
-		}else{
-			$cod_error = ($mysqli["data"]->errno);
-			$error = mysqli_error($mysqli["data"]);
-			return ["data"=>"", "error"=>$error, "status"=>$cod_error];
-		}
+		$result = $conexion->sql_insert_update($sql);
+		return $result;
 	}
 
 	function listar($id_evento, $tabla, $where){
@@ -83,25 +118,6 @@ class Encuesta
 		$conexion->cerrar_mysqli();
 	}
 
-	function modificar_encuesta($datos){
-		$conexion = new Conexion();
-		$mysqli = $conexion->conectar_mysqli();
-		if ($mysqli["status"] == 200) {
-			$sql = "UPDATE participante SET email='".$datos["email"]."', nombre='".$datos["nombre"]."', apellido='".$datos["apellido"]."', direccion='".$datos["direccion"]."', telefono='".$datos["telefono"]."' WHERE id='".$datos["id"]."'";
-			$result = $mysqli["data"]->query($sql);
-			if ($result == true) {
-				return ["data"=>"Evento modificado", "error"=>"", "status"=>200];
-			}else{
-				$cod_error = ($mysqli["data"]->errno);
-				$error = mysqli_error($mysqli["data"]);
-				return ["data"=>"", "error"=>$error, "status"=>$cod_error];
-			}
-		}else{
-			return ["data"=>"", "error"=>$mysqli["error"], "status"=>500];
-
-		}
-		$conexion->cerrar_mysqli();
-	}
 
 	function eliminar_pregunta($datos){
 		$conexion = new Conexion();
@@ -128,6 +144,14 @@ class Encuesta
 			return ["data"=>"", "error"=>$mysqli["error"], "status"=>500];
 		}
 		$conexion->cerrar_mysqli();
+	}
+
+	function eliminar_respuesta($datos){
+		$conexion = new Recursos();
+		$sql = "DELETE FROM respuesta WHERE id='".$datos["id"]."'";
+		$ejecutar= $conexion->sql_insert_update($sql);
+
+		return $ejecutar;
 	}
 }
 

@@ -41,7 +41,7 @@ session_start();
     <div class="row div_registrar" hidden>
       <div class="col-md-10 col-lg-offset-1">
         <div class="mensaje-div">
-            <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
+            <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
         </div>
     <div class="panel panel-info">
       <div class="panel-heading">
@@ -135,11 +135,8 @@ session_start();
           <button type="button" class="close cerrar_modal" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Detalles</h4>
         </div>
-        <div class="mensaje-div">
-            <strong id="mensaje-strong"></strong><span id="mensaje-span"></span>
-        </div>
         <div class="modal-body">
-          <form role="form" class="form-horizontal" id="form_modifi_preguntas">
+          <form role="form" class="form-horizontal" id="form_ver_preguntas">
             <div class="form-group div_titulo">
               <div class="col-xs-10 col-xs-offset-1">
                 <h3 id="mod_pregunta"></h3>
@@ -156,6 +153,66 @@ session_start();
             <!-- <div class="form-group">
               <button type="submit" class="btn btn-primary center-block">Guardar Cambios</button>
             </div> -->
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default cerrar_modal" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /////////////////////////MODAL MODIFICAR EVENTO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+  <!-- /////////////////////////MODAL MODIFICAR preguntas\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+  <!-- Modal -->
+  <div class="modal fade cerrar_modal" id="myModal_modifcar" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close cerrar_modal" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Detalles</h4>
+        </div>
+        <div class="modal-body">
+          <div class="mensaje-div">
+              <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
+          </div>
+          <form role="form" class="form-horizontal" id="form_modifi_preguntas">
+
+            <div class="form-group">
+              <div class="col-xs-10 col-xs-offset-1">
+                <label>Pregunta</label>
+                <input type="text" id="mod_pregunta_edit" name="mod_pregunta_edit" tabindex=1 placeholder="Pregunta" class="form-control input_style">
+              </div>
+            </div>
+
+            <div class="form-group tipo_pregunta_edit">
+              <div class="col-xs-10 col-xs-offset-1">
+                <label>Tipo de pregunta</label>
+                <select class="form-control" id="mod_tipo_pregunta_edit" name="mod_tipo_pregunta_edit" tabindex=1>
+                  <option value="0">Selecciona un tipo de pregunta</option>
+                  <option value="simple">Selecci&oacute;n simple</option>
+                  <option value="multi">Selecci&oacute;n m&uacute;ltiple</option>
+                  <option value="libre">Respuesta libre</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group botn_agregar_opcion" hidden>
+              <div class="col-md-10 col-md-offset-2">
+                <button type='button' class='btn btn-link' id='agregar_respuesta_edit'>Agregar opci&oacute;n</button>
+              </div>
+            </div>
+            <div class="form-group textarea_opcion" hidden>
+              <div class="col-md-10 col-md-offset-2">
+                <input type='hidden' id='mod_id_libre' name='mod_id_libre' >
+                <textarea class="form-control" rows="4" name="respuesta_libre" placeholder="En respuesta libre estar&aacute; habilitada un cuadro de texto como &eacute;ste." style="width: 400px;" disabled></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary center-block">Guardar Cambios</button>
+            </div>
           </form>
         </div>
         <div class="modal-footer">
