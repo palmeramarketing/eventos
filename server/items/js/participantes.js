@@ -126,7 +126,7 @@ function listar_participantes(id_evento){
 				{"data":"direccion"},
 				{"data":"telefono"},
 				{"data":"asistencia"},
-				{"defaultContent":"<span id='boton-accion' class='accion_modificar glyphicon glyphicon-cog' data-toggle='modal' data-target='#myModal''></span>\
+				{"defaultContent":"<span id='boton-accion' class='accion_modificar glyphicon glyphicon-edit' data-toggle='modal' data-target='#myModal''></span>\
 								   <span id='boton-accion' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
 			]
 		});
@@ -215,7 +215,7 @@ function listar_participantes(id_evento){
 				    dataType : 'json',
 				    success : function(respuesta) {
 				    	if (respuesta.status == 200) {
-				    		$(".boton_listar").click();
+				    		listar_participantes($("#eventos_carga option:selected").val());
 				    	}else if (respuesta.status == 500) {
 				    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
 				    	};
