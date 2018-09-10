@@ -16,7 +16,7 @@ class PDF_generator
 		$pdf= $mpdf->Output('', 'S');
 
 		$mail = new PHPMailer;
-    $mail->setFrom('info@cwc.com', 'MENARINI');
+    $mail->setFrom('info@palmera.marketing', 'MENARINI');
     $mail->addAddress($email, '');
     $mail->Subject = 'Certificado';
     $mail->CharSet = 'UTF-8';
