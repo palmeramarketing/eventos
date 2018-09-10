@@ -233,7 +233,7 @@ class Modelo
 
 	function envioCorreo($email) {
 	  	$mail = new PHPMailer;
-		$mail->setFrom('info@cwc.com', 'MENARINI');
+		$mail->setFrom('info@palmera.marketing', 'MENARINI');
 		$mail->addAddress($email,'');
 		$mail->Subject = 'Gracias por su Registro';
 		$mail->msgHTML('
@@ -294,12 +294,13 @@ class Modelo
 		</html>'
 		);
 		$mail->AltBody = 'Gracias por Actualizar sus datos.';
+		$mail->AddAttachment($_SERVER['HTTP_HOST'].'/eventos/check-in_system/Itinerarios/Programacion1.pdf', $name = 'Itinerario',  $encoding = 'base64', $type = 'application/pdf');
 		$mail->send();
 	}
 
 	function envioCorreoAsistencia($email) {
 	  	$mail = new PHPMailer;
-		$mail->setFrom('info@cwc.com', 'MENARINI');
+		$mail->setFrom('info@palmera.marketing', 'MENARINI');
 		$mail->addAddress($email,'');
 		$mail->Subject = 'Gracias por su Asistencia';
 		$mail->msgHTML('
