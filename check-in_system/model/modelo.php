@@ -261,7 +261,7 @@ class Modelo
 						</td>
 					</tr>
 					<tr>
-						<td align="center" valign="middle" style=" background-image: url(http://palmera.marketing/check-in_system/assets/images/fondo_asistir.jpg);background-repeat: no-repeat fixed center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 100%; width: 100% ; text-align: center; padding: 20px;">
+						<td align="center" valign="middle" style=" background-image: url(http://palmera.marketing/check-in_system/assets/images/fondo_asistir.jpg);background-repeat: no-repeat; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 100%; width: 100% ; text-align: center; padding: 20px;">
 				    		<a href="https://www.facebook.com/MenariniCA/" target="_blank" style=" text-decoration: none; color: white;  margin: 2%;">
 					    		<img src="http://palmera.marketing/check-in_system/assets/images/C&W_Landing_FB.png" alt="" width="23px">
 					    		<span style="font-size: 18px; vertical-align: top;">MenariniCA</span>
@@ -285,7 +285,7 @@ class Modelo
 				    	</td>
 					</tr>
 					<tr>
-						<td align="center" style="background: url(http://palmera.marketing/check-in_system/assets/images/footer_web.jpg); background-repeat: no-repeat fixed center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 100%; width: 100% ; text-align: center; padding: 20px;"><span><a href="http://www.menarini-ca.com/" style=" text-decoration: none; color: white; font-size: 40px;">www.menarini-ca.com</a></span>
+						<td align="center" style="background: url(http://palmera.marketing/check-in_system/assets/images/footer_web.jpg); background-repeat: no-repeat; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 100%; width: 100% ; text-align: center; padding: 20px;"><span><a href="http://www.menarini-ca.com/" style=" text-decoration: none; color: white; font-size: 40px;">www.menarini-ca.com</a></span>
 						</td>
 					</tr>
 				</tbody>
