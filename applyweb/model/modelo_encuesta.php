@@ -12,7 +12,7 @@ class Encuesta
 
 {
 
-	
+
 
 	function comprobar_cargar($datos){
 
@@ -31,14 +31,14 @@ class Encuesta
 				FROM cuestionario cue
 
 				INNER JOIN lista_evento eve
-                
+
                 ON eve.id = cue.id_evento
-                
+
                 INNER JOIN respuesta res
-                
+
                 ON cue.id = res.id_pregunta
 
-				WHERE eve.hash = '".$datos["hash"]."' ORDER BY cue.id ASC";
+				WHERE eve.hash = '".$datos["hash"]."' ORDER BY res.id ASC";
 
 		$arreglo = $ejecutar->sql_select($sql);
 
@@ -98,7 +98,7 @@ class Encuesta
 
 					/*Eliminamos datos no relevantes*/
 
-					unset($valor['id_evento'], 
+					unset($valor['id_evento'],
 
 						  $valor['pregunta'],
 
@@ -152,11 +152,11 @@ class Encuesta
 
 			$values = self::preparar_valores($datos);
 
-			$sql = "INSERT INTO 
+			$sql = "INSERT INTO
 
-					respuesta_evento (id_participante,id_respuesta,respuesta_libre) 
+					respuesta_evento (id_participante,id_respuesta,respuesta_libre)
 
-					VALUES 
+					VALUES
 
 					".$values."";
 
@@ -184,9 +184,9 @@ class Encuesta
 
 		$consulta = new Recursos();
 
-		$sql = "SELECT id_evento 
+		$sql = "SELECT id_evento
 
-				FROM vista_respuesta_evento 
+				FROM vista_respuesta_evento
 
 				WHERE id_participante = '".$id_participante."'
 
@@ -248,7 +248,7 @@ class Encuesta
 
 		$arreglo["id_evento"] = $datos["id_evento"];
 
-		for ($i=0; $i < count($datos["respuestas"]) ; $i++) { 
+		for ($i=0; $i < count($datos["respuestas"]) ; $i++) {
 
 			$name_campo = $datos["respuestas"][$i]["name"];
 
@@ -346,7 +346,7 @@ class Encuesta
 
 							<p style="font-size: 30pt; color: #2d4c72; padding: 20px;">Gracias por participar en nuestra encuesta</p>
 
-						
+
 
 						</td>
 
