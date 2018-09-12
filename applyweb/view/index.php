@@ -80,12 +80,12 @@
 
 					<div id="div_container_gracias">
 						<div class="page-header">
-						  <h1>Muchas Gracias</h1>
+						  <h1 class="text_encuesta">Muchas Gracias</h1>
 						</div>
 						<div class="row">
 							<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
 								<div id="div_mensaje_error">
-									<h2>Gracias por participar en la encuesta</h2>
+									<h2 class="text_encuesta">Gracias por participar en la encuesta</h2>
 								</div>
 							</div>
 						</div>

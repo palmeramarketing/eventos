@@ -184,13 +184,12 @@ class Encuesta
 
 		$consulta = new Recursos();
 
-		$sql = "SELECT id_evento
-
-				FROM vista_respuesta_evento
-
-				WHERE id_participante = '".$id_participante."'
-
-				AND hash = '".$hash."'";
+		$sql = "SELECT eve.id FROM lista_evento eve
+				JOIN cuestionario cues ON eve.id = cues.id_evento
+				JOIN respuesta res ON cues.id = res.id_pregunta
+				JOIN respuesta_evento resev ON res.id = resev.id_respuesta
+				WHERE resev.id_participante = '".$id_participante."'
+				AND eve.hash = '".$hash."'";
 
 		$consult = $consulta->sql_select($sql);
 

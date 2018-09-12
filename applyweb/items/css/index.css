@@ -3,10 +3,12 @@
 	width: 100%;
 }
 .div_pregunta{
-	margin: 0px 0px 20px;
 	font-size: 25px;
 	font-weight: bold;
 	color: white;
+	text-align: justify;
+	transform: translateX(-50%);
+	margin-left: 50%;
 }
 .div_respuesta{
 	font-size: 20px;
