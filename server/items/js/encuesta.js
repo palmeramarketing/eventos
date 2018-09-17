@@ -258,7 +258,7 @@ function listar_participantes(id_evento){
 		    success : function(respuesta) {
 		    	console.log(respuesta);
 					if ((tipo_pregunta == "simple") || (tipo_pregunta == "multi")){
-		    		for (var i = 0; i < respuesta.data.length; i++) {
+						for (var i = respuesta.data.length - 1; i >= 0; i--) {
 						$("<div class='form-group sistema_opciones limpiar_campos_modal' id='div-opcion-"+i+"'>\
 				          <div class='col-xs-8 col-xs-offset-2'>\
 				          	<div class='input-group'>\
