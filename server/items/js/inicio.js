@@ -106,6 +106,7 @@ function listar_participante(){
 	// ------------------------------------------
 
 	// CARGAR DATOS MODAL MODIFICAR--------------
+	$('#tabla_lista_eventos tbody').unbind("click");
 	$('#tabla_lista_eventos tbody').on("click", ".accion_modificar", function(){
 		var data = table.row($(this).parents("tr")).data();
 		id_event = data.id;
