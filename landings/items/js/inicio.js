@@ -77,7 +77,7 @@ $(document).ready(function() {
 
 function listar_participante(){
 	// LISTAR EVENTOS----------------------------
-	var table = $('#tabla_lista_eventos').DataTable({
+	var table = $('#tabla_encuesta').DataTable({
 		"destroy":true,
 		"ajax":{
 			"method":"POST",
@@ -97,7 +97,7 @@ function listar_participante(){
 	// ------------------------------------------
 
 	// CARGAR DATOS MODAL MODIFICAR--------------
-	$('#tabla_lista_eventos tbody').on("click", ".accion_modificar", function(){
+	$('#tabla_encuesta tbody').on("click", ".accion_modificar", function(){
 		var data = table.row($(this).parents("tr")).data();
 		id_event = data.id;
 		$("#mod_nombre_evento").val(data.nombre);
@@ -108,7 +108,7 @@ function listar_participante(){
 
 
 	// ACCION GRAFICAR EVENTO--------------------
-	$("#tabla_lista_eventos tbody").on("click", ".accion_graficar", function(){
+	$("#tabla_encuesta tbody").on("click", ".accion_graficar", function(){
 		var data = table.row($(this).parents("tr")).data();
 		window.location.href = "graficar.php?id_event="+data.id+"&evento="+data.nombre+"&tipo=evento";
 	});

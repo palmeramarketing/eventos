@@ -30,7 +30,7 @@ class Encuesta
 
 				FROM cuestionario cue
 
-				INNER JOIN lista_evento eve
+				INNER JOIN encuesta eve
                 
                 ON eve.id = cue.id_evento
                 
@@ -154,7 +154,7 @@ class Encuesta
 
 			$sql = "INSERT INTO 
 
-					respuesta_evento (id_participante,id_respuesta,respuesta_libre) 
+					respuesta_encuesta (id_participante,id_respuesta,respuesta_libre) 
 
 					VALUES 
 

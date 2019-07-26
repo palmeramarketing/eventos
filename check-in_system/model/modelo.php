@@ -44,7 +44,7 @@ class Modelo
 			return self::update_participante_sistema_eventos($datos, $conexion);
 
 		}elseif ($resp["status"] == 200) {
-			$buscar = "SELECT id FROM lista_evento WHERE hash='".$datos["hash"]."'";
+			$buscar = "SELECT id FROM encuesta WHERE hash='".$datos["hash"]."'";
 			$id_evento = $conexion->sql_select($buscar);
 
 			$sql = "INSERT INTO evento_participante (id_evento,id_participante)
@@ -94,7 +94,7 @@ class Modelo
 		$datos = $conexion->sql_select($select);
 		if ($datos["status"] == 200) {
 			$select = "SELECT * FROM certificado cer
-						INNER JOIN lista_evento eve
+						INNER JOIN encuesta eve
 						ON cer.id_evento = eve.id
 						WHERE eve.hash = '$hash'";
 			$result = $conexion->sql_select($select);

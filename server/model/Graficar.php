@@ -9,13 +9,13 @@ class Graficar
         $conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
 		if($mysqli["status"] == 200){
-	        $sql = "SELECT * FROM lista_evento eve
+	        $sql = "SELECT * FROM encuesta eve
 	                LEFT JOIN cuestionario cue 
 	                ON eve.id = cue.id_evento 
 	                LEFT JOIN respuesta res
 	                ON cue.id = res.id_pregunta
 	                LEFT JOIN (SELECT *, COUNT(id_respuesta) as cont_respuesta 
-	                           FROM respuesta_evento GROUP BY id_respuesta 
+	                           FROM respuesta_encuesta GROUP BY id_respuesta 
 	                           HAVING COUNT(id_respuesta)>0) rese
 	                ON res.id = rese.id_respuesta
 	                WHERE eve.estatus = 1 AND eve.id = '".$id_evento."';";
