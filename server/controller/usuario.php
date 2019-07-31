@@ -38,6 +38,10 @@ if (isset($_POST)){
 			echo json_encode($usuario->cambiar_password($_POST["correo"], $_POST["passwd"]));
 			break;
 
+		case 'usuarios_por_evento':
+			echo json_encode($usuario->usuarios_por_evento($_POST["id_evento"]));
+			break;
+
 		default:
 			echo json_encode($usuario->listar_usuario());
 			break;

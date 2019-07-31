@@ -119,6 +119,15 @@ class Usuario
 
 	}
 
+	function usuarios_por_evento($id_evento){
+		$conexion = new Recursos();
+		$sql = "SELECT user.* FROM usuario user
+				INNER JOIN evento_usuario e_user
+				ON e_user.fk_usuario = user.id
+				WHERE e_user.fk_evento = '$id_evento'";
+		return $conexion->sql_select($sql);
+	}
+
 	function recuperar_password($correo){
 		$conexion = new Recursos();
 		$logitud = 6;

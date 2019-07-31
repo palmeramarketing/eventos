@@ -40,48 +40,48 @@ if (isset($_GET["error"])) {
       </div>
     </div>
   </div>
-  <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
   <div class="container-fluid">
+  <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
     <div class="row div_registrar" hidden>
       <div class="col-md-10 col-lg-offset-1">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-          <center><h3 class="display-3">Nuevo Evento</h3></center>
-      </div>
-    <br>
-      <div class="panel-body">
-        <div class="col-md-10 col-lg-offset-2">
-        <form class="form-horizontal" id="form_registro_evento">
-          <div class="form-group">
-            <div class="col-sm-10">
-            <input type="text" class="form-control" id="nombre_evento" placeholder="Nombre del Evento" name="nombre_evento">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+              <center><h3 class="display-3">Nuevo Evento</h3></center>
+          </div>
+        <br>
+          <div class="panel-body">
+            <div class="col-md-10 col-lg-offset-2">
+            <form class="form-horizontal" id="form_registro_evento">
+              <div class="form-group">
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="nombre_evento" placeholder="Nombre del Evento" name="nombre_evento">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10 input-group date div_datepicker">
+                <input type="text" class="form-control" id="fecha_evento" placeholder="Fecha del evento" name="fecha_evento"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="direccion_evento" placeholder="Direcci&oacute;n del evento" name="direccion_evento">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-0 col-sm-10">
+                <button type="submit" class="btn btn-info btn-block">Registrar</button>
+                </div>
+              </div>
+              </form>
+            </div>
+            <div class="col-sm-12">
+              <div class="mensaje-div">
+                <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
+              </div>
             </div>
           </div>
-          <div class="form-group">
-            <div class="col-sm-10 input-group date div_datepicker">
-            <input type="text" class="form-control" id="fecha_evento" placeholder="Fecha del evento" name="fecha_evento"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-10">
-            <input type="text" class="form-control" id="direccion_evento" placeholder="Direcci&oacute;n del evento" name="direccion_evento">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-0 col-sm-10">
-            <button type="submit" class="btn btn-info btn-block">Registrar</button>
-            </div>
-          </div>
-          </form>
         </div>
-        <div class="col-sm-12">
-          <div class="mensaje-div">
-            <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
-          </div>
-        </div>
       </div>
-    </div>
-    </div>
     </div>
   <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 

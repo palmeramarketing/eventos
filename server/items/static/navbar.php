@@ -16,6 +16,7 @@
         <ul class="nav navbar-nav botones_menu">
           <li><a href="inicio.php">Eventos</a></li>
           <li><a href="encuesta.php">Encuestas</a></li>
+          <li><a href="cuestionario.php">Cuestionario</a></li>
           <li><a href="participantes.php">Participantes</a></li>
           <li><a href="certificado.php">Certificados</a></li>
           <?php// if($_SESSION['tipo'] == 'superadmin'){ ?>

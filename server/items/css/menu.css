@@ -82,7 +82,7 @@
 	transition: all 900ms;
 }
 
-#boton-accion{
+.boton-accion{
 	width: 12%;
 	text-align: center;
 	cursor: pointer;

@@ -5,7 +5,15 @@ require_once("recursos.php");
 
 class Encuesta
 {
-	function registrar_encuesta($datos)
+
+	function registrar_encuesta($datos){
+		$conexion = new Recursos();
+		$sql = "INSERT INTO encuesta (nombre,fecha_creado,id_evento)
+					VALUES ('".$datos['nombre']."','".$datos['fecha_creado']."','".$datos['id_evento']."')";
+		return $conexion->sql_insert_update($sql);
+	}
+
+	function registrar_pregunta($datos)
 	{
 		$conexion = new Recursos();
 
@@ -94,6 +102,12 @@ class Encuesta
 		return $result;
 	}
 
+	function get_cuestionario($id_encuesta){
+		$conexion = new Recursos();
+		$sql = "SELECT * FROM cuestionario WHERE id_encuesta = '$id_encuesta'";
+		return $conexion->sql_select();
+	}
+
 	function listar($id_evento, $tabla, $where){
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
@@ -116,6 +130,12 @@ class Encuesta
 			return ["data"=>"", "error"=>$mysqli["error"], "status"=>500];
 		}
 		$conexion->cerrar_mysqli();
+	}
+
+	function listar_encuesta($id_evento){
+		$conexion = new Recursos();
+		$sql = "SELECT * FROM encuesta WHERE id_evento = '$id_evento' AND estatus = '1'";
+		return $conexion->sql_select($sql);
 	}
 
 
@@ -144,6 +164,12 @@ class Encuesta
 			return ["data"=>"", "error"=>$mysqli["error"], "status"=>500];
 		}
 		$conexion->cerrar_mysqli();
+	}
+
+	function cambiar_estatus_encuesta($id){
+		$conexion = new Recursos();
+		$sql = "UPDATE encuesta SET estatus = '0' WHERE id = '$id'";
+		return $conexion->sql_insert_update($sql);
 	}
 
 	function eliminar_respuesta($datos){

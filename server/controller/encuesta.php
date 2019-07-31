@@ -13,12 +13,24 @@ if (isset($_POST)){
 			echo json_encode($evento->listar_eventos($_POST));
 			break;
 
-		case 'registrar':
+		case 'registrar_encuesta':
 			echo json_encode($encuesta->registrar_encuesta($_POST));
+			break;
+
+		case 'registrar':
+			echo json_encode($encuesta->registrar_pregunta($_POST));
+			break;
+
+		case 'get_cuestionario':
+			echo json_encode($encuesta->get_cuestionario($_POST["id_cuestionario"]));
 			break;
 
 		case 'modificar':
 			echo json_encode($encuesta->modificar_encuesta($_POST));
+			break;
+
+		case 'cambiar_estatus_encuesta':
+			echo json_encode($encuesta->cambiar_estatus_encuesta($_POST["id"]));
 			break;
 
 		case 'eliminar':
@@ -33,8 +45,12 @@ if (isset($_POST)){
 			echo json_encode($encuesta->listar($_POST, "respuesta", "id_pregunta"));
 			break;
 
-		default:
+		case 'buscar-cuestionario':
 			echo json_encode($encuesta->listar($_POST, "cuestionario", "id_evento"));
+			break;
+
+		default:
+			echo json_encode($encuesta->listar_encuesta($_POST['id_evento']));
 			break;
 	}
 }

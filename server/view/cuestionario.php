@@ -8,7 +8,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Encuestas</title>
+  <title>Cuestionario</title>
   <?php
     include "../items/static/header.php";
   ?>
@@ -20,18 +20,18 @@ session_start();
   <div class="container-fluid div_titulo">
     <div class="row">
       <div class="col-md-6 col-md-offset-1">
-        <h1 class="display-1">Lista de Encuestas</h1>
+        <h1 class="display-1">Cuestionario</h1>
         <input type="hidden" name="id_user_logeado" id="id_user_logeado" value="<?php echo $_SESSION['id']; ?>">
         <input type="hidden" name="perfil_user_logeado" id="perfil_user_logeado" value="<?php echo $_SESSION['tipo']; ?>">
       </div>
     </div>
   </div>
 
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <div class="col-md-6 col-lg-offset-3">
-        <select class="form-control" id="eventos_carga">
-        <option>Selecciona un evento</option>
+      <div class="col-md-10 col-lg-offset-1">
+        <select class="form-control" id="encuestas_carga">
+        <option>Selecciona una encuesta</option>
       </select>
       </div>
     </div>
@@ -39,111 +39,80 @@ session_start();
 
   <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
     <div class="row div_registrar" hidden>
-      <div class="col-md-6 col-lg-offset-3">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-              <center><h3 class="display-3">Nueva Encuesta</h3></center>
-          </div>
-        <br>
-          <div class="panel-body">
-            <div class="col-md-10 col-lg-offset-2">
-            <form class="form-horizontal" id="form_registro_encuesta">
-              <div class="form-group">
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="nombre_encuesta" placeholder="Nombre" name="nombre_encuesta">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-0 col-sm-10">
-                <button type="submit" class="btn btn-info btn-block">Registrar</button>
-                </div>
-              </div>
-              </form>
-            </div>
-            <div class="col-sm-12">
-              <div class="mensaje-div">
-                <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-<!-- <div class="row div_registrar" hidden>
       <div class="col-md-10 col-lg-offset-1">
         <div class="mensaje-div">
             <strong class="mensaje-strong"></strong><span class="mensaje-span"></span>
         </div>
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <center><h3 class="display-3">Nueva Pregunta</h3></center>
-          </div>
-          <br>
-          <div class="panel-body">
-            <div class="col-md-10 col-lg-offset-2">
-            <form class="form-horizontal" id="form_registro_pregunta">
-              <div class="form-group">
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="crear_pregunta" tabindex=1 placeholder="Pregunta" name="crear_pregunta">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-6">
-                  <select class="form-control" id="tipo_pregunta" tabindex=1>
-                    <option value="0">Selecciona un tipo de pregunta</option>
-                    <option value="simple">Selecci&oacute;n simple</option>
-                    <option value="multi">Selecci&oacute;n m&uacute;ltiple</option>
-                    <option value="libre">Respuesta libre</option>
-                  </select>
-                </div>
-              </div>
-              <div class='form-group sistema_opciones' id='div-opcion-1' hidden>
-                <div class='col-xs-8 col-xs-offset-1'>
-                  <input type='text' id='opcion-1' name='opcion-1' tabindex=2 placeholder='Opci&oacute;n' class='form-control input_style'>
-                </div>
-              </div>
-              <div class='form-group sistema_opciones' id='div-opcion-2' hidden>
-                <div class='col-xs-8 col-xs-offset-1'>
-                  <input type='text' id='opcion-2' name='opcion-2' tabindex=3 placeholder='Opci&oacute;n' class='form-control input_style'>
-                </div>
-              </div>
-              <div class="form-group div_agregar_respuesta sistema_opciones" hidden>
-                <div class="col-md-10 col-md-offset-1">
-                  <button type="button" class="btn btn-link" id="agregar_respuesta">Agregar opci&oacute;n</button>
-                </div>
-              </div>
-              <div class="form-group textarea_opcion" hidden>
-                <div class="col-md-10 col-md-offset-0">
-                  <textarea class="form-control" rows="5" name="respuesta_libre" placeholder="En respuesta libre estar&aacute; habilitada un cuadro de texto como &eacute;ste." style="width: 600px;" disabled></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-0 col-sm-10">
-                  <button type="submit" class="btn btn-info btn-block">Agregar</button>
-                </div>
-              </div>
-              </form>
-            </div>
-          </div>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+      <center><h3 class="display-3">Nueva Pregunta</h3></center>
+    </div>
+    <br>
+  <div class="panel-body">
+    <div class="col-md-10 col-lg-offset-2">
+    <form class="form-horizontal" id="form_registro_pregunta">
+      <div class="form-group">
+        <div class="col-sm-10">
+        <input type="text" class="form-control" id="crear_pregunta" tabindex=1 placeholder="Pregunta" name="crear_pregunta">
         </div>
       </div>
-    </div> -->
+      <div class="form-group">
+        <div class="col-sm-6">
+          <select class="form-control" id="tipo_pregunta" tabindex=1>
+            <option value="0">Selecciona un tipo de pregunta</option>
+            <option value="simple">Selecci&oacute;n simple</option>
+            <option value="multi">Selecci&oacute;n m&uacute;ltiple</option>
+            <option value="libre">Respuesta libre</option>
+          </select>
+        </div>
+      </div>
+      <div class='form-group sistema_opciones' id='div-opcion-1' hidden>
+        <div class='col-xs-8 col-xs-offset-1'>
+          <input type='text' id='opcion-1' name='opcion-1' tabindex=2 placeholder='Opci&oacute;n' class='form-control input_style'>
+        </div>
+      </div>
+      <div class='form-group sistema_opciones' id='div-opcion-2' hidden>
+        <div class='col-xs-8 col-xs-offset-1'>
+          <input type='text' id='opcion-2' name='opcion-2' tabindex=3 placeholder='Opci&oacute;n' class='form-control input_style'>
+        </div>
+      </div>
+      <div class="form-group div_agregar_respuesta sistema_opciones" hidden>
+        <div class="col-md-10 col-md-offset-1">
+          <button type="button" class="btn btn-link" id="agregar_respuesta">Agregar opci&oacute;n</button>
+        </div>
+      </div>
+      <div class="form-group textarea_opcion" hidden>
+        <div class="col-md-10 col-md-offset-0">
+          <textarea class="form-control" rows="5" name="respuesta_libre" placeholder="En respuesta libre estar&aacute; habilitada un cuadro de texto como &eacute;ste." style="width: 600px;" disabled></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-0 col-sm-10">
+          <button type="submit" class="btn btn-info btn-block">Agregar</button>
+        </div>
+      </div>
+      </form>
+    </div>
+    </div>
+  </div>
+
+      </div>
+    </div>
   <!-- /////////////////////////FORMULARIO DE REGISTRO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
     <div class="row">
-      <div class="col-md-2 col-md-offset-8"><button type="button" class="btn btn-info nueva_pregunta">Crear encuesta</button></div>
+      <div class="col-md-2 col-md-offset-8"><button type="button" class="btn btn-info nueva_pregunta">Crear pregunta</button></div>
     </div>
 
   <!-- /////////////////////////DATATABLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
     <br>
     <div class="row">
       <div class="col-md-10 col-lg-offset-1">
-        <table class="table table-striped" id="tabla_lista_encuestas" cellspacing="0" width="100%">
+        <table class="table table-striped" id="tabla_lista_preguntas" cellspacing="0" width="100%">
         <thead>
           <tr>
-            <th>id</th>
-            <th>Encuesta</th>
-            <th>Creaci&oacute;n</th>
+            <th>Pregunta</th>
+            <th>Tipo</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -254,7 +223,7 @@ session_start();
   </div>
   <!-- /////////////////////////MODAL MODIFICAR EVENTO\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
-<script type="text/javascript" src="../items/js/encuesta.js"></script>
-<link rel="stylesheet" type="text/css" href="../items/css/encuesta.css">
+<script type="text/javascript" src="../items/js/cuestionario.js"></script>
+<link rel="stylesheet" type="text/css" href="../items/css/cuestionario.css">
 </body>
 </html>

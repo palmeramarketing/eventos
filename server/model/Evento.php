@@ -35,9 +35,9 @@ class Evento
 		if ($mysqli["status"] == 200) {
 
 			if($datos["perfil"]==  'admin'){
-				$sql = "SELECT eve.* FROM encuesta eve JOIN evento_usuario ue on eve.id = ue.fk_evento JOIN usuario us on ue.fk_usuario = us.id WHERE us.id=".$datos["id"]." and eve.estatus=1";
+				$sql = "SELECT eve.* FROM evento eve JOIN evento_usuario ue on eve.id = ue.fk_evento JOIN usuario us on ue.fk_usuario = us.id WHERE us.id=".$datos["id"]." and eve.estatus=1";
 			}else {
-				$sql = "SELECT * FROM encuesta WHERE estatus=1";
+				$sql = "SELECT * FROM evento WHERE estatus=1";
 			}
 
 			$result = $mysqli["data"]->query($sql);

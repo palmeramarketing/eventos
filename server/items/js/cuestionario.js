@@ -6,13 +6,13 @@ $(document).ready(function() {
 	$(".nueva_pregunta").attr("disabled",true);
 
 	$.ajax({
-	    url : '../controller/participante.php',
-	    data : {tipo:"select", id: $('#id_user_logeado').val(), perfil: $('#perfil_user_logeado').val()},
+	    url : '../controller/encuesta.php',
+	    data : {tipo:"listar_cuestionario", id: $('#id_user_logeado').val(), perfil: $('#perfil_user_logeado').val()},
 	    type : 'POST',
 	    dataType : 'json',
 	    success : function(respuesta) {
 	    	$(respuesta.data).each(function(indice, valor){
-                $("#eventos_carga").append('<option value="' + valor.id + '">' + valor.nombre + '</option>');
+                $("#encuestas_carga").append('<option value="' + valor.id + '">' + valor.nombre + '</option>');
             })
 	    },
 	    error : function(respuesta) {
@@ -22,13 +22,13 @@ $(document).ready(function() {
 	});
 
 	// SELECT EVENTO-----------------------------
-	$("#eventos_carga").change(function(){
-		listar_encuestas($("#eventos_carga option:selected").val());
+	$("#encuestas_carga").change(function(){
+		listar_participantes($("#encuestas_carga option:selected").val());
 	});
 	// ------------------------------------------
 
 	$(".boton_listar").click(function(){
-		listar_encuestas($("#eventos_carga option:selected").val());
+		listar_participantes($("#encuestas_carga option:selected").val());
 	});
 
 	// CARGAR DATEPICKER-------------------------
@@ -91,22 +91,35 @@ $(document).ready(function() {
 	        </div>").insertBefore(".div_agregar_respuesta");
 	});
 
-	// ACCION REGISTRAR EVENTO-------------------
+	// ACCION REGISTRAR ENCUESTA-------------
     $("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
 	$.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
-	$("#form_registro_encuesta").validate({
+	$("#form_registro_pregunta").validate({
     	rules:{
-            nombre_evento:{required:!0,minlength:2},
-            fecha_evento:{required:!0},
-            direccion_evento:{required:!0,minlength:5}
+            crear_pregunta:{required:!0,minlength:5}
     	},
     	submitHandler: function(form) {
-			var datos = {
-				tipo:"registrar_encuesta",
-				id_evento: $("#eventos_carga option:selected").val(),
-				fecha_creado: get_fecha_actual(),
-				nombre:$("#nombre_encuesta").val()
-			};
+    		var tipo_pregunta = $("#tipo_pregunta option:selected").val();
+    		var datos = {
+				tipo: "registrar",
+				id_evento: $("#encuestas_carga option:selected").val(),
+				pregunta: $("#crear_pregunta").val(),
+				tipo_pregunta: tipo_pregunta
+			}
+    		if ((tipo_pregunta == "simple") || (tipo_pregunta == "multi")) {
+    			var opciones = $('[id*=opcion-], form_registro_pregunta').serializeArray(); //Campos del form convertidos en Array
+
+    			if (validacion_opciones(opciones) == true){
+    				$("input[type=text]").removeClass("input_opcion_vacio");
+					datos.respuestas = opciones;
+    			}else{
+    				return false;
+    			}
+    		}else if (tipo_pregunta == "libre") {
+    			datos.respuestas = "Respuesta Libre";
+    		}else{
+    			return false;
+    		}
 			$.ajax({
 			    url : '../controller/encuesta.php',
 			    data : datos,
@@ -114,18 +127,16 @@ $(document).ready(function() {
 			    dataType : 'json',
 			    success : function(respuesta) {
 			    	if (respuesta.status == 200) {
-			    		console.log(respuesta);
-			    		alert_message("Exito! ","Nueva encuesta registrado.", "alert-success");
-			    		$("#form_registro_encuesta")[0].reset();
-			    		 AddRow(datos, respuesta);
-			    	}else if (respuesta.status == 1062) {
-			    		alert_message("Aviso! ","La encuesta ya existe.", "alert-warning");
+			    		alert_message("Exito! ","Nueva pregunta registrada.", "alert-success");
+			    		$("#form_registro_pregunta")[0].reset();
+			    		listar_participantes($("#encuestas_carga option:selected").val());
 			    	}else if (respuesta.status == 500) {
 			    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
 			    	};
 			    },
 			    error : function(respuesta) {
-			        alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
+			    	console.log(respuesta);
+			    	alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
 			    },
 			    // código a ejecutar sin importar si la petición falló o no
 			    // complete : function(xhr, status) {
@@ -134,125 +145,40 @@ $(document).ready(function() {
 			});
     	}
     });
-    function AddRow(datos, respuesta){
-		var table = $('#tabla_lista_encuestas').DataTable();
-		var rowNode = table
-		    .row.add({
-		    	"id": respuesta["data"],
-		    	"nombre": datos["nombre"],
-		        "fecha_creado": datos["fecha_creado"]
-		    })
-		    .draw()
-		    .node();
-
-		$( rowNode )
-		    .css( {
-		    	"opacity": "0"
-			})
-		    .animate({
-		    	opacity: "1"
-			});
-	}
-
-	function get_fecha_actual(){
-		var d = new Date();
-		var month = d.getMonth()+1;
-		var day = d.getDate();
-		var output = d.getFullYear() + '-' +
-		    (month<10 ? '0' : '') + month + '-' +
-		    (day<10 ? '0' : '') + day;
-		return output;
-	}
-	// ------------------------------------------
-
-	// ACCION REGISTRAR ENCUESTA-------------
- //    $("input[type=submit]").button(),$("input").addClass("ui-corner-all"),
-	// $.validator.addMethod("valueNotEquals",function(e,i,a){return a!==e},"Value must not equal arg."),
-	// $("#form_registro_pregunta").validate({
- //    	rules:{
- //            crear_pregunta:{required:!0,minlength:5}
- //    	},
- //    	submitHandler: function(form) {
- //    		var tipo_pregunta = $("#tipo_pregunta option:selected").val();
- //    		var datos = {
-	// 			tipo: "registrar",
-	// 			id_evento: $("#eventos_carga option:selected").val(),
-	// 			pregunta: $("#crear_pregunta").val(),
-	// 			tipo_pregunta: tipo_pregunta
-	// 		}
- //    		if ((tipo_pregunta == "simple") || (tipo_pregunta == "multi")) {
- //    			var opciones = $('[id*=opcion-], form_registro_pregunta').serializeArray(); //Campos del form convertidos en Array
-
- //    			if (validacion_opciones(opciones) == true){
- //    				$("input[type=text]").removeClass("input_opcion_vacio");
-	// 				datos.respuestas = opciones;
- //    			}else{
- //    				return false;
- //    			}
- //    		}else if (tipo_pregunta == "libre") {
- //    			datos.respuestas = "Respuesta Libre";
- //    		}else{
- //    			return false;
- //    		}
-	// 		$.ajax({
-	// 		    url : '../controller/encuesta.php',
-	// 		    data : datos,
-	// 		    type : 'POST',
-	// 		    dataType : 'json',
-	// 		    success : function(respuesta) {
-	// 		    	if (respuesta.status == 200) {
-	// 		    		alert_message("Exito! ","Nueva pregunta registrada.", "alert-success");
-	// 		    		$("#form_registro_pregunta")[0].reset();
-	// 		    		listar_encuestas($("#eventos_carga option:selected").val());
-	// 		    	}else if (respuesta.status == 500) {
-	// 		    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
-	// 		    	};
-	// 		    },
-	// 		    error : function(respuesta) {
-	// 		    	console.log(respuesta);
-	// 		    	alert_message("Error! ","Imposible conectar con el servidor, intente de nuevo más tarde.", "alert-danger");
-	// 		    },
-	// 		    // código a ejecutar sin importar si la petición falló o no
-	// 		    // complete : function(xhr, status) {
-	// 		    //     alert('LOADING!!!!!!!!!!');
-	// 		    // }
-	// 		});
- //    	}
- //    });
 	// ------------------------------------------
 });
 
 	// LISTAR PARTICIPANTES----------------------
-function listar_encuestas(id_evento){
+function listar_participantes(id_evento){
 	id_evento = parseInt(id_evento);
 	if(Number.isInteger(id_evento)){
 		$(".nueva_pregunta").attr("disabled",false);
-		var table = $('#tabla_lista_encuestas').DataTable({
+		var table = $('#tabla_lista_preguntas').DataTable({
 			"destroy":true,
 			"ajax":{
 				"method":"POST",
-				"data":{id_evento:id_evento},
+				"data":{id:id_evento},
 				"url":"../controller/encuesta.php",
 				"dataType":"json"
 			},
 			"columns":[
-				{"data":"id"},
-				{"data":"nombre"},
-				{"data":"fecha_creado"},
-				{"defaultContent":"</span><span id='boton-accion' title='Ver Encuesta' class='glyphicon glyphicon-eye-open accion_ver' data-toggle='modal' data-target='#myModal''>\
+				{"data":"pregunta"},
+				{"data":"tipo"},
+				{"defaultContent":"<span id='boton-accion' title='Editar Encuesta' class='glyphicon glyphicon-edit accion_mod' data-toggle='modal' data-target='#myModal_modifcar''>\
+				</span><span id='boton-accion' title='Ver Encuesta' class='glyphicon glyphicon-eye-open accion_ver' data-toggle='modal' data-target='#myModal''>\
 				</span><span id='boton-accion' title='Eliminar Encuesta' class='glyphicon glyphicon-trash accion_eliminar' data-toggle='confirmation' data-title='¿Estás seguro?'></span>"}
 			]
 		});
 	}else{
 		$(".nueva_pregunta").attr("disabled",true);
 		$(".div_registrar").css("display","none");
-		var table = $('#tabla_lista_encuestas').DataTable();
+		var table = $('#tabla_lista_preguntas').DataTable();
 		table.clear().draw();
 	}
 
 	// CARGAR DATOS MODAL MODIFICAR--------------
-	$('#tabla_lista_encuestas tbody').unbind("click"); //IMPORTANTE NO MODIFICAR
-	$('#tabla_lista_encuestas tbody').on("click", ".accion_mod", function(){
+	$('#tabla_lista_preguntas tbody').unbind("click"); //IMPORTANTE NO MODIFICAR
+	$('#tabla_lista_preguntas tbody').on("click", ".accion_mod", function(){
 		var data = table.row($(this).parents("tr")).data();
 		id_pregunta = data.id;
 		$("#mod_pregunta_edit").val(data.pregunta);
@@ -318,7 +244,7 @@ function listar_encuestas(id_evento){
 	// ------------------------------------------
 
 	// CARGAR DATOS MODAL MODIFICAR--------------
-	$('#tabla_lista_encuestas tbody').on("click", ".accion_ver", function(){
+	$('#tabla_lista_preguntas tbody').on("click", ".accion_ver", function(){
 		var data = table.row($(this).parents("tr")).data();
 		id_pregunta = data.id;
 		var tipo_pregunta= data.tipo;
@@ -423,7 +349,7 @@ function listar_encuestas(id_evento){
 			    	if (respuesta.status == 200) {
 			    		alert_message("Exito! ","Pregunta actualizada.", "alert-success");
 			    		setTimeout(function(){
-								listar_encuestas($("#eventos_carga option:selected").val());
+								listar_participantes($("#encuestas_carga option:selected").val());
 			    			$(".cerrar_modal").click();
 			    			$(".boton_listar").click();
 			    		}, 3500);
@@ -444,12 +370,12 @@ function listar_encuestas(id_evento){
 	// ------------------------------------------
 
 	// ACCION ELIMINAR PREGUNTA------------------
-	$('#tabla_lista_encuestas tbody').on("click", ".accion_eliminar", function(){
+	$('#tabla_lista_preguntas tbody').on("click", ".accion_eliminar", function(){
 		$(this).confirmation({
 			onConfirm: function() {
 				var data = table.row($(this).parents("tr")).data();
 				var datos = {
-					tipo:"cambiar_estatus_encuesta",
+					tipo:"eliminar",
 					id:data.id
 				};
 				$.ajax({
@@ -460,7 +386,7 @@ function listar_encuestas(id_evento){
 				    success : function(respuesta) {
 				    	if (respuesta.status == 200) {
 				    		//$(".boton_listar").click();
-				    		listar_encuestas($("#eventos_carga option:selected").val());
+				    		listar_participantes($("#encuestas_carga option:selected").val());
 				    	}else if (respuesta.status == 500) {
 				    		alert_message("Error! ","Hubo un error con el servidor.", "alert-danger");
 				    	};
