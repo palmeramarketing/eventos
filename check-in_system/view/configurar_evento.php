@@ -41,7 +41,7 @@
     <br>
     <div class="row">
       <div class="col-md-10 col-lg-offset-1">
-        <table class="table table-striped" id="tabla_lista_eventos" cellspacing="0" width="100%">
+        <table class="table table-striped" id="tabla_encuesta" cellspacing="0" width="100%">
         <thead>
           <tr>
             <th>Nombre</th>

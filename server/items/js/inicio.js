@@ -75,13 +75,13 @@ $(document).ready(function() {
 
 });
 $("#destruir").click(function(){
-	$('#tabla_lista_eventos').DataTable().clear().draw();
+	$('#tabla_encuesta').DataTable().clear().draw();
 });
 
 function listar_participante(){
 	// LISTAR EVENTOS----------------------------
-	$('#tabla_lista_eventos').DataTable().destroy();
-	var table = $('#tabla_lista_eventos').DataTable({
+	$('#tabla_encuesta').DataTable().destroy();
+	var table = $('#tabla_encuesta').DataTable({
 		"destroy":true,
 		"ajax":{
 			"method":"POST",
@@ -106,8 +106,9 @@ function listar_participante(){
 	// ------------------------------------------
 
 	// CARGAR DATOS MODAL MODIFICAR--------------
-	$('#tabla_lista_eventos tbody').unbind("click");
-	$('#tabla_lista_eventos tbody').on("click", ".accion_modificar", function(){
+
+  // $('#tabla_encuesta tbody').unbind("click");
+	$('#tabla_encuesta tbody').on("click", ".accion_modificar", function(){
 		var data = table.row($(this).parents("tr")).data();
 		id_event = data.id;
 		$("#mod_nombre_evento").val(data.nombre);
@@ -117,7 +118,7 @@ function listar_participante(){
 	// ------------------------------------------
 
 	// ACCION LINKEAR LANDING PAGE---------------
-	$('#tabla_lista_eventos tbody').on("click", ".accion_linkear", function(){
+	$('#tabla_encuesta tbody').on("click", ".accion_linkear", function(){
 		var host = location.hostname;
 		var data = table.row($(this).parents("tr")).data();
 		var hash = data.hash;
@@ -144,7 +145,7 @@ function listar_participante(){
 	// ------------------------------------------
 
 	// ACCION GRAFICAR EVENTO--------------------
-	$("#tabla_lista_eventos tbody").on("click", ".accion_graficar", function(){
+	$("#tabla_encuesta tbody").on("click", ".accion_graficar", function(){
 		var data = table.row($(this).parents("tr")).data();
 		window.location.href = "graficar.php?id_event="+data.id+"&evento="+data.nombre+"&tipo=evento";
 	});
@@ -195,7 +196,7 @@ function listar_participante(){
 	// ------------------------------------------
 
 	// ACCION ELIMINAR EVENTO--------------------
-	$('#tabla_lista_eventos tbody').on("click", ".accion_eliminar", function(){
+	$('#tabla_encuesta tbody').on("click", ".accion_eliminar", function(){
 		$(this).confirmation({
 			onConfirm: function() {
 				var data = table.row($(this).parents("tr")).data();
@@ -230,14 +231,14 @@ function listar_participante(){
 	// ------------------------------------------
 
 	// ACCION MOSTRAR PARTICIPANTES--------------------
-	$("#tabla_lista_eventos tbody").on("click", ".accion_participantes", function(){
+	$("#tabla_encuesta tbody").on("click", ".accion_participantes", function(){
 		var data = table.row($(this).parents("tr")).data();
 		window.location.href = "participantes.php?id_event="+data.id;
 	});
 	// ------------------------------------------
 
 	// ACCION MOSTRAR CERTIFICADO--------------------
-	$("#tabla_lista_eventos tbody").on("click", ".accion_certificado", function(){
+	$("#tabla_encuesta tbody").on("click", ".accion_certificado", function(){
 		var data = table.row($(this).parents("tr")).data();
 		var id_cert = data.id;
 		$("#id_certificado").val(id_cert);
@@ -246,7 +247,7 @@ function listar_participante(){
 	// ------------------------------------------
 
 	// ACCION MOSTRAR lANDING PAGE--------------------
-	//$("#tabla_lista_eventos tbody").on("click", ".accion_landing", function(){
+	//$("#tabla_encuesta tbody").on("click", ".accion_landing", function(){
 	//	var data = table.row($(this).parents("tr")).data();
 
 	//	window.location.href = "landing_page.php?id_event="+data.id;
@@ -255,7 +256,7 @@ function listar_participante(){
 }
 
 function AddRow(datos, respuesta){
-	var table = $('#tabla_lista_eventos').DataTable();
+	var table = $('#tabla_encuesta').DataTable();
 	var rowNode = table
 	    .row.add({
 	    	"id": respuesta["data"]["id"],

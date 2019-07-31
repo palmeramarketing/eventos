@@ -129,7 +129,7 @@ class Gestion_Evento
 		}
 		$datos["participantes"] = $participantes["data"];
 		$datos["participantes"]["total_participantes"] = count($participantes["data"]);
-		$respuestas = self::consultar_respuestas_evento();
+		$respuestas = self::consultar_respuestas_encuesta();
 		if ($respuestas["status"] == 404) {
 			$datos["respuestas"]["total_respuestas"] = 0;
 		}elseif ($respuestas["status"] == 200) {
@@ -165,9 +165,9 @@ class Gestion_Evento
 		return $consulta->sql_select($sql);
 	}
 
-	function consultar_respuestas_evento(){
+	function consultar_respuestas_encuesta(){
 		$consulta = new Recursos();
-		$sql = "SELECT * FROM respuesta_evento";
+		$sql = "SELECT * FROM respuesta_encuesta";
 		return $consulta->sql_select($sql);
 	}
 	function registrar_nuevo_participante($datos){

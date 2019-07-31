@@ -81,7 +81,7 @@ class Usuario
 
 	function deshabilitar_usuario($datos){
 		$conexion = new Recursos();
-		$sql= "UPDATE usuario SET estatus=0 WHERE id=".$datos['id'];
+		$sql = "DELETE FROM usuario WHERE id=".$datos['id'];
 		$ejecutar= $conexion->sql_insert_update($sql);
 
 		return $ejecutar;

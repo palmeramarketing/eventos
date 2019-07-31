@@ -93,7 +93,7 @@ if (isset($_GET["error"])) {
     <br>
     <div class="row">
       <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-        <table class="table table-striped" id="tabla_lista_eventos" cellspacing="0" width="100%">
+        <table class="table table-striped" id="tabla_encuesta" cellspacing="0" width="100%">
         <thead>
           <tr>
             <th>ID</th>

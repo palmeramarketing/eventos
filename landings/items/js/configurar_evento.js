@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 function listar_eventos(){
 	// LISTAR EVENTOS----------------------------
-	var table = $('#tabla_lista_eventos').DataTable({
+	var table = $('#tabla_encuesta').DataTable({
 		"destroy":true,
 		"ajax":{
 			"method":"POST",

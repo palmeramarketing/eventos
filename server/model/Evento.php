@@ -12,7 +12,7 @@ class Evento
 		$mysqli = $conexion->conectar_mysqli();
 		$hash = hash('crc32', $datos['nombre'].rand(), FALSE);
 		if($mysqli["status"] == 200){
-			$sql = "INSERT INTO lista_evento (nombre,fecha,direccion,hash,estatus)
+			$sql = "INSERT INTO encuesta (nombre,fecha,direccion,hash,estatus)
 					values ('".$datos['nombre']."','".$datos['fecha']."','".$datos['direccion']."','$hash',1)";
 			$result = $mysqli["data"]->query($sql);
 			if ($result === true) {
@@ -35,9 +35,9 @@ class Evento
 		if ($mysqli["status"] == 200) {
 
 			if($datos["perfil"]==  'admin'){
-				$sql = "SELECT eve.* FROM lista_evento eve JOIN evento_usuario ue on eve.id = ue.fk_evento JOIN usuario us on ue.fk_usuario = us.id WHERE us.id=".$datos["id"]." and eve.estatus=1";
+				$sql = "SELECT eve.* FROM encuesta eve JOIN evento_usuario ue on eve.id = ue.fk_evento JOIN usuario us on ue.fk_usuario = us.id WHERE us.id=".$datos["id"]." and eve.estatus=1";
 			}else {
-				$sql = "SELECT * FROM lista_evento WHERE estatus=1";
+				$sql = "SELECT * FROM encuesta WHERE estatus=1";
 			}
 
 			$result = $mysqli["data"]->query($sql);
@@ -61,7 +61,7 @@ class Evento
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
 		if ($mysqli["status"] == 200) {
-			$sql = "UPDATE lista_evento SET nombre='".$datos["nombre"]."', fecha='".$datos["fecha"]."', direccion='".$datos["direccion"]."' WHERE id='".$datos["id"]."'";
+			$sql = "UPDATE encuesta SET nombre='".$datos["nombre"]."', fecha='".$datos["fecha"]."', direccion='".$datos["direccion"]."' WHERE id='".$datos["id"]."'";
 			$result = $mysqli["data"]->query($sql);
 			if ($result == true) {
 				return ["data"=>"Evento modificado", "error"=>"", "status"=>200];
@@ -81,7 +81,7 @@ class Evento
 		$conexion = new Conexion();
 		$mysqli = $conexion->conectar_mysqli();
 		if ($mysqli["status"] == 200) {
-			$sql = "UPDATE lista_evento SET estatus=0 WHERE id='".$datos["id"]."'";
+			$sql = "UPDATE encuesta SET estatus=0 WHERE id='".$datos["id"]."'";
 			$result = $mysqli["data"]->query($sql);
 			if ($result == true) {
 				return ["data"=>"Evento modificado", "error"=>"", "status"=>200];

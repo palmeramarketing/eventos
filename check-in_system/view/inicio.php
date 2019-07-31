@@ -94,7 +94,8 @@
 
 						<p class="text_helvetica p_texto_negro">
 
-							El evento más esperado por la comunidad odontológica está aquí y usted tiene la oportunidad de asistir y actualizar sus conocimientos en compañía de los mejores, solo debe llenar el formulario de registro para confirmar su asistencia.
+							¡El evento más esperado por la comunidad odontológica ya está aquí! y le ofrecemos a usted tiene la oportunidad de asistir y actualizar sus conocimientos en compañía solo de los mejores.
+							Conforme a lo expuesto le invitamos cordialmente a llenar el formulario de registro que se muestra a continuación.
 
 						</p>
 

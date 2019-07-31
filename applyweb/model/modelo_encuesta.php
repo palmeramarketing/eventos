@@ -30,7 +30,7 @@ class Encuesta
 
 				FROM cuestionario cue
 
-				INNER JOIN lista_evento eve
+				INNER JOIN encuesta eve
 
                 ON eve.id = cue.id_evento
 
@@ -152,9 +152,7 @@ class Encuesta
 
 			$values = self::preparar_valores($datos);
 
-			$sql = "INSERT INTO
-
-					respuesta_evento (id_participante,id_respuesta,respuesta_libre)
+			$sql = "INSERT INTO respuesta_encuesta (id_participante,id_respuesta,respuesta_libre)
 
 					VALUES
 
